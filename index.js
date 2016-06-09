@@ -12,4 +12,7 @@
 var Scrabble = require('./scrabble.js');
 var scrabble = new Scrabble;
 
+
+// test config
 console.log(scrabble.helloWorld())
+console.log(scrabble.score('a'))
