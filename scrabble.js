@@ -36,13 +36,17 @@ Scrabble.prototype.helloWorld = function() {
 
 // test vars
 Scrabble.prototype.score = function(word) {
-	var score;
+	var score = 0;
 	for (var i = 0; i < word.length; i++) {
 		// search word[i], get point at to score
-		score = this.point[word[i]]
+		score += this.point[word[i]]
 	}
   return score;
 };
+
+Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
+	
+}
 
 module.exports = Scrabble;
 
