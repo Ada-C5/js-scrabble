@@ -48,13 +48,25 @@ Scrabble.prototype.score = function(word) {
 Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
 	var score = 0;
 	var winner = '';
+
+	// sort array in desc order, so smallest wins
+	arrayOfWords.sort(function(a, b){
+  	return b.length - a.length;
+	});
+
 	for (var word of arrayOfWords) {
 		word = word.toString().toLowerCase();
 		var word_score = 0;
 		for (var i = 0; i < word.length; i++) {
 			word_score += this.point[word[i]];
 		}
-		if (word_score > score) {
+		// check if player used 7 tiles
+		if (word.length == 7) {
+			word_score += 50;
+		}
+
+		// assign winning word
+		if (word_score >= score) {
 			score = word_score;
 			winner = word;
 		}  
