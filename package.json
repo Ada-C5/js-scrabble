@@ -6,8 +6,8 @@
   "scripts": {
     "test": "clear; jasmine-node --verbose spec/"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "nlcurry",
+  "license": "MIT",
   "devDependencies": {
     "jasmine-node": "^1.14.5"
   }
