@@ -47,6 +47,7 @@ Scrabble.prototype.score = function(word) {
 
 Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
 	var score = 0;
+	var winner = '';
 	for (var word of arrayOfWords) {
 		word = word.toString().toLowerCase();
 		var word_score = 0;
@@ -55,9 +56,10 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
 		}
 		if (word_score > score) {
 			score = word_score;
+			winner = word;
 		}  
 	}
-	return score;
+	return winner;
 }
 
 module.exports = Scrabble;
