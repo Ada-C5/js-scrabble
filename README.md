@@ -82,3 +82,18 @@ Beginning Tile Quantities:
 - Create a `Dictionary` object that includes a function for searching a list of words to determine if a given word is a valid word.
 - Create a `Board` object that has a matrix (array of arrays) of tile places. Check if a word can be played on a given tile place in a certain direction.
 - Include a minimum of 20 tests between the `TileBag`, `Dictionary` and `Board` objects.
+
+
+//word score
+create key object to do scoring
+
+use prompt to get the word and pass it to the function
+
+create empty score array
+
+check if there are seven letters and add 50 pts to score array if so
+downcase the word
+split it into an array of letters
+use "key" object to replace the letter with its score
+push each number into a new array
+reduce the array to get the full score
