@@ -22,4 +22,8 @@ describe('Hello World', function() {
   it('zebra equals 16 points', function() {
     expect(scrabble.score('zebra')).toEqual(16);
   });
+
+  it('can give highest score for array', function() {
+    expect(scrabble.highestScoreFrom(['zebra', 'cat'])).toEqual(16);
+  });
 });
