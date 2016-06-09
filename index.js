@@ -8,3 +8,8 @@
   we won't be bringing anything into this file. Next project, we'll make good
   use of this file.
 */
+
+var Scrabble = require('./scrabble.js');
+var scrabble = new Scrabble;
+
+console.log(scrabble.helloWorld())
