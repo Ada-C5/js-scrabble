@@ -1,7 +1,7 @@
 var Scrabble = function() {};
 
 // YOUR CODE HERE
-var Tilebag{
+var Tilebag = {
   A: 9,
   B: 2,
   C: 2,
@@ -32,8 +32,29 @@ var Tilebag{
 
 var score = function(word){
   // The word is input as a string (case insensitive).
-  // The chart below shows the point value for a given letter.
+  var word_array = word.toUpperCase().split(""),
+      word_score = 0;
+
+  if(word.length <= 7){
+    for(var letter of word_array){
+      word_score += Tilebag[letter];
+    }
+
+  // seven letter word gets 50point bonus
+    if(word.length == 7){
+      word_score += 50;
+    } else {
+      word_score;
+    }
+  };
   // returns the total score value for the given word.
+  return word_score;
+}
+
+
+
+var highestScoreFrom = function(arrayofWords){
+
 }
 
 Scrabble.prototype.helloWorld = function() {
