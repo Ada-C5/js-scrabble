@@ -1,8 +1,15 @@
-var Scrabble = function() {};
+var prompt = require('prompt');
 
-// YOUR CODE HERE
+var Scrabble = function() {};
+// s = new Scrabble
+// s.helloWorld
+
 Scrabble.prototype.helloWorld = function() {
-  return 'hello world!';
+  console.log('hello world!');
+};
+
+Scrabble.prototype.score = function(word) {
+  console.log(word);
 };
 
 module.exports = Scrabble;
