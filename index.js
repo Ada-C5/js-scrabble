@@ -8,3 +8,35 @@
   we won't be bringing anything into this file. Next project, we'll make good
   use of this file.
 */
+var Scrabble = require ('./scrabble.js');
+// creating an instance starting at 0
+var scrabble = new Scrabble();
+// node_nodule that exists here
+var prompt = require('prompt');
+
+function getWord() {
+  // collect data from user
+  prompt.get(['word'], function(error, result) {
+    console.log(scrabble.wordScore(result.word));
+    ask_again();
+  });
+  // send data off to the callback when it's done
+}
+
+function ask_again() {
+  prompt.get(['again?'], function(error, result) {
+    var answer = result["again?"];
+    if (answer === "yes") {
+    // do it again
+    getWord();
+  } else {
+  // exits
+  console.log('bye!');
+  process.exit;
+  }
+ })
+}
+
+prompt.start();
+
+getWord();
