@@ -36,6 +36,7 @@ Scrabble.prototype.helloWorld = function() {
 
 // test vars
 Scrabble.prototype.score = function(word) {
+	word = word.toString().toLowerCase();
 	var score = 0;
 	for (var i = 0; i < word.length; i++) {
 		// search word[i], get point at to score
@@ -47,6 +48,7 @@ Scrabble.prototype.score = function(word) {
 Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
 	var score = 0;
 	for (var word of arrayOfWords) {
+		word = word.toString().toLowerCase();
 		var word_score = 0;
 		for (var i = 0; i < word.length; i++) {
 			word_score += this.point[word[i]];

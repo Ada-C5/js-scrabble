@@ -26,4 +26,12 @@ describe('Hello World', function() {
   it('can give highest score for array', function() {
     expect(scrabble.highestScoreFrom(['zebra', 'cat'])).toEqual(16);
   });
+
+  it('is case insensitive', function() {
+    expect(scrabble.score('ZEBRA')).toEqual(16);
+  });
+
+  it('is case insensitive for arrays too', function() {
+    expect(scrabble.highestScoreFrom(['ZEBRA', 'CAT'])).toEqual(16);
+  });
 });
