@@ -16,12 +16,13 @@ var Scrabble = require('./scrabble'),
 function collect () {
   // collect some data thte user
   prompt.get(['word'], function(error, result) {
-    if (/\s/.test(result)){
+    if(/\s/.test(result.word)){
        var value = multiple(result)
+       console.log(value);
     } else {
       var value = final(result);
-    };
       console.log(value);
+    };
     ask_again()
   });
 }

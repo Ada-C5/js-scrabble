@@ -11,9 +11,14 @@ var scores = {
 
 
 Scrabble.prototype.score = function(word) {
+  if (word.length == 7) {
+    var points = 50;
+  } else {
+    var points = 0;
+  };
+
   var array = word.toUpperCase().split('');
   //[ 'M', 'E', 'L', 'I', 'S', 'S', 'A' ]
-  var points = 0;
   for(var letter of array) {
     points += scores[letter];
   };
