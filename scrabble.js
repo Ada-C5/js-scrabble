@@ -49,10 +49,11 @@ Scrabble.prototype.score = function(word) {
 };
 
 Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
-	// var score = 0;
+	var highest_score = 0;
 	var winner = '';
 	// keep score/word to deduct winner
 	var winner_object = {};
+	var ties = {};
 
 	// sort array in desc order, so smallest wins
 	// arrayOfWords.sort(function(a, b){
@@ -60,10 +61,15 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
 	// });
 
 	for (var word of arrayOfWords) {
-		// var temp_score = ;
-		winner_object[this.score(word)] = word;
+		var word_score = this.score(word);
+		winner_object[word_score] = word;
 		console.log(winner_object);
 
+		// assign winning word
+		if (word_score >= highest_score) {
+			// score = word_score;
+			// winner = word;
+		}  
 
 
 		// word = word.toString().toLowerCase();
@@ -80,11 +86,6 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
 			word_score += 50;
 		}
 
-		// assign winning word
-		if (word_score >= score) {
-			score = word_score;
-			winner = word;
-		}  
 	}
 	return winner;
 }
