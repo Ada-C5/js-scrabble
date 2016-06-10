@@ -11,7 +11,8 @@
 
 var Scrabble = require('./scrabble.js');
 var scrabble = new Scrabble;
-
+var Player = require('./player.js');
+var Player = new Player;
 
 // test config
 console.log(scrabble.helloWorld())
