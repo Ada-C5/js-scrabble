@@ -19,4 +19,13 @@ describe('Player', function() {
     expect(player.play('cat')).toEqual(['cat']);
   });
 
+  it('can get total score from plays property', function() {
+    player.play('cat');
+    player.play('cat');
+    player.play('cat');
+    console.log(player.plays);
+    // console.log(player.total_score);
+    expect(player.total_score()).toEqual(20);
+  });
+
 });
