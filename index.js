@@ -26,7 +26,7 @@ function getWord() {
 function getWords () {
   prompt.get(['input'], function(error, result) {
     var arrayOfWords = result.input.split(' ')
-    console.log(scrabble.highestScoreFrom(arrayOfWords));
+    console.log("You're highest scoring word is... " + (scrabble.highestScoreFrom(arrayOfWords)));
     ask_again(getWords);
   });
 }
