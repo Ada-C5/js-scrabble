@@ -30,19 +30,10 @@ function Scrabble(score_chart) {
   };
 };
 
-// Scrabble.prototype.collect = function() {
-//   prompt.get(['word'], function(error, result) {
-//     var word = scrabble.score(result);
-//   });
-// }
-
 Scrabble.prototype.score = function(word) {
-// { word: 'cat' }
 
   var word_score = 0;
-  // var word = result['word'];
   word = word.toUpperCase();
-  // var length = result['word'].length;
   var length = word.length
 
   // score each letter in the word
@@ -60,10 +51,7 @@ Scrabble.prototype.score = function(word) {
 
 };
 
-// use with collect function
-// var scrabble = new Scrabble();
-// var prompt = require('prompt');
-// prompt.start();
-// scrabble.collect();
+var scrabble = new Scrabble();
+scrabble.score("cat")
 
 module.exports = Scrabble;
