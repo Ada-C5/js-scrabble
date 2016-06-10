@@ -39,3 +39,5 @@ Player.prototype.highestWordScore = function(){
 
   return scrabble.score(this.highestScoringWord);
 };
+
+module.exports = Player;
