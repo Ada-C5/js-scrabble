@@ -19,7 +19,11 @@ describe('score word', function() {
     expect(scrabble.score('twilight')).toEqual(65);
   });
 
+  it('properly applies bonus to score(refute edition)', function() {
+    expect(scrabble.score('twilight')).toNotEqual(15);
+  });
+
     it('does not score garbage input', function() {
-    expect(scrabble.score('&**#*')).toEqual(0);
+    expect(scrabble.score('&**!#*%')).toNotEqual(50);
   });
 });
