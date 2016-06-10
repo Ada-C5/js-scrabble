@@ -30,24 +30,27 @@ function Scrabble(score_chart) {
   };
 };
 
-Scrabble.prototype.collect = function() {
-  prompt.get(['word'], function(error, result) {
-    var word = scrabble.score(result);
-  });
-}
+// Scrabble.prototype.collect = function() {
+//   prompt.get(['word'], function(error, result) {
+//     var word = scrabble.score(result);
+//   });
+// }
 
-Scrabble.prototype.score = function(result) {
+Scrabble.prototype.score = function(word) {
 // { word: 'cat' }
 
   var word_score = 0;
-  var word = result['word'];
+  // var word = result['word'];
   word = word.toUpperCase();
-  var length = result['word'].length;
+  // var length = result['word'].length;
+  var length = word.length
 
+  // score each letter in the word
   for (var index = 0; index < length; index++) {
     word_score += this.score_chart[word[index]];
   };
 
+  // add 50 pts if 7+ letters
   if (length >= 7) {
     word_score += 50;
   };
@@ -57,12 +60,10 @@ Scrabble.prototype.score = function(result) {
 
 };
 
-var scrabble = new Scrabble();
-
-var prompt = require('prompt');
-
-prompt.start();
-
-scrabble.collect();
+// use with collect function
+// var scrabble = new Scrabble();
+// var prompt = require('prompt');
+// prompt.start();
+// scrabble.collect();
 
 module.exports = Scrabble;
