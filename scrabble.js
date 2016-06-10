@@ -4,7 +4,7 @@ var letter_scores = {
   A: 1,
   B: 3,
   C: 3,
-  D: 1,
+  D: 2,
   E: 1,
   F: 4,
   G: 2,
@@ -42,20 +42,31 @@ Scrabble.prototype.score = function(word) {
 };
 
 Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
-  //returns the word in the array with the highest score
-  // var best_word = null;
   var words_with_scores = {};
-  // by_scores = word_array.group_by { |word| self.score(word.upcase) }
+  var winning_words = []
   for (var word of arrayOfWords) {
     words_with_scores[word] = this.score(word);
   }
   var max = Math.max.apply(null,Object.keys(words_with_scores).map(function(x){ return words_with_scores[x] }));
   for (var word in words_with_scores){
     if (words_with_scores[word] === max){
-      best_word = word;
+      winning_words.push(word);
     }
   }
-  return best_word;
+  if (winning_words.length === 1){
+    return winning_words[0];
+  } else {
+    words_with_lengths = {};
+    for (var word of winning_words){
+      words_with_lengths[word] = word.length;
+    }
+    var min = Math.min.apply(null,Object.keys(words_with_scores).map(function(x){ return words_with_scores[x] }));
+    for (var word in words_with_lengths){
+      if (words_with_lenghts[word] === min){
+        return word;
+      }
+    }
+  };
 };
 
 
