@@ -34,7 +34,7 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
  });
   var max = Math.max(...scores_array);
   var index_max = scores_array.indexOf(max)
-  return words_array[index_max]
+  return words_array[index_max].toLowerCase()
 };
 
 
