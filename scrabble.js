@@ -12,7 +12,7 @@ var scores = {
 
 Scrabble.prototype.score = function(word) {
   if (word.length == 7) {
-    var points = 50;
+    var points = bonus;
   } else {
     var points = 0;
   };
