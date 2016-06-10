@@ -8,7 +8,7 @@ describe('Hello World', function() {
   });
 });
 
-describe('method score(word)', function() {
+describe('score(word)', function() {
   var scrabble = new Scrabble();
 
   it('returns the score 5 for the word dog', function() {
@@ -17,5 +17,9 @@ describe('method score(word)', function() {
 
   it('is case insensitive', function() {
     expect(scrabble.score('doG')).toEqual(5);
+  });
+
+  it('adds a 50 point bonus if a word uses 7 letters', function() {
+    expect(scrabble.score('aaaaaaa')).toEqual(57);
   });
 });
