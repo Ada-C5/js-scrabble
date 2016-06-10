@@ -23,11 +23,58 @@ describe ('Score(word)', function() {
     expect(scrabble.score("cacique")).toEqual(70);
   });
 
-  it ("returns sum of 0 for the word 'empty string'", function() {
+  it ("returns sum of 0 for an 'empty string'", function() {
     expect(scrabble.score("")).toEqual(0);
   });
 
-  it ("returns sum of 61 for the mix cased word 'TacOcAt'", function() {
+  it ("returns sum of 61 for the mix cased words", function() {
     expect(scrabble.score("TacOcAt")).toEqual(61);
   });
 });
+
+describe ('highestScoreFrom(arrayOfWords))', function() {
+  var scrabble = new Scrabble();
+
+  it ("returns the word 'cat' shortest and first word for equal scores", function() {
+    expect(scrabble.highestScoreFrom(["cat", "aeiou", "bat"])).toEqual("CAT");
+  });
+
+  it ("returns the word 'cat' shortest and first word for equal scores", function() {
+    expect(scrabble.highestScoreFrom(["aeiou", "cat", "bat"])).toEqual("CAT");
+  });
+
+  it ("returns the word 'tacogat' shortest and first word for equal scores", function() {
+    expect(scrabble.highestScoreFrom(["qqqqqq", "tacogat"])).toEqual("TACOGAT");
+  });
+
+  it ("returns the word 'tacogat' shortest and first word for equal scores", function() {
+    expect(scrabble.highestScoreFrom(["qqqqqq", "tacogat", "bdaaaaa"])).toEqual("TACOGAT");
+  });
+
+  it ("returns the word 'tacogat' shortest and first word for equal scores", function() {
+    expect(scrabble.highestScoreFrom(["qZqZqq", "tAcoGat"])).toEqual("TACOGAT");
+  });
+
+  it ("returns the word 'tacogat' shortest and first word for equal scores mixed case", function() {
+    expect(scrabble.highestScoreFrom(["qqqqZZ", "tacogAt", "bdEaaaa"])).toEqual("TACOGAT");
+  });
+
+  it ("returns the word 'bat' with one empty string", function() {
+    expect(scrabble.highestScoreFrom(["bee", "", "bat"])).toEqual("BEE");
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//

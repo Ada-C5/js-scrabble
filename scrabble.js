@@ -15,8 +15,6 @@ Scrabble.prototype.score = function (word) {
       sum       = 0;
   for (i = 0; i < chars.length; i++) {
     sum += LETTERS[chars[i]];
-    // console.log(chars[i]);
-    // console.log(LETTERS[chars[i]]);
   }
   if (word.length === 7) {
     sum += 50;
@@ -25,12 +23,22 @@ Scrabble.prototype.score = function (word) {
 }
 
 Scrabble.prototype.highestScoreFrom = function (arrayOfWords) {
-  var high_word = "";
+  var high_word = "",
+      high_score = 0;
   for (var arrayOfWord of arrayOfWords) {
-    console.log(arrayOfWord);
+    if (this.score(arrayOfWord) > high_score) {
+      high_word = arrayOfWord.toUpperCase();
+      high_score = (this.score(arrayOfWord));
+    }
+    else if (this.score(arrayOfWord) === high_score && arrayOfWord.length === 7 && high_word.length !== 7) {
+      high_word = arrayOfWord.toUpperCase();
+    }
+    else if (this.score(arrayOfWord) === high_score && arrayOfWord.length < high_word.length) {
+      high_word = arrayOfWord.toUpperCase();
+    }
   }
+  return high_word
 }
-
 
 
 module.exports = Scrabble;
