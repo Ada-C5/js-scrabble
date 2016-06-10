@@ -25,6 +25,24 @@ Scrabble.prototype = {
     }
 
     return word_score;
+  },
+
+  highestScoreFrom: function(arrayOfWords) {
+    var max_score = 0;
+    var max_word = '';
+
+    for (var word of arrayOfWords) {
+      var score = this.score(word);
+
+      if (score >= max_score && max_word.length < 7) {
+        if (score > max_score || word.length === 7 || word.length < max_word.length) {
+          max_score = score;
+          max_word = word;
+        }
+      }
+    }
+
+    return max_word;
   }
 }
 
