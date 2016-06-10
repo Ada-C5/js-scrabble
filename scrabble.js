@@ -63,12 +63,17 @@ Scrabble.prototype.highestScoreFrom = function(array_of_words) {
   };
 
   scored_array.sort(function(a, b){
-    if (a.score === b.score) {
-      tied_array.push(a);
-      tied_array.push(b);
-    };
     return a.score - b.score;
   });
+
+  var highest = scored_array.pop();
+  tied_array.push(highest);
+
+  for (var each of scored_array) {
+    if (highest.score === each.score) {
+      tied_array.push(each);
+    };
+  }
 
   console.log(scored_array);
   console.log(tied_array);
@@ -83,7 +88,7 @@ Scrabble.prototype.highestScoreFrom = function(array_of_words) {
 // actually run it
 var scrabble = new Scrabble();
 // scrabble.score("cat")
-var array = ["cat", "lemon", "pickle", "aaaaa"]
-scrabble.highestScoreFrom(array)
+var array = ["cat", "lemon", "pickle", "aaaaaaa", "eeeeeee"];
+scrabble.highestScoreFrom(array);
 
 module.exports = Scrabble;
