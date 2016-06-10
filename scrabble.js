@@ -28,8 +28,8 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
    return that.score(word);
  });
   var max = Math.max(...scores_array);
-  var a = scores_array.indexOf(max)
-  return words_array[a]
+  var index_max = scores_array.indexOf(max)
+  return words_array[index_max]
 };
 
 
