@@ -1,3 +1,8 @@
+var Scrabble = require('./scrabble.js');
+
+
+
+
 /*
   The convention with Node projects is to use `index.js` as the jumping-off
   point for the application. If we were building a larger, more integrated
