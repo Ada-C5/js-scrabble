@@ -24,6 +24,6 @@ describe('score word', function() {
   });
 
     it('does not score garbage input', function() {
-    expect(scrabble.score('&**!#*%')).toNotEqual(50);
+    expect(function () {scrabble.score('&**!#*%');}).toThrow(new Error('this is not valid input!'));
   });
 });

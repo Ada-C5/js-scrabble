@@ -40,9 +40,8 @@ Scrabble.prototype.score = function(word) {
   // check input for garbage
   // should I break this out so it is not repeated in highest scoring array?
   var wordCheck = word.match(/(\W)*/g); 
-  console.log(wordCheck);
   if (wordCheck[0] === word) {
-    throw('this is not a valid word!');  
+    throw('this is not valid input!');  
   }
   
   // apply the bonus
