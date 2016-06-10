@@ -1,9 +1,12 @@
 var Scrabble = require("../scrabble.js");
 
-describe('Hello World', function() {
+describe('Score a word', function() {
+  // setup - new game of Scrabble
   var scrabble = new Scrabble();
-
-  it('says hello world', function() {
-    expect(scrabble.helloWorld()).toEqual('hello world!');
+  
+  it('returns the total points for a single word', function() {
+    expect(scrabble.wordScore("charles")).toEqual(12);
   });
+
+
 });

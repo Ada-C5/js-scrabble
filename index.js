@@ -18,17 +18,25 @@ function getWord() {
   // collect data from user
   prompt.get(['word'], function(error, result) {
     console.log(scrabble.wordScore(result.word));
-    ask_again();
+    ask_again(getWord);
   });
   // send data off to the callback when it's done
 }
 
-function ask_again() {
+function getWords () {
+  prompt.get(['input'], function(error, result) {
+    var arrayOfWords = result.input.split(' ')
+    console.log(scrabble.highestScoreFrom(arrayOfWords));
+    ask_again(getWords);
+  });
+}
+
+function ask_again(againCallback) {
   prompt.get(['again?'], function(error, result) {
     var answer = result["again?"];
     if (answer === "yes") {
     // do it again
-    getWord();
+    againCallback();
   } else {
   // exits
   console.log('bye!');
@@ -39,4 +47,4 @@ function ask_again() {
 
 prompt.start();
 
-getWord();
+getWords();
