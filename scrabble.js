@@ -36,12 +36,11 @@ Scrabble.prototype.helloWorld = function() {
 Scrabble.prototype.score = function(word) {
   var word = word.toUpperCase();
   var score = 0; 
+  var wordCheck = word.match(/(\W)*/g); 
   
   // check input for garbage
-  // should I break this out so it is not repeated in highest scoring array?
-  // I'm also worried about asynchronous insanity 
-  var wordCheck = word.match(/(\W)*/g); 
-  if (wordCheck[0] === word) {
+  // I'm worried about asynchronous insanity 
+  if (wordCheck[0].length !== 0) {
     throw('this is not valid input!');  
   }
   
@@ -50,7 +49,7 @@ Scrabble.prototype.score = function(word) {
     score += 50; 
   }
 
-  // score that mess with a loop
+  // score with a loop
   for (var i = 0; i < word.length; ++i) {
     score += this.tile_score[word.charAt(i)];
   }

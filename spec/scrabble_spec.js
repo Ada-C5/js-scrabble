@@ -16,14 +16,18 @@ describe('score word', function() {
   });
 
   it('properly applies bonus to score of a 7-letter word', function() {
-    expect(scrabble.score('twilight')).toEqual(65);
+    expect(scrabble.score('buzzcut')).toEqual(79);
   });
 
   it('properly applies bonus to 7-letter word(refute edition)', function() {
-    expect(scrabble.score('twilight')).toNotEqual(15);
+    expect(scrabble.score('buzzcut')).toNotEqual(29);
   });
 
   it('does not score garbage input', function() {
     expect(function(){scrabble.score('&**!#*%');}).toThrow(new Error('this is not valid input!'));
+  });
+
+  it('does not score partially garbage input', function() {
+    expect(function(){scrabble.score('&*avocado!');}).toThrow(new Error('this is not valid input!'));
   });
 });
