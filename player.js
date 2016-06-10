@@ -1,4 +1,4 @@
-var Scrabble = require("/scrabble.js");
+var Scrabble = require("./scrabble.js");
 
 var Player = function(name){
   this._name = name;
@@ -6,7 +6,11 @@ var Player = function(name){
 };
 
 Player.prototype.play = function(word){
+  if(this.hasWon){
+    return false;
+  } else {
   this._plays.push(word);
+  };
 };
 
 Player.prototype.total_score = function(){
