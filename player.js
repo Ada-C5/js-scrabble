@@ -7,11 +7,6 @@ Player.prototype.helloWorld = function() {
   return 'hello world!';
 };
 
-// Player.prototype.plays = function() {
-//   var plays = array;
-//   return plays;
-// };
-
 Player.prototype.play = function(word) {
 	if (this.hasWon() == true) {
 		return false
@@ -19,10 +14,6 @@ Player.prototype.play = function(word) {
 	this.plays.push(word);
 	return this.plays;
 };
-
-Player.prototype.hasWon = function() {
-
-}
 
 Player.prototype.total_score = function() {
 	var Scrabble = require('./scrabble.js');
@@ -33,6 +24,22 @@ Player.prototype.total_score = function() {
 	};
 	return score;
 }
+
+Player.prototype.hasWon = function() {
+	// console.log(this.total_score);
+	if (this.total_score > 100) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+Player.prototype.highestScoringWord = function() {
+	var Scrabble = require('./scrabble.js');
+	var scrabble = new Scrabble;
+	return scrabble.highestScoreFrom(this.plays);
+}
+
 
 
 

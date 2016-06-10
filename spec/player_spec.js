@@ -23,9 +23,21 @@ describe('Player', function() {
     player.play('cat');
     player.play('cat');
     player.play('cat');
-    console.log(player.plays);
+    // console.log(player.plays);
     // console.log(player.total_score);
     expect(player.total_score()).toEqual(20);
+  });
+
+  it('can check if player has won', function() {
+  	player.play('cat');
+    expect(player.hasWon()).toEqual(false);
+  });
+
+  it('can get highest scoring word', function() {
+  	player.play('cat');
+    player.play('zebra');
+    player.play('cat');
+    expect(player.highestScoringWord()).toEqual('zebra');
   });
 
 });
