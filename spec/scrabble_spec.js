@@ -1,13 +1,10 @@
-// var Scrabble = require("../scrabble.js");
-//
-// describe('Hello World', function() {
-//   var scrabble = new Scrabble();
-//
-//   it('', function() {
-//     expect(scrabble.helloWorld()).toEqual('hello world!');
-//   });
-// });
-//
-// it takes in a string
-//
-// it returns a number
+var Scrabble = require("../scrabble.js");
+
+describe('Scrabble', function() {
+  var scrabble = new Scrabble();
+  var word = "cat";
+
+  it('scores a given word', function() {
+    expect(scrabble.score(word)).toEqual(5);
+  });
+});
