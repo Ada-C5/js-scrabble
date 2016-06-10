@@ -12,8 +12,10 @@
 var Scrabble = require('./scrabble.js');
 var scrabble = new Scrabble;
 var Player = require('./player.js');
-var Player = new Player;
+var player = new Player;
 
 // test config
-console.log(scrabble.helloWorld())
 console.log(scrabble.score('a'))
+console.log(scrabble.helloWorld())
+
+console.log(player.helloWorld())
