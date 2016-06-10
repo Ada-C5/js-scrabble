@@ -73,10 +73,4 @@ Scrabble.prototype.highestScoreFrom = function(arrayofWords){
   return win_word;
 };
 
-Scrabble.prototype.helloWorld = function() {
-  return 'hello world!';
-};
-
-
-
 module.exports = Scrabble;
