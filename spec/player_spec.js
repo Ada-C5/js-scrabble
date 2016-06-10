@@ -40,4 +40,11 @@ describe('Player', function() {
     expect(player.highestScoringWord()).toEqual('zebra');
   });
 
+  it('can get highest scoring word score', function() {
+  	player.play('cat');
+    player.play('zebra');
+    player.play('cat');
+    expect(player.highestWordScore()).toEqual(16);
+  });
+
 });

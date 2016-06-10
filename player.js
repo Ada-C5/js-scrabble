@@ -40,6 +40,12 @@ Player.prototype.highestScoringWord = function() {
 	return scrabble.highestScoreFrom(this.plays);
 }
 
+Player.prototype.highestWordScore = function() {
+	var Scrabble = require('./scrabble.js');
+	var scrabble = new Scrabble;
+	var word = scrabble.highestScoreFrom(this.plays);
+	return scrabble.score(word);
+}
 
 
 
