@@ -2,7 +2,8 @@ var Player = require("../player.js");
 
 describe('Player', function(){
   var winner = new Player("Wordsmith"),
-      winner._plays = ["develop","jacuzzi"];
+      winner._plays = ["develop","jacuzzi"],
+      loser = new Player("SilentBob");
 
   it("is present", function(){
     expect(winner !== undefined).toEqual(true);
