@@ -1,3 +1,5 @@
+var Scrabble = require("/scrabble.js");
+
 var Player = function(name){
   this._name = name;
   this._plays = [];
