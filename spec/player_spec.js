@@ -19,13 +19,21 @@ describe('Player', function() {
     expect(player.play('cat')).toEqual(['cat']);
   });
 
-  it('can get total score from plays property', function() {
+  it('can add mult words to plays array', function() {
+  	player.play('cat');
+    player.play('cat');
+    player.play('cat');
+    expect(player.plays).toEqual([ 'cat', 'cat', 'cat', 'cat' ]);
+  });
+
+  it('can get total score from plays property', function() {	
+  	var player = new Player("Bob");
     player.play('cat');
     player.play('cat');
     player.play('cat');
     // console.log(player.plays);
     // console.log(player.total_score);
-    expect(player.total_score()).toEqual(20);
+    expect(player.total_score()).toEqual(15);
   });
 
   it('can check if player has won', function() {
