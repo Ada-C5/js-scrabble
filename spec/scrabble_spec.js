@@ -31,5 +31,9 @@ describe('Scrabble', function() {
     expect(scrabble.highestScoreFrom(["ZZZZZZ", "AEIOUTF", "AEIOUTH"])).toEqual("AEIOUTF");
   };
 
+  it('returns first word when length are same and there is no 7 tile word'), function() {
+    expect(scrabble.highestScoreFrom(["e", 'a'])).toEqual('e');
+  }
+
 
 });
