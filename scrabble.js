@@ -27,15 +27,7 @@ var Scrabble = function() {
     'Y' : 4, 
     'Z' : 10 
   };
-
-  // function highestScoreFrom(arrayOfWords) {
-  //   // Array of words comes in
-  //   // each word needs to be scored and tracked
-  //   // 7 letter words + 50 point bonus
-  //   // return the highest scoring word
-  // }
 };
-
 
 Scrabble.prototype.helloWorld = function() {
   return 'hello world!';
@@ -45,15 +37,33 @@ Scrabble.prototype.score = function(word) {
   var word = word.toUpperCase();
   var score = 0; 
   
-  // apply that bonus
+  // check input for garbage
+  // should I break this out so it is not repeated in highest scoring array?
+  var wordCheck = word.match(/(\W)*/g); 
+  console.log(wordCheck);
+  if (wordCheck[0] === word) {
+    throw('this is not a valid word!');  
+  }
+  
+  // apply the bonus
   if (word.length >= 7) {
     score += 50; 
-  }; 
+  }
+
   // score that mess with a loop
   for (var i = 0; i < word.length; ++i) {
-    score += this.tile_score[word.charAt(i)] || 0;
+    score += this.tile_score[word.charAt(i)];
   }
   return score; 
 }
 
+Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
+    // Array of words comes in
+    // each word needs to be scored and tracked
+    // 7 letter words + 50 point bonus
+    // Rules for ties: 
+      // choose the shortest highing score word EXCEPT:
+      // words that use all 7 tiles trump shorter words 
+    // return the highest scoring word
+  }
 module.exports = Scrabble;
