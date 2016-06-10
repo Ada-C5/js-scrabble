@@ -1,9 +1,6 @@
-var Scrabble = function() {};
 
-
-
-Scrabble.prototype.score = function(word) {
-  var score_chart = {
+function Scrabble(score_chart) {
+  this.score_chart = {
     "A": 1,
     "E": 1,
     "I": 1,
@@ -30,18 +27,39 @@ Scrabble.prototype.score = function(word) {
     "X": 8,
     "Q": 10,
     "Z": 10
-  }
+  };
+};
 
-  this.score_chart = score_chart;
-  this.score_array = [];
-  this.word = word.upcase;
+Scrabble.prototype.collect = function() {
+  prompt.get(['word'], function(error, result) {
+    var word = scrabble.score(result);
+  });
+}
 
-  for (var index = 0; index < word.length; index++) {
-    score_array = score_array.append(score_chart[word][index]);
+Scrabble.prototype.score = function(result) {
+// { word: 'cat' }
+
+  var word_score = 0;
+
+  var word = result['word'];
+  word = word.toUpperCase();
+  var length = result['word'].length;
+
+  for (var index = 0; index < length; index++) {
+    word_score += this.score_chart[word[index]];
   };
 
-  return score
+  console.log(word_score);
+  return word_score;
 
 };
+
+var scrabble = new Scrabble();
+
+var prompt = require('prompt');
+
+prompt.start();
+
+scrabble.collect();
 
 module.exports = Scrabble;
