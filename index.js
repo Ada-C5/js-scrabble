@@ -1,10 +1,65 @@
-/*
-  The convention with Node projects is to use `index.js` as the jumping-off
-  point for the application. If we were building a larger, more integrated
-  Scrabble application, we would bring the various modules/objects we made into
-  this file and kick off whatever functions were necessary to run the app.
+var Scrabble = function(x) {
+  this._x = x;
+};
 
-  We're focusing on learning the module pattern and unit testing right now, so
-  we won't be bringing anything into this file. Next project, we'll make good
-  use of this file.
-*/
+Scrabble.prototype = {
+  chart: {
+    "a": 1, "e": 1, "i": 1, "o": 1, "u": 1, "l": 1, "n": 1, "r": 1, "s": 1, "t": 1,
+    "d": 2, "g": 2,
+    "b": 3, "c": 3, "m": 3, "p": 3,
+    "f": 4, "h": 4, "v": 4, "w": 4, "y": 4,
+    "k": 5,
+    "j": 8, "x": 8,
+    "q": 10, "z": 10
+  },
+
+  score: function(_x) {
+    var score_tally = 0,
+        _x = _x.toLowerCase()
+
+      for (var letter of _x) {
+      score_tally += Scrabble.prototype.chart[letter]
+      };
+
+      if (_x.length === 7) {
+        score_tally += 50
+      }
+    return score_tally;
+  },
+
+  shortest: function(current_loop_word, highest_loop_word) {
+    if (current_loop_word.length > highest_loop_word.length) {
+      return current_loop_word;
+    }
+    else if (current_loop_word.length < highest_loop_word.length) {
+      return highest_loop_word;
+    }
+    else {
+      return highest_loop_word;
+    };
+  },
+
+  highestScoreFrom: function(_x) {
+    var word_score = 0,
+        highest_score = 0,
+        highest_word = ""
+
+    for (var word of _x) {
+      var word_score = Scrabble.prototype.score(word)
+      if (word_score > highest_score) {
+        highest_score = word_score
+        highest_word = word
+      }
+      else if ((word_score === highest_score) && (word.length )) {
+        var highest_word = Scrabble.prototype.shortest(word, highest_word)
+      };
+    };
+    return highest_word;
+  }
+};
+
+
+var rando_array = ["word", "poop", "water", "exit", "qqqqqqq", "zzzzzzz"]
+var player = new Scrabble
+console.log(player.score("word"))
+console.log(player.highestScoreFrom(rando_array))
