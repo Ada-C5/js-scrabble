@@ -7,7 +7,8 @@ Scrabble.prototype.helloWorld = function() {
 };
 
 Scrabble.prototype.score = function(word) {
-  this._word = word;
+  this._word = word.toUpperCase();
+
   var num_array = [];
 
   var mapObj = {
