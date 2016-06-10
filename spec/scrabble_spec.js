@@ -22,4 +22,12 @@ describe('score(word)', function() {
   it('adds a 50 point bonus if a word uses 7 letters', function() {
     expect(scrabble.score('aaaaaaa')).toEqual(57);
   });
+
+  it('returns a helpful message if a word containing space is entered', function() {
+    expect(scrabble.score('elephant hotdog')).toEqual("Words can only contain letters (no symbols or spaces)");
+  });
+
+  it('returns a helpful message if a word contains symbols', function() {
+    expect(scrabble.score('!-cat,.')).toEqual("Words can only contain letters (no symbols or spaces)");
+  });
 });

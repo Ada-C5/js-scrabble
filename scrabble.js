@@ -11,6 +11,10 @@ Scrabble.prototype = {
   helloWorld: function() {return 'hello world!';},
 
   score: function(word) {
+    if (!word.match(/^[a-z]+$/i)) {
+      return "Words can only contain letters (no symbols or spaces)";
+    }
+
     var word_score = 0;
     for (var letter of word.toUpperCase()) {
       word_score += this._letter_scores[letter];
