@@ -40,13 +40,16 @@ Scrabble.prototype.score = function(result) {
 // { word: 'cat' }
 
   var word_score = 0;
-
   var word = result['word'];
   word = word.toUpperCase();
   var length = result['word'].length;
 
   for (var index = 0; index < length; index++) {
     word_score += this.score_chart[word[index]];
+  };
+
+  if (length >= 7) {
+    word_score += 50;
   };
 
   console.log(word_score);
