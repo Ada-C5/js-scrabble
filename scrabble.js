@@ -39,6 +39,7 @@ Scrabble.prototype.score = function(word) {
   
   // check input for garbage
   // should I break this out so it is not repeated in highest scoring array?
+  // I'm also worried about asynchronous insanity 
   var wordCheck = word.match(/(\W)*/g); 
   if (wordCheck[0] === word) {
     throw('this is not valid input!');  
@@ -63,6 +64,7 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
     // Rules for ties: 
       // choose the shortest highing score word EXCEPT:
       // words that use all 7 tiles trump shorter words 
-    // return the highest scoring word
+      // If many words all have the same length and score, pick the first supplied [0]
+    // return the highest scoring word, not the score 
   }
 module.exports = Scrabble;
