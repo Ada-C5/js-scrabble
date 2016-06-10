@@ -6,12 +6,13 @@ Scrabble.prototype.letters = {
     "q": 10, "r": 1, "s": 1, "t": 1, "u": 1, "v": 4, "w": 4, "x": 8, "y": 4,
     "z": 10
 };
-// YOUR CODE HERE
-Scrabble.prototype.helloWorld = function() {
-  return 'hello world!';
-};
+
+// Scrabble.prototype.helloWorld = function() {
+//   return 'hello world!';
+// };
 
 Scrabble.prototype.score = function(word) {
+  word = word.toLowerCase();
   var score = 0;
   if (word === "" || word === " ") {
     return score;
@@ -46,14 +47,23 @@ Scrabble.prototype.highestScoreFrom = function(array) {
     }
   }
 
-  if (this.checkIfArrayIsUnque(score_array) == true) {
-    return array[max_index];
-  } else {
+  if (this.checkIfArrayIsUnque(score_array) === true) {
+    return array[max_index]; //if no dup scores, return best word
+  } else { //if duplicates, first check for 7 letter word
     if (length_array.includes(7)) {
       var index = length_array.indexOf(7);
       return array[index];
-    } else {
-      var index = length_array.indexOf(Math.min(length_array));
+    } else { //then find shortest word
+      for (j=0;j < length_array.length; j++) {
+        var index = length_array.indexOf(Math.min(...length_array));
+        if (score_array[index] == max) {
+          return array[index];
+        } else {
+            if (index > -1) {
+              length_array.splice(i, 1);
+            }
+        }
+      }
       return array[index];
     }
   }
@@ -66,10 +76,12 @@ Scrabble.prototype.checkIfArrayIsUnque = function(array) {
            return false;
    }
    return true;
-}
+};
 
 var scrabble = new Scrabble();
 
 scrabble.highestScoreFrom(["cat", "jacuzzi", "pup"]);
+var highest = scrabble.highestScoreFrom(["cat", "dog", "god", "met", "k"]);
+console.log(highest);
 
 module.exports = Scrabble;
