@@ -1,7 +1,5 @@
 
-var Scrabble = function(x) {
-  this._x = x;
-};
+var Scrabble = function() {};
 
 Scrabble.prototype = {
 
@@ -13,50 +11,56 @@ Scrabble.prototype = {
 
   bonus: 50,
 
-  score: function(_x) {
-    var word = _x;
-
+  score: function(word) {
     if (word.length > 7) {
         throw "You can only enter a word up to seven letters long."
     };
 
-    var wordArray = word.toUpperCase().split('');
-
+    var word = word.toUpperCase();
     var points = 0;
     if (word.length == 7) {
       points += Scrabble.prototype.bonus;
      }; 
 
-    for (var letter of wordArray) {
+    for (var letter of word) {
       points += Scrabble.prototype.scoring[letter];
     };
 
     return points; 
     },
 
-  highestScoreFrom: function(_x) {
-    var arrayOfWords = _x;
-
-    var allScores = [];
-      for (var word in arrayOfWords) {
-        allScores.push(Scrabble.prototype.score(word));
+  highestScoreFrom: function(arrayOfWords) {
+    var winners = [];
+    for (var word of arrayOfWords) {
+      if (winners.length === 0) {
+        winners.push({
+          "word": word, 
+          "score": Scrabble.prototype.score(word)
+        });
+      } else if (Scrabble.prototype.score(word) > winners[0].score) {
+        winners = [];
+        winners.push({
+          "word": word, 
+          "score": Scrabble.prototype.score(word)
+        });
+      } else if (Scrabble.prototype.score(word) === winners[0].score) {
+        if (winners[0].word.length > word.length){
+          winners =[];
+          winners.push({
+            "word": word, 
+            "score": Scrabble.prototype.score(word)
+          });
+        } else if (winners[0].word.length === word.length) {
+          break
+        } else {
+          winners.push({
+          "word": word, 
+          "score": Scrabble.prototype.score(word)
+          });
+        };
       };
-
-    var pairs = allScores.map { function(arrayOfWords) {}};
-    // example: [[59, "pull"], [43, "cat"], [59, "yes"], [3, "andrea"], [7, "carlos"]]
-    // winners = []
-
-    // pairs.each do |pair|
-    //   if pair[0] == pairs.max[0]
-    //     winners << pair
-    //   end
-    // end
-    //  winners
-    // tie_winner = winners.min_by do |winner|
-    //   winner[1].size
-    // end
-    // return tie_winner[1]
-    return pairs;
+    };
+    return winners;
   }
 };
 
