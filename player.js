@@ -22,7 +22,7 @@ Player.prototype.total_score = function() {
   var total         = 0;
 
   for(var word of words_played){
-    total += Number(scrabble.scoreWord(word));
+    total += Number(scrabble.wordScore(word));
   }
   return total;
 };
