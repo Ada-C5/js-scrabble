@@ -31,20 +31,16 @@ describe('Scrabble Object', function() {
     expect(scrabble.score('ZEBRA')).toEqual(16);
   });
 
-  it('is case insensitive for arrays too', function() {
-    expect(scrabble.highestScoreFrom(['ZEBRA', 'CAT'])).toEqual('zebra');
-  });
-
-  it('sorts array in desc order', function() {
-    expect(scrabble.highestScoreFrom(['go', 'ZEBRA', 'CAT', 'good'])).toEqual('zebra');
-  });
-
   it('adds extra 50 pts for using 7 tiles', function() {
   	var scrab = new Scrabble();
-    expect(scrab.score('aaaaaaa')).toEqual(57);
+    expect(scrab.score('aaaaaaf')).toEqual(60);
   });
 
-  xit('7 tiles plays win even over shorter words', function() {
-    expect(scrabble.highestScoreFrom(['go', 'ZEBRA', 'CAT', 'aaaaaaa', 'zzzzzz'])).toEqual('aaaaaaa');
+  it('zzqqqq equals 60 points', function() {
+    expect(scrabble.score('zzqqqq')).toEqual(60);
+  });
+
+  it('7 tiles plays win in ties with shorter words', function() {
+    expect(scrabble.highestScoreFrom(['go', 'ZEBRA', 'CAT', 'aaaaaaf', 'zzqqqq'])).toEqual('aaaaaaf');
   });
 });
