@@ -11,7 +11,7 @@ Player.prototype.play = function(word) {
 	if (this.hasWon() == true) {
 		return false
 	}
-	this.plays.push(word);
+	this.plays.push(word['word']);
 	return this.plays;
 };
 
