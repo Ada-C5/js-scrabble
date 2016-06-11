@@ -78,10 +78,4 @@ Scrabble.prototype.checkIfArrayIsUnque = function(array) {
    return true;
 };
 
-var scrabble = new Scrabble();
-
-scrabble.highestScoreFrom(["cat", "jacuzzi", "pup"]);
-var highest = scrabble.highestScoreFrom(["cat", "dog", "god", "met", "k"]);
-console.log(highest);
-
 module.exports = Scrabble;
