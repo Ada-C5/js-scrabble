@@ -78,9 +78,28 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
   highest_score = Math.max.apply(null, all_scores);
 
   //for the words in arrayOfWords that have that score, push those into a new array of words to work with
-  // if there's only one, return it
+  words_with_highest_score = [];
+  for (var word of arrayOfWords) {
+    if (word.score === highest_score) {
+      words_with_highest_score.push(word);
+    }
+  }
 
-  //if length of word is 7, give 50 bonus points otherwise, word with fewer tiles wins
+  // if there's only one word with the highest score, return it
+  if (words_with_highest_score.length === 1) {
+    highest_scoring_word = words_with_highest_score[0];
+  // but if there are multiple words with that same score
+  } else {
+    for (var word of words_with_highest_score) {
+      //the word with a length of 7 wins
+      if (word.length === 7) {
+        highest_scoring_word = word;
+      } else {
+        // otherwise the word with the least tiles wins
+        highest_scoring_word = ____;
+      }
+    }
+  }
 
   return highest_scoring_word;
 };
