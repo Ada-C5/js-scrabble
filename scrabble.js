@@ -15,8 +15,6 @@ Scrabble.prototype.wordScore = function(word) {
   // var score = 50 if (bonus == "true" && word.length == BONUS_NUMBER_OF_LETTERS)
     var wordLowercase = word.toLowerCase().split('');
     for(var letter of wordLowercase) {
-      // console.log(letter)
-      // console.log(this.letterScores[letter])
       var points = points + this.LETTER_SCORES[letter]
     }
   }
@@ -39,7 +37,7 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
       win_word = word;
     }
    }
-   return win_word;
+   return win_word
   };
 
 module.exports = Scrabble;
