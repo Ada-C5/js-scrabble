@@ -31,6 +31,14 @@ Player.prototype = {
     } else {
       return false;
     };
+  },
+
+  highestScoringWord: function() {
+    return scrabble.highestScoreFrom(this.plays)[0].word;
+  },
+
+  highestWordScore: function() {
+    return scrabble.highestScoreFrom(this.plays)[0].score;
   }
 };
 

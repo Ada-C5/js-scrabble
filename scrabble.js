@@ -34,37 +34,37 @@ Scrabble.prototype = {
   },
 
   highestScoreFrom: function(arrayOfWords) {
-    var winners = [];
+    var winner = [];
     for (var word of arrayOfWords) {
-      if (winners.length === 0) {
-        winners.push({
+      if (winner.length === 0) {
+        winner.push({
           "word": word, 
           "score": Scrabble.prototype.score(word)
         });
-      } else if (Scrabble.prototype.score(word) > winners[0].score) {
-        winners = [];
-        winners.push({
+      } else if (Scrabble.prototype.score(word) > winner[0].score) {
+        winner = [];
+        winner.push({
           "word": word, 
           "score": Scrabble.prototype.score(word)
         });
-      } else if (Scrabble.prototype.score(word) === winners[0].score) {
-        if (winners[0].word.length > word.length) {
-          winners =[];
-          winners.push({
+      } else if (Scrabble.prototype.score(word) === winner[0].score) {
+        if (winner[0].word.length > word.length) {
+          winner =[];
+          winner.push({
             "word": word, 
             "score": Scrabble.prototype.score(word)
           }); 
-        } else if (winners[0].word.length === word.length || winners[0].word.length < word.length) {
+        } else if (winner[0].word.length === word.length || winner[0].word.length < word.length) {
           break;
         } else {
-          winners.push({
+          winner.push({
           "word": word, 
           "score": Scrabble.prototype.score(word)
           });
         };
       };
     };
-    return winners;
+    return winner;
   }
 };
 
