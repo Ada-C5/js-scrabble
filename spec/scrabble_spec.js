@@ -48,11 +48,21 @@ describe('Scrabble', function() {
   });
 
   it('#highestScoreFrom and caps', function() {
-  expect(scrabble.highestScoreFrom("Melissa y david")).toEqual("melissa");
+  expect(scrabble.highestScoreFrom("Melissa y David")).toEqual("melissa");
   });
 
   it('#highestScoreFrom returns a string ', function() {
-    expect(scrabble.highestScoreFrom("miercol")).toEqual(jasmine.any(String))
+    expect(scrabble.highestScoreFrom("miercol andres bogota")).toEqual(jasmine.any(String))
+  });
+
+  it('#highestScoreFrom should throw an error for words larger than 7 letters', function() {
+    expect( function(){ scrabble.score("david fantastic melissa") }).toThrow("Enter a valid word, please");
+    expect( function(){ scrabble.score("melissa doce Cristina") }).toThrow("Enter a valid word, please");
+  });
+
+  it('#highestScoreFrom should throw error for words with not alphabetic charaters', function() {
+    expect( function(){ scrabble.score("$%@^me melissa david") }).toThrow("Enter a valid word, please");
+    expect( function(){ scrabble.score("lunes martes @#%$fr") }).toThrow("Enter a valid word, please");
   });
 
 });
