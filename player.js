@@ -51,10 +51,15 @@ Player.prototype.hasWon = function() {
 
 Player.prototype.highestScoringWord = function() {
   // highestScoringWord(): Function which returns the highest scoring word the user has played.
+  var highestWord = game.highestScoreFrom(wordsPlayed)
+  return highestWord
 };
 
 Player.prototype.highestWordScore = function() {
   // highestWordScore(): Function which returns the highestScoringWord score.
+  var highestWord = this.highestScoringWord
+   score = game.score(highestWord)
+   return score
 };
 
 module.exports = Player;

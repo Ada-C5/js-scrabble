@@ -37,23 +37,24 @@ describe('Player', function() {
     expect(player.total_score()).toEqual(jasmine.any(Number));
   });
 
-  xit("Player#hasWon(): Function with logic to determine if the player has over 100 points, returns 'true', otherwise returns 'false'", function() {
+  it("Player#hasWon(): Function with logic to determine if the player has over 100 points, returns 'true', otherwise returns 'false'", function() {
     expect(player.hasWon()).not.toBeUndefined();
     expect(player.hasWon()).not.toBeNull();
     expect(player.hasWon()).toEqual(false);
     expect(typeof player.hasWon()).toEqual('boolean');
   });
 
-  xit("Player#highestScoringWord(): Function which returns the highest scoring word the user has played.", function() {
+  it("Player#highestScoringWord(): Function which returns the highest scoring word the user has played.", function() {
     expect(player.highestScoringWord()).not.toBeUndefined();
     expect(player.highestScoringWord()).not.toBeNull();
+    expect(player.highestScoringWord()).toEqual("melissa");
     expect(player.highestScoringWord()).toEqual(jasmine.any(String));
   });
 
-  xit("Player#highestScoringWord(): Function which returns the highestScoringWord score.", function() {
-    expect(player.highestScoringWord()).not.toBeUndefined();
-    expect(player.highestScoringWord()).not.toBeNull();
-    expect(player.highestScoringWord()).toEqual(jasmine.any(Number));
+  it("Player#highestWordScore(): Function which returns the highestWordScore score.", function() {
+    expect(player.highestWordScore()).not.toBeUndefined();
+    expect(player.highestWordScore()).not.toBeNull();
+    expect(player.highestWordScore()).toEqual(jasmine.any(Number));
   });
 
 });
