@@ -1,3 +1,7 @@
+
+var Scrabble = require('./scrabble'),
+    game = new Scrabble();
+
 var Player = function(name) {
   this._name = name;
   that = this;
@@ -27,9 +31,13 @@ Player.prototype.play = function(word) {
 
 Player.prototype.total_score = function() {
   // total_score(): Function which sums up and returns the score of the players words
-  return 32
+  var scores = wordsPlayed.map(function(word) {
+   return game.score(word);
+ })
+ //Using fancy arrow functions introduced in ES6:
+  return scores.reduce((a, b) => a + b, 0);
 };
-//
+
 Player.prototype.hasWon = function() {
   // hasWon(): Function with logic to determine if the player has over 100 points, returns true, otherwise returns 'false'
 };

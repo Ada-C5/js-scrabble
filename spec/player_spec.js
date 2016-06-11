@@ -18,11 +18,11 @@ describe('Player', function() {
   it("Player#play(word) Function which will adds the input word to the plays Array", function() {
     expect(player.play("melissa")).not.toBeUndefined();
     expect(player.play("david")).not.toBeNull();
-    expect(player.play("david")).toEqual(true);
+    expect(player.play("amalia")).toEqual(true);
     expect(typeof player.play("lunes")).toEqual("boolean");
   });
 
-  xit("Player#total_score(): Function which sums up and returns the score of the players words", function() {
+  it("Player#total_score(): Function which sums up and returns the score of the players words", function() {
     expect(player.total_score()).not.toBeUndefined();
     expect(player.total_score()).not.toBeNull();
     expect(player.total_score()).toEqual(jasmine.any(Number));
