@@ -19,7 +19,7 @@ Scrabble.prototype = {
     if (word.match(/^[A-z]+$/)) {
       var word = word.toUpperCase();
       var points = 0;
-      if (word.length == 7) {
+      if (word.length === 7) {
         points += Scrabble.prototype.bonus;
        }; 
 
