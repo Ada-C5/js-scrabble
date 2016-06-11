@@ -36,23 +36,40 @@ Scrabble.prototype.score = function(word) {
     "Z": 10
   };
 
-  // for each letters in the given word, create a new array of letter scores and add them up
-  var total_score = 0;
-  for (var letter of word) {
-    total_score += scoring_chart[letter]; //the value for that letter
+  // converts input to a string and makes the input case-insensitive
+  word = String(word).toUpperCase();
+
+  //catches the first instance of anything that's NOT a letter
+  if (/[^a-z]/i.test(word) === true) {
+    throw "Word should only contain letters of the English alphabet.";
+  } else {
+    var total_score = 0;
+    for (var letter of word) {
+      total_score += scoring_chart[letter]; //the value for that letter
+    };
+
+    return total_score;
   };
 
-  return total_score;
+  // for each letters in the given word, create a new array of letter scores and add them up
+//   var total_score = 0;
+//   for (var letter of word) {
+//     // if (scoring_chart[letter].match(/[a-z]/i);  //or doesn't match alphabet regex) {
+//     //   throw "Word provided should only contain letters of the English alphabet.";
+//     // } else {
+//     //
+//     // }
+//     total_score += scoring_chart[letter]; //the value for that letter
+//   };
+//
+//   return total_score;
 };
 
 //testing stuff out
 s = new Scrabble();
 var word = "dog";
 
-console.log(s.score(word.toUpperCase()));
-
-word.toUpperCase(); //toUpperCase is a method on the object (which is a function) called String that exists somewhere in javascript
-Number(word) // Number() is a function that returns a Number
+console.log(s.score(word));
 
 
 
