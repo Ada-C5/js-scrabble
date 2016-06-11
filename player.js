@@ -6,7 +6,11 @@ var Player = function(name) {
   this.played_words = [];
 };
 
-Player.prototype.plays = function (word) {
+Player.prototype.plays = function () {
+  return this.played_words;
+}
+
+Player.prototype.play = function (word) {
   if (typeof word === "object") {
     for (i = 0; i < word.length; i++) {
       this.played_words.push(word[i]);
@@ -15,13 +19,12 @@ Player.prototype.plays = function (word) {
     console.log(typeof word);
     this.played_words.push(word);
   }
-  return this.played_words;
 }
 
-var adriana = new Player("Adriana");
-console.log(adriana.name === "Adriana");
-console.log(adriana.name);
-console.log(adriana.plays("cat"));
-console.log(adriana.plays(["hat", "bat", "hello", "world"]));
+// var adriana = new Player("Adriana");
+// console.log(adriana.name === "Adriana");
+// console.log(adriana.name);
+// console.log(adriana.plays("cat"));
+// console.log(adriana.plays(["hat", "bat", "hello", "world"]));
 
 module.exports = Player;
