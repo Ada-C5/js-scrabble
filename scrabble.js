@@ -34,7 +34,9 @@ Scrabble.prototype.score = function(word) {
 
   var word_score = 0;
   word = word.toUpperCase();
-  var length = word.length
+  var length = word.length;
+  var bonus_length = 7;
+  var bonus_pts = 50;
 
   // score each letter in the word
   for (var index = 0; index < length; index++) {
@@ -42,8 +44,8 @@ Scrabble.prototype.score = function(word) {
   };
 
   // add 50 pts if 7+ letters
-  if (length >= 7) {
-    word_score += 50;
+  if (length >= bonus_length) {
+    word_score += bonus_pts;
   };
 
   console.log(word_score);
@@ -54,6 +56,7 @@ Scrabble.prototype.highestScoreFrom = function(array_of_words) {
   var scored_array = [];
   var tied_array = [];
 
+  // score each word - bonus already added if applicable
   for (var each of array_of_words) {
     var word_with_score = {
       word: each,
@@ -62,33 +65,42 @@ Scrabble.prototype.highestScoreFrom = function(array_of_words) {
     scored_array.push(word_with_score);
   };
 
-  scored_array.sort(function(a, b){
+  // sort by score
+  scored_array.sort(function(a, b) {
     return a.score - b.score;
   });
 
+  // pull out highest score & push into tied_array
   var highest = scored_array.pop();
   tied_array.push(highest);
 
+  // find ties & push into tied_array
   for (var each of scored_array) {
     if (highest.score === each.score) {
       tied_array.push(each);
     };
-  }
+  };
+
+  // if only one word in tied_array, return it
+  if (tied_array.length === 1) {
+    return highest;
+  // otherwise sort the ties by length
+  } else {
+    tied_array.sort(function(a, b) {
+      return a.length - b.length;
+    });
+  // return shortest.
 
   console.log(scored_array);
   console.log(tied_array);
-  return scored_array;
-// score each word
-// if two are tied, return shorter word
-// if two are tied but one has 7+ letters, return 7+ letter word
-// if two are tied in points & length, return first in array_of_words
+  console.log(tied_array[0]);
+
+    return tied_array[0];
+  };
 };
 
-
-// actually run it
 var scrabble = new Scrabble();
-// scrabble.score("cat")
-var array = ["cat", "lemon", "pickle", "aaaaaaa", "eeeeeee"];
+var array = ["cat", "lemon", "pickle", "aaaaaaaaacc", "eeeeeeex"];
 scrabble.highestScoreFrom(array);
 
 module.exports = Scrabble;
