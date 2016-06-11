@@ -23,6 +23,10 @@ describe("scrabble scoring", function() {
     expect(scrabble.score("queenie")).toEqual(66);
   });
 
+  it("is case insensitive", function() {
+    expect(scrabble.score("HELLO")).toEqual(8);
+  });
+
   it("throws and error for word > 7 letters", function() {
     expect(function(){ scrabble.score("developer"); }).toThrow(new Error("You can only enter a word up to seven letters long."));
   });
