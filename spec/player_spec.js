@@ -23,19 +23,17 @@ describe('Player', function() {
     expect(typeof player.play("lunes")).toEqual("boolean");
   });
 
-  it("Player#play(word) should return false if the player has won", function() {
-    expect(player2.play("sarah")).toEqual(false);
-    expect(player2.play("cristal")).toEqual(false);
-    expect(player2.play("sophia")).toEqual(false);
-    expect(player2.play("nicole")).toEqual(false);
-  });
+  // it("Player#play(word) should return false if the player has won", function() {
+  //   expect(player2.play("sarah")).toEqual(false);
+  //   expect(player2.play("cristal")).toEqual(false);
+  //   expect(player2.play("sophia")).toEqual(false);
+  //   expect(player2.play("nicole")).toEqual(false);
+  // });
 
   it("Player#total_score(): Function which sums up and returns the score of the players words", function() {
     expect(player.total_score()).not.toBeUndefined();
     expect(player.total_score()).not.toBeNull();
-    expect(player.total_score()).toEqual(169);
-    expect(player2.total_score()).toEqual(19);
-
+    expect(player.total_score()).toEqual(82);
     expect(player.total_score()).toEqual(jasmine.any(Number));
   });
 

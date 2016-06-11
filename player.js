@@ -1,15 +1,12 @@
 
 var Scrabble = require('./scrabble'),
-    game = new Scrabble();
+    game = new Scrabble(),
+    wordsPlayed = new Array(),
+    player_points = null;
 
 var Player = function(name) {
   this._name = name;
-  that = this;
 };
-
-var wordsPlayed = new Array()
-
-var player_points = null
 
 Player.prototype.name = function() {
   return this._name;
@@ -45,6 +42,7 @@ Player.prototype.total_score = function() {
 Player.prototype.hasWon = function() {
   // hasWon(): Function with logic to determine if the player has over 100 points, returns true, otherwise returns 'false'
   if (this.total_score() > 100) {
+    //empty the wordsPlayed???
     return true
   } else {
     return false
