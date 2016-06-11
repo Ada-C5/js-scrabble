@@ -78,11 +78,17 @@ describe('Player', function() {
     expect(player.name("david")).toEqual(jasmine.any(String));
   });
 
-  it('#player should not be undefined or null', function() {
+  it('#player should return and array of words', function() {
     expect(player.plays()).not.toBeUndefined();
     expect(player.plays()).not.toBeNull();
-    expect(player.plays("david")).toEqual(jasmine.any(Array));
+    expect(player.plays()).toEqual(jasmine.any(Array));
 
+  });
+
+  it('#player should add the word to an array', function() {
+    expect(player.plays()).not.toBeUndefined();
+    expect(player.plays()).not.toBeNull();
+    expect(player.plays()).toEqual(jasmine.any(Boolean));
   });
 
 });
