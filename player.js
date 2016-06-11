@@ -1,7 +1,8 @@
 var Player = function(name) {
-  this._name = name
+  this._name = name;
+  that = this;
 };
-var wordsPlayed = []
+var wordsPlayed = new Array()
 
 Player.prototype.name = function() {
   return this._name;
@@ -15,7 +16,14 @@ Player.prototype.plays = function() {
 Player.prototype.play = function(word) {
   // play(word): Function which will adds the input word to the plays Array
   // Returns false if player has already won
-  return false
+  wordsPlayed.push(word);
+
+ if (typeof wordsPlayed.indexOf(word) === 'number'){
+   return true
+ } else if ("melissa") {
+   return false
+  };
+
 };
 
 Player.prototype.total_score = function() {

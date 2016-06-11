@@ -15,9 +15,10 @@ describe('Player', function() {
     expect(Array.isArray(player.plays())).toEqual(true);
   });
 
-  xit("Player#play(word) Function which will adds the input word to the plays Array", function() {
+  it("Player#play(word) Function which will adds the input word to the plays Array", function() {
     expect(player.play("melissa")).not.toBeUndefined();
     expect(player.play("david")).not.toBeNull();
+    expect(player.play("david")).toEqual(true);
     expect(typeof player.play("lunes")).toEqual("boolean");
   });
 
