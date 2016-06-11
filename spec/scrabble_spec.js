@@ -1,5 +1,4 @@
 var Scrabble = require("../scrabble.js");
-var Scrabble = require("../player.js");
 
 describe('Scrabble', function() {
   var scrabble = new Scrabble();
@@ -64,31 +63,6 @@ describe('Scrabble', function() {
   it('#highestScoreFrom should throw error for words with not alphabetic charaters', function() {
     expect( function(){ scrabble.score("$%@^me melissa david") }).toThrow("Enter a valid word, please");
     expect( function(){ scrabble.score("lunes martes @#%$fr") }).toThrow("Enter a valid word, please");
-  });
-
-});
-
-
-describe('Player', function() {
-  var player = new Player("melissa");
-
-  it('#player should not be undefined or null', function() {
-    expect(player.name()).not.toBeUndefined();
-    expect(player.name()).not.toBeNull();
-    expect(player.name("david")).toEqual(jasmine.any(String));
-  });
-
-  it('#player should return and array of words', function() {
-    expect(player.plays()).not.toBeUndefined();
-    expect(player.plays()).not.toBeNull();
-    expect(player.plays()).toEqual(jasmine.any(Array));
-
-  });
-
-  it('#player should add the word to an array', function() {
-    expect(player.plays()).not.toBeUndefined();
-    expect(player.plays()).not.toBeNull();
-    expect(player.plays()).toEqual(jasmine.any(Boolean));
   });
 
 });
