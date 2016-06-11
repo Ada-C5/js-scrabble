@@ -55,6 +55,4 @@ describe("player object", function() {
   it("will return true when player has won", function() {
     expect(player.hasWon()).toBe(true);
   });
-
-
 });

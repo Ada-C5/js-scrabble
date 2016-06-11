@@ -34,33 +34,34 @@ Scrabble.prototype = {
   },
 
   highestScoreFrom: function(arrayOfWords) {
-    var winner = [];
+    var winner = "none";
     for (var word of arrayOfWords) {
-      if (winner.length === 0) {
-        winner.push({
+      var word = word.toUpperCase()
+      if (winner === "none") {
+        winner = {
           "word": word, 
           "score": Scrabble.prototype.score(word)
-        });
-      } else if (Scrabble.prototype.score(word) > winner[0].score) {
-        winner = [];
-        winner.push({
+        };
+      } else if (Scrabble.prototype.score(word) > winner.score) {
+        winner = "none";
+        winner = {
           "word": word, 
           "score": Scrabble.prototype.score(word)
-        });
-      } else if (Scrabble.prototype.score(word) === winner[0].score) {
-        if (winner[0].word.length > word.length) {
-          winner =[];
-          winner.push({
+        };
+      } else if (Scrabble.prototype.score(word) === winner.score) {
+        if (winner.word.length > word.length) {
+          winner = "none";
+          winner = {
             "word": word, 
             "score": Scrabble.prototype.score(word)
-          }); 
-        } else if (winner[0].word.length === word.length || winner[0].word.length < word.length) {
+          }; 
+        } else if (winner.word.length === word.length || winner.word.length < word.length) {
           break;
         } else {
-          winner.push({
+          winner = {
           "word": word, 
           "score": Scrabble.prototype.score(word)
-          });
+          };
         };
       };
     };
