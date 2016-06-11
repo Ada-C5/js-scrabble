@@ -25,6 +25,9 @@ Scrabble.prototype.getKey = function(value) {
 
 Scrabble.prototype.score = function(word) {
   var running_score = 0
+  if (word.length >= 7) {
+    running_score += 50;
+  }
   for (var letter of word) {
     running_score += this.getKey(letter);
   }
