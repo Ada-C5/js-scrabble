@@ -1,6 +1,7 @@
 var Player = function(name) {
   this._name = name
 };
+var wordsPlayed = []
 
 Player.prototype.name = function() {
   return this._name;
@@ -8,8 +9,7 @@ Player.prototype.name = function() {
 
 Player.prototype.plays = function() {
   // plays: property which returns an Array of the words played by the player
-  test = []
-  return test
+  return wordsPlayed
 };
 
 Player.prototype.play = function(word) {
