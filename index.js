@@ -11,11 +11,11 @@
 var Scrabble = require ('./scrabble.js');
 // creating an instance starting at 0
 var scrabble = new Scrabble();
-// node_nodule that exists here
-var prompt = require('prompt');
 
 var Player = require('./player.js');
 var player = new Player();
+// node_nodule that exists here
+var prompt = require('prompt');
 
 function getWord() {
   // collect data from user
@@ -48,6 +48,6 @@ function ask_again(againCallback) {
  })
 }
 
-prompt.start();
+// prompt.start();
 
 getWords();
