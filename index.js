@@ -29,7 +29,7 @@ function getWord() {
 function getWords () {
   prompt.get(['input'], function(error, result) {
     var arrayOfWords = result.input.split(' ')
-    console.log("You're highest scoring word is... " + (scrabble.highestScoreFrom(arrayOfWords)) +  "worth " + (scrabble.highestScoreFrom(arrayOfWords)) + "points.");
+    console.log("You're highest scoring word is... " + (scrabble.highestScoreFrom(arrayOfWords)) +  " worth " + (scrabble.wordScore((scrabble.highestScoreFrom(arrayOfWords))) + " points."));
     ask_again(getWords);
   });
 }

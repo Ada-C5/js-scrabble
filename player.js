@@ -1,4 +1,8 @@
-var Player = function() {
+var Scrabble = require ('./scrabble.js');
+// creating an instance starting at 0
+
+
+var Player = function(name) {
   this.name   = name;
   this.plays  = [];
 };
@@ -9,11 +13,12 @@ Player.prototype.play = function(word) {
   } else {
     this.plays.push(word);
   }
+  return this.plays
 };
 
 Player.prototype.total_score = function() {
   var scrabble      = new Scrabble;
-  var words_played  = this.name;
+  var words_played  = this.plays;
   var total         = 0;
 
   for(var word of words_played){
@@ -23,22 +28,23 @@ Player.prototype.total_score = function() {
 };
 
 Player.prototype.hasWon = function() {
+  var total = this.total;
 
-
+  if(total >= 100) {
+    return true;
+  }
+  return false;
 };
 
-Player.prototype.highestScoreWord = function() {
-
-
+Player.prototype.highestScoringWord = function() {
+  var scrabble = new Scrabble();
+  return scrabble.highestScoreFrom(this.plays)
 };
 
 Player.prototype.highestWordScore = function() {
-
-
+  var scrabble = new Scrabble();
+  return scrabble.wordScore(this.highestScoringWord)
 };
 
-var Scrabble = require ('./scrabble.js');
-// creating an instance starting at 0
-var scrabble = new Scrabble();
 
 module.exports = Player;
