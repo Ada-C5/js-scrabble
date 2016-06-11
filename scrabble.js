@@ -34,6 +34,19 @@ Scrabble.prototype.score = function(word) {
   return running_score;
 }
 
+Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
+  var word_scores = [];
+  for (word of arrayOfWords) {
+    word_scores.push(this.score(word));
+  }
+  // console.log(word_scores)
+  // debugger;
+  var max = Math.max.apply(Math, word_scores);
+  max_index = word_scores.indexOf(max);
+  return arrayOfWords[max_index];
+}
+
+
 var scrabble = new Scrabble();
 
 scrabble.score("coffee")
