@@ -1,35 +1,32 @@
 var Scrabble = function() {};
 
 // setup score key
-var score_key = {
-  setValue: function(props, value) {
-      while (props.length) this[ props.pop()] = value;
+Scrabble.prototype.score_key = {
+  1:  ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
+  2:  ["D", "G"],
+  3:  ["B", "C", "M", "P"],
+  4:  ["F", "H", "V", "W", "Y"],
+  5:  ["K"],
+  8:  ["J", "X"],
+  10: ["Q", "Z"]
+};
+
+Scrabble.prototype.getKey = function(value) {
+  var value = value.toUpperCase();
+  for(var key in this.score_key) {
+    if (this.score_key[key].join().includes(value)) {
+      return Number(key);
+    }
   }
-}
-// scoring letters (input)
-var letters = [
-  ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
-  ["D", "G"],
-  ["B", "C", "M", "P"],
-  ["F", "H", "V", "W", "Y"],
-  ["K"],
-  ["J", "X"],
-  ["Q", "Z"]
-];
-// scoring values (output)
-var values = [1, 2, 3, 4, 5, 8, 10];
-// set scores in score_key object
-for (var i = 0; i < letters.length; i++) {
-  score_key.setValue(letters[i], values[i]);
-}
+  return null;
+};
 
 // actually do stuff now
 
 Scrabble.prototype.score = function(word) {
-  word = word.toUpperCase();
   var running_score = 0
   for (var letter of word) {
-    running_score += score_key[letter];
+    running_score += this.getKey(letter);
   }
   return running_score;
 }
@@ -39,17 +36,15 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
   for (word of arrayOfWords) {
     word_scores.push(this.score(word));
   }
-  // console.log(word_scores)
-  // debugger;
   var max = Math.max.apply(Math, word_scores);
   max_index = word_scores.indexOf(max);
   return arrayOfWords[max_index];
 }
 
 
-var scrabble = new Scrabble();
+// var scrabble = new Scrabble();
 
-scrabble.score("coffee")
+// scrabble.score("coffee")
 
 
 
