@@ -48,14 +48,14 @@ Scrabble.prototype = {
           "score": Scrabble.prototype.score(word)
         });
       } else if (Scrabble.prototype.score(word) === winners[0].score) {
-        if (winners[0].word.length > word.length){
+        if (winners[0].word.length > word.length) {
           winners =[];
           winners.push({
             "word": word, 
             "score": Scrabble.prototype.score(word)
-          });
-        } else if (winners[0].word.length === word.length) {
-          break
+          }); 
+        } else if (winners[0].word.length === word.length || winners[0].word.length < word.length) {
+          break;
         } else {
           winners.push({
           "word": word, 

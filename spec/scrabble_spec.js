@@ -27,6 +27,27 @@ describe("scrabble scoring", function() {
     expect(function(){ scrabble.score("developer"); }).toThrow(new Error("You can only enter a word up to seven letters long."));
   });
 
+  it("throws and error for entries not containing letters", function() {
+    expect(function(){ scrabble.score("%$#@!"); }).toThrow(new Error("That is not valid input!"));
+  });
+});
 
+describe("determining scrabble winners", function() {
+  var scrabble = new Scrabble();
 
+  it("returns an array with the winner's word and score in a hash", function() {
+    expect(scrabble.highestScoreFrom(["cat", "mouse", "kitten"])).toEqual([{ word: "kitten", score: 10 }]);
+  });
+
+  it("returns highest scored word as winner", function() {
+    expect(scrabble.highestScoreFrom(["cat", "mouse", "queenie"])).toEqual([{ word: "queenie", score: 66 }]);
+  });
+
+  it("has precedence for shortest word when scores are tied", function() {
+    expect(scrabble.highestScoreFrom(["cat", "bird", "mouse"])).toEqual([{ word: "bird", score: 7 } ]);
+  });
+
+  it("has precedence for first word in list if scores and word lengths are equal", function() {
+    expect(scrabble.highestScoreFrom(["queenie", "mouse", "jessica"])).toEqual([{ word: "queenie", score: 66 }]);
+  });
 });
