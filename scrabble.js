@@ -16,18 +16,22 @@ Scrabble.prototype = {
         throw "You can only enter a word up to seven letters long."
     };
 
-    var word = word.toUpperCase();
-    var points = 0;
-    if (word.length == 7) {
-      points += Scrabble.prototype.bonus;
-     }; 
+    if (word.match(/^[A-z]+$/)) {
+      var word = word.toUpperCase();
+      var points = 0;
+      if (word.length == 7) {
+        points += Scrabble.prototype.bonus;
+       }; 
 
-    for (var letter of word) {
-      points += Scrabble.prototype.scoring[letter];
+      for (var letter of word) {
+        points += Scrabble.prototype.scoring[letter];
+      };
+
+      return points; 
+    } else {
+      throw "That is not valid input!"
     };
-
-    return points; 
-    },
+  },
 
   highestScoreFrom: function(arrayOfWords) {
     var winners = [];
