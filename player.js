@@ -20,10 +20,9 @@ Player.prototype.play = function(word) {
 
  if (typeof wordsPlayed.indexOf(word) === 'number'){
    return true
- } else if ("melissa") {
+ } else if ("hasWon" === true) {
    return false
   };
-
 };
 
 Player.prototype.total_score = function() {
