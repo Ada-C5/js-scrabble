@@ -1,6 +1,6 @@
 var Player = require("../player.js");
 
-describe('Player', function() {
+describe('Player Object', function() {
 	var player = new Player("Bob");
 
 	it('says hello world for player', function() {
@@ -31,8 +31,6 @@ describe('Player', function() {
     player.play('cat');
     player.play('cat');
     player.play('cat');
-    // console.log(player.plays);
-    // console.log(player.total_score);
     expect(player.total_score()).toEqual(15);
   });
 

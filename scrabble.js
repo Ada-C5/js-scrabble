@@ -50,9 +50,9 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
 	var winner = '';
 
 	// sort array in desc order, so smallest wins
-	arrayOfWords.sort(function(a, b){
-  	return b.length - a.length;
-	});
+	// arrayOfWords.sort(function(a, b){
+ //  	return b.length - a.length;
+	// });
 
 	for (var word of arrayOfWords) {
 		word = word.toString().toLowerCase();
