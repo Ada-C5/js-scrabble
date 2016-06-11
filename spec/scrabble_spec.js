@@ -1,5 +1,4 @@
 var Scrabble = require("../scrabble.js");
-var Player = require("../player.js");
 
 describe ('Score(word)', function() {
   var scrabble = new Scrabble();
