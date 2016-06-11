@@ -47,10 +47,25 @@ describe('returns the total score for the player', function() {
   it('returns the zero score when no words are saved', function() {
   expect(player.total_score(player.plays)).toEqual(0);
   });
-  // expect(player.play("chips").length).toEqual(2);
-  // expect(player.play("soda").length).toEqual(3);
-  it('returns the score when one word is saved', function() {
+
+  it('returns the total score as words are saved', function() {
   expect(player.total_score(player.play("hotdog"))).toEqual(11);
   expect(player.total_score(player.play("chips"))).toEqual(23);
   });
+});
+
+describe('indicates whether player has won', function() {
+    // setup - new game of Scrabble
+  var player = new Player();
+
+  it("is present", function() {
+  expect(player.hasWon !== undefined).toEqual(true);
+  });
+
+  it('returns false if a player has no words played', function() {
+  expect(player.hasWon(player.total_score)).toEqual(false);
+  });
+
+  
+
 });
