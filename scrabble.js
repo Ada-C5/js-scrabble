@@ -58,9 +58,11 @@ Scrabble.prototype.highestScoreFrom = function(array_of_words) {
 
   // score each word - bonus already added if applicable
   for (var each of array_of_words) {
+    var index = 0;
     var word_with_score = {
       word: each,
-      score: scrabble.score(each)
+      score: scrabble.score(each),
+      index: array_of_words.indexOf(each)
     };
     scored_array.push(word_with_score);
   };
@@ -89,14 +91,21 @@ Scrabble.prototype.highestScoreFrom = function(array_of_words) {
     tied_array.sort(function(a, b) {
       return a.length - b.length;
     });
-  // return shortest.
+  };
 
+  // if the last and first word are of equal length, return the one with lowest original index
+  if (tied_array[0].word.length === tied_array[tied_array.length - 1].word.length) {
+    tied_array.sort(function(a, b) {
+      return a.index - b.index;
+    });
+    return tied_array[0];
+  };
+
+  // return shortest.
   console.log(scored_array);
   console.log(tied_array);
   console.log(tied_array[0]);
-
-    return tied_array[0];
-  };
+  return tied_array[0];
 };
 
 var scrabble = new Scrabble();
