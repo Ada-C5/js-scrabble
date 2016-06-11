@@ -29,12 +29,10 @@ var Scrabble = function() {
 	};
 }
 
-// YOUR CODE HERE
 Scrabble.prototype.helloWorld = function() {
   return 'hello world!';
 };
 
-// test vars
 Scrabble.prototype.score = function(word) {
 	word = word.toString().toLowerCase();
 	var score = 0;

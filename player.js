@@ -26,7 +26,6 @@ Player.prototype.total_score = function() {
 }
 
 Player.prototype.hasWon = function() {
-	// console.log(this.total_score);
 	if (this.total_score > 100) {
 		return true;
 	} else {
@@ -46,7 +45,5 @@ Player.prototype.highestWordScore = function() {
 	var word = scrabble.highestScoreFrom(this.plays);
 	return scrabble.score(word);
 }
-
-
 
 module.exports = Player;
