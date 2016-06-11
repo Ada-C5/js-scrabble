@@ -8,17 +8,17 @@ describe('Scrabble', function() {
     expect(scrabble.score("seattle")).not.toBeNull();
   });
 
-  it('#score one word', function() {
+  it('#score should return the points of one word', function() {
     expect(scrabble.score("melissa")).toEqual(59);
     expect(scrabble.score("david")).toEqual(10);
   });
 
-  it('#score and caps', function() {
+  it('#score should be able to habdle upcase and return lowercase', function() {
   expect(scrabble.score("Melissa")).toEqual(59);
   expect(scrabble.score("DAVID")).toEqual(10);
   });
 
-  it('#score words of seven letters should have more than 50 points', function() {
+  it('#score should return a number grater than 50 points for words of seven letters', function() {
   expect(scrabble.score("Melissa")).toBeGreaterThan(50);
   expect(scrabble.score("jimison")).toBeGreaterThan(50);
   });
@@ -37,21 +37,21 @@ describe('Scrabble', function() {
     expect( function(){ scrabble.score("@#%$fr") }).toThrow("Enter a valid word, please");
   });
 
-  it('#highestScoreFrom the word with highest score is not null or undefined ', function() {
+  it('#highestScoreFrom should return the word with highest score is not null or undefined ', function() {
     expect(scrabble.highestScoreFrom("I testins is awesome")).not.toBeUndefined();
     expect(scrabble.highestScoreFrom("I love living seattle")).not.toBeNull();
   });
 
-  it('#highestScoreFrom is not null or undefined ', function() {
+  it('#highestScoreFrom should return to the word with highest score', function() {
     expect(scrabble.highestScoreFrom("melissa jimison")).toEqual('jimison');
     expect(scrabble.highestScoreFrom("domingo lunes martes")).toEqual('domingo');
   });
 
-  it('#highestScoreFrom and caps', function() {
+  it('#highestScoreFrom should be able to habdle upcase and return lowercase', function() {
   expect(scrabble.highestScoreFrom("Melissa y David")).toEqual("melissa");
   });
 
-  it('#highestScoreFrom returns a string ', function() {
+  it('#highestScoreFrom should return a string ', function() {
     expect(scrabble.highestScoreFrom("miercol andres bogota")).toEqual(jasmine.any(String))
   });
 
