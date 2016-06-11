@@ -14,13 +14,13 @@ describe('Scrabble', function() {
   });
 
   it('#score should be able to habdle upcase and return lowercase', function() {
-  expect(scrabble.score("Melissa")).toEqual(59);
-  expect(scrabble.score("DAVID")).toEqual(10);
+    expect(scrabble.score("Melissa")).toEqual(59);
+    expect(scrabble.score("DAVID")).toEqual(10);
   });
 
   it('#score should return a number grater than 50 points for words of seven letters', function() {
-  expect(scrabble.score("Melissa")).toBeGreaterThan(50);
-  expect(scrabble.score("jimison")).toBeGreaterThan(50);
+    expect(scrabble.score("Melissa")).toBeGreaterThan(50);
+    expect(scrabble.score("jimison")).toBeGreaterThan(50);
   });
 
   it('#score should return a Number', function() {
@@ -48,7 +48,7 @@ describe('Scrabble', function() {
   });
 
   it('#highestScoreFrom should be able to habdle upcase and return lowercase', function() {
-  expect(scrabble.highestScoreFrom("Melissa y David")).toEqual("melissa");
+    expect(scrabble.highestScoreFrom("Melissa y David")).toEqual("melissa");
   });
 
   it('#highestScoreFrom should return a string ', function() {
