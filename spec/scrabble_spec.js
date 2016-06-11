@@ -6,4 +6,10 @@ describe('Hello World', function() {
   it('says hello world', function() {
     expect(scrabble.helloWorld()).toEqual('hello world!');
   });
+
+  it('returns a number', function() {
+    
+
+  });
+
 });
