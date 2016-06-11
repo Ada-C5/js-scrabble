@@ -9,7 +9,7 @@ var Player = function(name) {
 Player.prototype = {
 
   play: function(word) {
-    if (Player.hasWon === true) {
+    if (this.hasWon() === true) {
      return false 
     } else {
       this.plays.push(word);
@@ -18,11 +18,15 @@ Player.prototype = {
   },
 
   totalScore: function() {
-    
+    allScores = [];
+    for (var word of this.plays) {
+      allScores.push(scrabble.score(word));
+    };
+    return allScores.reduce(function(a, b) { return a + b; }, 0);
   },
 
   hasWon: function() {
-    if (totalScore >= 100) {
+    if (this.totalScore() >= 100) {
       return true;
     } else {
       return false;
