@@ -41,6 +41,10 @@ Scrabble.prototype.score = function(word) {
 	for (var i = 0; i < word.length; i++) {
 		// search word[i], get point at to score
 		score += this.point[word[i]]
+		// bonus for using 7 tiles
+		}
+		if (word.length === 7) {
+			score += 50;
 	}
   return score;
 };
@@ -61,9 +65,9 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
 			word_score += this.point[word[i]];
 		}
 		// check if player used 7 tiles
-		if (word.length == 7) {
-			word_score += 50;
-		}
+		// if (word.length == 7) {
+		// 	word_score += 50;
+		// }
 
 		// assign winning word
 		if (word_score >= score) {

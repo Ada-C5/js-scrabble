@@ -40,7 +40,8 @@ describe('Scrabble Object', function() {
   });
 
   it('adds extra 50 pts for using 7 tiles', function() {
-    expect(scrabble.highestScoreFrom(['go', 'ZEBRA', 'CAT', 'elephan'])).toEqual('elephan');
+  	var scrab = new Scrabble();
+    expect(scrab.score('aaaaaaa')).toEqual(57);
   });
 
   xit('7 tiles plays win even over shorter words', function() {
