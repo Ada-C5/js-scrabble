@@ -1,9 +1,15 @@
 var Scrabble = require("../scrabble.js");
 
-describe('Hello World', function() {
+describe('score', function() {
   var scrabble = new Scrabble();
 
-  it('says hello world', function() {
-    expect(scrabble.helloWorld()).toEqual('hello world!');
+  it('returns a number', function() {
+    expect(scrabble.score("coffee")).toEqual(jasmine.any(Number));
   });
+
+  it('calculates the right score for coffee', function() {
+    expect(scrabble.score("coffee")).toEqual(14);
+  });
+
+  
 });
