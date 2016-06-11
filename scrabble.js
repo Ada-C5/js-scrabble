@@ -23,20 +23,26 @@ var Scrabble = {
       scoredWords[word] = total
     }
 
-    highestSoFar = 0
+    highestScore = 0;
+    highestLength = 100000000000000;
     for (var word in scoredWords) {
       score = scoredWords[word]
-      if (score > highestSoFar) {
-        highestSoFar = score;
+      if (score === highestScore && word.length < highestLength) {
+        highestScore = score;
         highestWord = word;
+        highestLength = word.length;
+      } else if (score > highestScore) {
+        highestScore = score;
+        highestWord = word;
+        highestLength = word.length;
       };
     }
     return highestWord
   }
 };
 
-// console.log(Scrabble.score("ania"));
-// console.log(Scrabble.highestScoreFrom(["an", "pterodactilo", "ani", "ania", "angaraparangaracutirimicuaro"]));
+console.log(Scrabble.score("ania"));
+console.log(Scrabble.highestScoreFrom(["an", "pterodactilo", "ani", "ania", "QQ", "kkkk"]));
 
 
 module.exports = Scrabble;
