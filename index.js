@@ -14,6 +14,9 @@ var scrabble = new Scrabble();
 // node_nodule that exists here
 var prompt = require('prompt');
 
+var Player = require('./player.js');
+var player = new Player();
+
 function getWord() {
   // collect data from user
   prompt.get(['word'], function(error, result) {
@@ -26,7 +29,7 @@ function getWord() {
 function getWords () {
   prompt.get(['input'], function(error, result) {
     var arrayOfWords = result.input.split(' ')
-    console.log("You're highest scoring word is... " + (scrabble.highestScoreFrom(arrayOfWords)));
+    console.log("You're highest scoring word is... " + (scrabble.highestScoreFrom(arrayOfWords)) +  "worth " + (scrabble.highestScoreFrom(arrayOfWords)) + "points.");
     ask_again(getWords);
   });
 }
