@@ -1,4 +1,3 @@
-var Scrabble = require("../scrabble.js");
 
 var Player = function(name) {
   this.name = name;
@@ -6,11 +5,47 @@ var Player = function(name) {
 };
 
 Player.prototype.play = function(word) {
-  this.played_words.push(word);
-  return this.played_words
+  if (this.hasWon() === true) {
+    return false;
+  } else {
+    this.played_words.push(word);
+    return this.played_words
+  }
 };
 
 
+
+Player.prototype.total_score = function() {
+  total_score = 0;
+  var Scrabble = require("./scrabble.js");
+  var scrabble = new Scrabble();
+  for (var word of this.played_words) {
+    total_score += scrabble.score(word);
+  };
+  return total_score;
+};
+
+
+Player.prototype.hasWon = function() {
+  if (this.total_score >=100) {
+    return true;
+  } else {
+    return false;
+  };
+};
+
+Player.prototype.highestScoringWord = function() {
+  var Scrabble = require("./scrabble.js");
+  var scrabble = new Scrabble();
+  return scrabble.highestScoreFrom(this.played_words)
+}
+
+Player.prototype.highestWordScore = function() {
+  var Scrabble = require("./scrabble.js");
+  var scrabble = new Scrabble();
+  best_word = this.highestScoringWord();
+  return scrabble.score(best_word);
+}
 
 module.exports = Player;
 
