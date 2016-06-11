@@ -40,18 +40,18 @@ describe("determining scrabble winners", function() {
   var scrabble = new Scrabble();
 
   it("returns an array with the winner's word and score in a hash", function() {
-    expect(scrabble.highestScoreFrom(["cat", "mouse", "kitten"])).toEqual([{ word: "kitten", score: 10 }]);
+    expect(scrabble.highestScoreFrom(["cat", "mouse", "kitten"])).toEqual({ word: "KITTEN", score: 10 });
   });
 
   it("returns highest scored word as winner", function() {
-    expect(scrabble.highestScoreFrom(["cat", "mouse", "queenie"])).toEqual([{ word: "queenie", score: 66 }]);
+    expect(scrabble.highestScoreFrom(["cat", "mouse", "queenie"])).toEqual({ word: "QUEENIE", score: 66 });
   });
 
   it("has precedence for shortest word when scores are tied", function() {
-    expect(scrabble.highestScoreFrom(["cat", "bird", "mouse"])).toEqual([{ word: "bird", score: 7 } ]);
+    expect(scrabble.highestScoreFrom(["cat", "bird", "mouse"])).toEqual({ word: "BIRD", score: 7 });
   });
 
   it("has precedence for first word in list if scores and word lengths are equal", function() {
-    expect(scrabble.highestScoreFrom(["queenie", "mouse", "jessica"])).toEqual([{ word: "queenie", score: 66 }]);
+    expect(scrabble.highestScoreFrom(["queenie", "mouse", "jessica"])).toEqual({ word: "QUEENIE", score: 66 });
   });
 });

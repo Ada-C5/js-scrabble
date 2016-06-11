@@ -35,11 +35,13 @@ Player.prototype = {
   },
 
   highestScoringWord: function() {
-    return scrabble.highestScoreFrom(this.plays)[0].word;
+    highestWord = scrabble.highestScoreFrom(this.plays);
+    return highestWord.word;
   },
 
   highestWordScore: function() {
-    return scrabble.highestScoreFrom(this.plays)[0].score;
+    highestScore = scrabble.highestScoreFrom(this.plays);
+    return highestScore.score;
   }
 };
 

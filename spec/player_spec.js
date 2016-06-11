@@ -38,7 +38,7 @@ describe("player object", function() {
   });
 
   it("can return highest scored word from array of curent plays", function() {
-    expect(player.highestScoringWord(this.plays)).toEqual("monkey");
+    expect(player.highestScoringWord(this.plays)).toEqual("MONKEY");
   });
 
   it("can return highest scored word from array of curent plays", function() {
