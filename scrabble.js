@@ -11,6 +11,10 @@ var scores = {
 
 
 Scrabble.prototype.score = function(word) {
+  if (/[^a-z]/.test(word.toLowerCase()) || word.length > 7) {
+    throw new Error("Enter a valid word, please");
+  };
+
   if (word.length == 7) {
     var points = bonus;
   } else {
