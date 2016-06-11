@@ -6,7 +6,10 @@ var Player = function(name) {
   this._name = name;
   that = this;
 };
+
 var wordsPlayed = new Array()
+
+var player_points = null
 
 Player.prototype.name = function() {
   return this._name;
@@ -35,11 +38,18 @@ Player.prototype.total_score = function() {
    return game.score(word);
  })
  //Using fancy arrow functions introduced in ES6:
-  return scores.reduce((a, b) => a + b, 0);
+ var player_points = scores.reduce((a, b) => a + b, 0);
+
+  return player_points
 };
 
 Player.prototype.hasWon = function() {
   // hasWon(): Function with logic to determine if the player has over 100 points, returns true, otherwise returns 'false'
+  if (player_points > 100) {
+    return true
+  } else {
+    return false
+  }
 };
 
 Player.prototype.highestScoringWord = function() {
