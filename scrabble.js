@@ -1,6 +1,8 @@
 var prompt = require('prompt');
 
 var Scrabble = function() {};
+// s = new Scrabble
+// s.helloWorld()
 
 Scrabble.prototype.helloWorld = function() {
   console.log('hello world!');
@@ -52,7 +54,26 @@ Scrabble.prototype.score = function(word) {
 
   var score = num_array.reduce(function(a, b) { return a + b; }, 0);
 
+  if (num_array.length == 7) {
+    score += 50
+  }
+
   console.log(score);
+
 };
+
+// `highestScoreFrom(arrayOfWords)`:
+// returns **the word in the array with the highest score**.
+//
+// 1. Note that it’s better to use fewer tiles,
+// so if the top score is tied between multiple words, pick the one with the fewest letters.
+//
+// 2. Note that there is a bonus (50 points) for using all seven letters.
+//
+// 3. If the top score is tied between multiple words and one used all seven letters,
+// choose the one with seven letters over the one with fewer tiles.
+//
+// 4. If the there are multiple words that are the same score and same length,
+// pick the first one in supplied list.
 
 module.exports = Scrabble;
