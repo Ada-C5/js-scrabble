@@ -45,31 +45,56 @@ Scrabble.prototype.score = function(word) {
   } else {
     var total_score = 0;
     for (var letter of word) {
-      total_score += scoring_chart[letter]; //the value for that letter
+      total_score += scoring_chart[letter]; //the corresponding value for that letter
     };
+
+    //checks to see if any bonus points are applicable
+    this.bonusPoints(word);
 
     return total_score;
   };
-
-  // for each letters in the given word, create a new array of letter scores and add them up
-//   var total_score = 0;
-//   for (var letter of word) {
-//     // if (scoring_chart[letter].match(/[a-z]/i);  //or doesn't match alphabet regex) {
-//     //   throw "Word provided should only contain letters of the English alphabet.";
-//     // } else {
-//     //
-//     // }
-//     total_score += scoring_chart[letter]; //the value for that letter
-//   };
-//
-//   return total_score;
 };
+
+Scrabble.prototype.bonusPoints = function(word) {
+  var bonus = 0;
+
+  //if word is 7 letters long, give 50 bonus points
+  if (word.length === 7) {
+    bonus += 50;
+  }
+
+  return bonus;
+}
+
+Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
+
+  // put all the word scores into a new array together
+  all_scores = [];
+  for (var word of arrayOfWords) {
+    all_scores.push(word.score);
+  };
+
+  // I still don't quite understand 'apply', but apparently I can't use max on an array without it
+  highest_score = Math.max.apply(null, all_scores);
+
+  //for the words in arrayOfWords that have that score, push those into a new array of words to work with
+  // if there's only one, return it
+
+  //if length of word is 7, give 50 bonus points otherwise, word with fewer tiles wins
+
+  return highest_scoring_word;
+};
+
+
 
 //testing stuff out
 s = new Scrabble();
 var word = "dog";
 
 console.log(s.score(word));
+
+
+var arrayOfWords = ["dog", "cat", "monkey"]
 
 
 

@@ -20,6 +20,10 @@ describe('score', function() {
     expect(scrabble.score("DOG")).toEqual(5);
   });
 
+  it("is not case-sensitive", function() {
+    expect(scrabble.score("dog").toEqual(5);
+  });
+
   it("throws an error when given anything other than an English alphabet letter", function () {
     expect(scrabble.score("").//to be of type error, or whatever
     expect(scrabble.score(" ").//to be of type error, or whatever
@@ -31,8 +35,5 @@ describe('score', function() {
   });
 
 
-  // it("is not case-sensitive", function() {
-  //   expect(scrabble.score("dog").)
-  // });
 
 });
