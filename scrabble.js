@@ -13,6 +13,9 @@ var Scrabble = {
     for (var letter of word.toUpperCase()) {
       total += hash[letter];
     }
+    if (word.length === 7) {
+      total += 50;
+    }
     return total
   },
 
@@ -24,7 +27,7 @@ var Scrabble = {
     }
 
     highestScore = 0;
-    highestLength = 100000000000000;
+    highestLength = 10000000000;
     for (var word in scoredWords) {
       score = scoredWords[word]
       if (score === highestScore && word.length < highestLength) {
@@ -42,7 +45,7 @@ var Scrabble = {
 };
 
 console.log(Scrabble.score("ania"));
-console.log(Scrabble.highestScoreFrom(["an", "pterodactilo", "ani", "ania", "QQ", "kkkk"]));
+console.log(Scrabble.highestScoreFrom(["an", "pterodactilo", "ani", "ania", "QQ", "kkkk", "aaaaaaa"]));
 
 
 module.exports = Scrabble;
