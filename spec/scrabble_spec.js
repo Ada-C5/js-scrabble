@@ -32,7 +32,7 @@ describe ('Score(word)', function() {
   });
 });
 
-describe ('highestScoreFrom(arrayOfWords))', function() {
+describe ('highestScoreFrom(arrayOfWords)', function() {
   var scrabble = new Scrabble();
 
   it ("returns the word 'cat' shortest and first word for equal scores", function() {

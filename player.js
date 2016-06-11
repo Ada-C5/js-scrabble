@@ -7,19 +7,21 @@ var Player = function(name) {
 };
 
 Player.prototype.plays = function (word) {
-  if (typeof word === "array") {
+  if (typeof word === "object") {
     for (i = 0; i < word.length; i++) {
-      this.plays.push(i);
+      this.played_words.push(word[i]);
     }
   } else {
-    console.log(word);
+    console.log(typeof word);
     this.played_words.push(word);
   }
   return this.played_words;
 }
 
 var adriana = new Player("Adriana");
+console.log(adriana.name === "Adriana");
 console.log(adriana.name);
 console.log(adriana.plays("cat"));
+console.log(adriana.plays(["hat", "bat", "hello", "world"]));
 
 module.exports = Player;
