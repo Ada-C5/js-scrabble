@@ -2,6 +2,7 @@ var Player = require("../player.js");
 
 describe('Player', function() {
   var player = new Player("melissa");
+  var player2 = new Player("david");
 
   it("#player's name should not be undefined or null", function() {
     expect(player.name()).not.toBeUndefined();
@@ -19,16 +20,22 @@ describe('Player', function() {
     expect(player.play("melissa")).not.toBeUndefined();
     expect(player.play("david")).not.toBeNull();
     expect(player.play("amalia")).toEqual(true);
-    expect(player.play("jimison")).toEqual(false);
     expect(typeof player.play("lunes")).toEqual("boolean");
-    expect(player.play("margy")).toEqual(false);
-
   });
 
-  xit("Player#total_score(): Function which sums up and returns the score of the players words", function() {
+  it("Player#play(word) should return false if the player has won", function() {
+    expect(player2.play("sarah")).toEqual(false);
+    expect(player2.play("cristal")).toEqual(false);
+    expect(player2.play("sophia")).toEqual(false);
+    expect(player2.play("nicole")).toEqual(false);
+  });
+
+  it("Player#total_score(): Function which sums up and returns the score of the players words", function() {
     expect(player.total_score()).not.toBeUndefined();
     expect(player.total_score()).not.toBeNull();
-    expect(player.total_score()).toEqual(159);
+    expect(player.total_score()).toEqual(169);
+    expect(player2.total_score()).toEqual(19);
+
     expect(player.total_score()).toEqual(jasmine.any(Number));
   });
 

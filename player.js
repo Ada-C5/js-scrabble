@@ -1,13 +1,15 @@
 
 var Scrabble = require('./scrabble'),
-  game = new Scrabble(),
-  wordsPlayed = new Array(),
-  player_points = null;
+    game = new Scrabble();
 
 var Player = function(name) {
   this._name = name;
   that = this;
 };
+
+var wordsPlayed = new Array()
+
+var player_points = null
 
 Player.prototype.name = function() {
   return this._name;
@@ -21,11 +23,11 @@ Player.prototype.plays = function() {
 Player.prototype.play = function(word) {
   // play(word): Function which will adds the input word to the plays Array
   // Returns false if player has already won
-
  if (this.hasWon() === false ){
    wordsPlayed.push(word);
    return true
- } else if (that.hasWon === true) {
+ } else if (this.hasWon() === true) {
+   wordsPlayed.push(word);
    return false
   };
 };
@@ -37,13 +39,12 @@ Player.prototype.total_score = function() {
   })
   //Using fancy arrow functions introduced in ES6:
   var player_points = scores.reduce((a, b) => a + b, 0);
-
   return player_points
 };
 
 Player.prototype.hasWon = function() {
   // hasWon(): Function with logic to determine if the player has over 100 points, returns true, otherwise returns 'false'
-  if (that.total_score() > 100) {
+  if (this.total_score() > 100) {
     return true
   } else {
     return false
