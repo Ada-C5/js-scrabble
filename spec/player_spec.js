@@ -25,12 +25,14 @@ describe('Player', function() {
   it("Player#total_score(): Function which sums up and returns the score of the players words", function() {
     expect(player.total_score()).not.toBeUndefined();
     expect(player.total_score()).not.toBeNull();
+    expect(player.total_score()).toEqual(82);
     expect(player.total_score()).toEqual(jasmine.any(Number));
   });
 
   it("Player#hasWon(): Function with logic to determine if the player has over 100 points, returns 'true', otherwise returns 'false'", function() {
     expect(player.hasWon()).not.toBeUndefined();
     expect(player.hasWon()).not.toBeNull();
+    expect(player.hasWon()).toEqual(false);
     expect(typeof player.hasWon()).toEqual('boolean');
   });
 
