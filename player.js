@@ -45,12 +45,24 @@ Player.prototype.hasWon = function () {
   }
 }
 
-// var adriana = new Player("Adriana");
-// adriana.play("cacique");
-// adriana.play("mezquit");
-// adriana.play("hat");
+Player.prototype.highestScoringWord = function () {
+  var scrabble = new Scrabble();
+  var high_word = "";
+  
+  high_word = scrabble.highestScoreFrom(this.played_words);
+  return high_word;
+}
+
+var adriana = new Player("Adriana");
+console.log(adriana.play("warrior"));
+// console.log(adriana.play("cats"));
+// console.log(adriana.play("are"));
+// console.log(adriana.play("awesome"));
+// console.log(adriana.plays())
+
+console.log(adriana.highestScoringWord());
+
 // console.log(adriana.plays());
-//
 // console.log(adriana.total_score());
 // console.log(adriana.hasWon());
 
