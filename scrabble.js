@@ -59,6 +59,7 @@ Scrabble.prototype.score = function(word) {
 
 Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
   var wordAndScores = {};
+  var checkWordLength = {}; 
   var winningWords = []; 
   
   for (var word of arrayOfWords) {
@@ -73,22 +74,23 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
     }
   }
 
-  //tie breaker mess
-  if (winningWords.length === 1){
+  //check for ties
+  if (winningWords.length === 1) {
     return winningWords[0];
   } else {
-    checkWordLength = {};
-    for (var word of winningWords){
+    for (var word of winningWords) {
       checkWordLength[word] = word.length;
     }
-    var min = Math.min.apply(null,Object.keys(wordAndScores).map(function(x){ return wordAndScores[x] }));
-    for (var word in checkWordLength){
-      if (checkWordLength[word] === min){
-        return word;
+
+    var getMinLength = Math.min.apply(null,Object.keys(checkWordLength).map(function(x){ return checkWordLength[x] }));
+
+    for (var word in checkWordLength) {
+      if (checkWordLength[word] === getMinLength) {
+        return word; 
       }
     }
-  };
-};
+  }
+}
 
 
 module.exports = Scrabble;

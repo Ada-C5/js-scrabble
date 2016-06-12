@@ -43,5 +43,10 @@ var Scrabble = require("../scrabble.js");
       var cats = ['watermel', 'pineappl', 'cantalop']; 
       expect(scrabble.highestScoreFrom(cats)).toEqual('pineappl');
     });
-  });
+
+    it('returns the shortest word in a tie', function() {
+      var jazz = ['jazzy', 'jazzbo']; 
+      expect(scrabble.highestScoreFrom(jazz)).toEqual('jazzy');
+    });
+  }); 
 });
