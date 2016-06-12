@@ -69,12 +69,13 @@ Scrabble.prototype.highest_score_from = function(word_array) {
     return shortest_word;
 };
 
-Player = function() {};
+Player = function(input) {
+  this._input = input;
+};
+
 var player = new Player();
 
-Scrabble.prototype.name = function(name) {
-  
-};
+Player.prototype.play =
 // prompt to get the user input
 // downcase or uppcase the word, split into an array of letters
 // get the score of the one word
