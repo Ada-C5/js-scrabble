@@ -56,6 +56,16 @@ describe('score', function() {
   });
 
 
+});
 
+describe('highestScoreFrom', function() {
+  var scrabble = new Scrabble();
+
+  it('it chooses the word with the highest score', function() {
+    expect(scrabble.highestScoreFrom(test_words1)).toEqual("affined");
+    expect(scrabble.highestScoreFrom(test_words2)).toEqual("jeez");
+    expect(scrabble.highestScoreFrom(test_words3)).toEqual("bcmpbcg");
+    expect(scrabble.highestScoreFrom(test_words5)).toEqual("qqqqqq");
+  });
 
 });
