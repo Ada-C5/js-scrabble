@@ -39,7 +39,7 @@ Player.prototype.hasWon = function() {
 }
 
 Player.prototype.highestScoringWord = function() {
-  // Function which returns the highest scoring word the user has played.
+  return Scrabble.highscore(this.plays);
 }
 
 Player.prototype.highestWordScore = function() {
