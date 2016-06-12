@@ -2,10 +2,6 @@ var prompt = require('prompt');
 
 var Scrabble = function() {};
 
-Scrabble.prototype.helloWorld = function() {
-  console.log('hello world!');
-};
-
 Scrabble.prototype.score = function(word) {
   this._word = word.toUpperCase();
 
@@ -84,12 +80,12 @@ Scrabble.prototype.highscore = function(arrayOfWords) {
 
   var winner = "12345678"
   for (var word of winning_array){
-    if (word.length < winner.length){
-      winner = word;
-    }
-    else if (word.length === 7){
+    if (word.length === 7){
       winner = word;
       break;
+    }
+    else if (word.length < winner.length){
+      winner = word;
     }
   }
 
