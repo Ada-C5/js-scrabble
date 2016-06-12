@@ -1,13 +1,23 @@
 var Scrabble = require("./scrabble.js");
 var scrabble = new Scrabble();
 
-var Player = function(name, plays = []) {
-  this.name = function() { return name };
-  this.plays = function() { return plays };
-};
+function Player(name) {
+  // still not sure when to use private variables.. I want to be able to check the current player's plays, so no underscore I think?
+  this.name = name;
+  this.plays = [];
+}
 
-// Player.prototype.play(word) = function() {
+Player.prototype = {
+  play: function(word) {
+    this.plays.push(word);
+  }
+}
+
+
+// Player.prototype.play = function(word) {
+//   console.log(this.plays);
 //   // adds the input word to the player's array
+//   // this.plays.push(word);
 // };
 
 
