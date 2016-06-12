@@ -3,8 +3,8 @@ var Scrabble = require("../scrabble.js");
 describe("scrabble scoring", function() {
   var scrabble = new Scrabble();
 
-  it("has scoring attribute that is not null", function() {
-    expect(scrabble.scoring).toNotBe(null);
+  it("has scoring attribute that is defined", function() {
+    expect(scrabble.scoring).toBeDefined();
   });
 
   it("returns integer of 50 for bonus", function() {
