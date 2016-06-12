@@ -2,7 +2,7 @@
 
 var Scrabble = function() {};
 
-  var lookupPoints = {
+var lookupPoints = {
                       'a': 1,
                       'e': 1,
                       'i': 1,
@@ -29,7 +29,7 @@ var Scrabble = function() {};
                       'x': 8,
                       'q': 10,
                       'z': 10
-  }
+};
 
 // YOUR CODE HERE
 Scrabble.prototype.helloWorld = function() {
@@ -41,6 +41,9 @@ Scrabble.prototype.score = function(word) {
   // The word is input as a string (case insensitive). 
   // The chart below shows the point value for a given letter.
   var score_accumulator = 0;
+  if (word.length > 6 ) {
+    score_accumulator = score_accumulator + 50;
+  }
   for (var i = 0; i < word.length; i++) {
     score_accumulator = score_accumulator + lookupPoints[word[i]];
   }
