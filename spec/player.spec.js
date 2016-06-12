@@ -16,9 +16,21 @@ describe('Player', function() {
     expect(player.plays).toBeDefined();
   });
 
-  it('starts with an empty array in the play property', function() {
-    expect(player.plays).toEqual([]);
+  it('starts with an empty array for the play property', function() {
+    var player2 = new Player('two');
+    expect(player2.plays).toEqual([]);
   });
+
+  it('starts with an empty array for the scores property', function() {
+    var player3 = new Player('three');
+    expect(player3.scores).toEqual([]);
+  })
+
+  it('adds an element to both the plays and the scores properties when a word is played', function() {
+    player.play('dog');
+    expect(player.plays.length).toEqual(1);
+    expect(player.scores.length).toEqual(1);
+  })
 
   describe('play(word)', function() {
     it('returns false if a player has already won', function() {
@@ -26,7 +38,13 @@ describe('Player', function() {
       expect(player.play('dog')).toEqual(false);
     });
 
-    it('adds the played word to the play array', function() {
+    it('does not add the word to the play array if the player has already won', function() {
+      player.play('zzzzzzzzzzz');
+      player.play('word');
+      expect(player.plays).toEqual(['zzzzzzzzzzz']);
+    })
+
+    it('adds the played word to the play array if the player has not yet won', function() {
       player.play('catnip');
       expect(player.plays).toEqual(['catnip']);
     });
@@ -54,6 +72,11 @@ describe('Player', function() {
       player.play('dog');
       expect(player.hasWon()).toEqual(false);
     });
+
+    it('returns true if the player has exactly 100 points', function() {
+      player.play('zzzzzzzzzz');
+      expect(player.hasWon()).toEqual(true);
+    })
   });
 
   describe('highestScoringWord()', function() {
@@ -62,6 +85,12 @@ describe('Player', function() {
       player.play('jack');
       expect(player.highestScoringWord()).toEqual('jack');
     });
+
+    it('returns the first word with the highest score if there are ties', function() {
+      player.play('dog');
+      player.play('cat');
+      expect(player.highestScoringWord()).toEqual('dog');
+    })
   });
 
   describe('highestWordScore()', function() {
