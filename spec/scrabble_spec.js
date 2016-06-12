@@ -38,7 +38,6 @@ var Scrabble = require("../scrabble.js");
       var test = ['apple']; 
       expect(scrabble.highestScoreFrom(test)).toEqual('apple');
     });
-
     it('scores many words in an array', function() {
       var cats = ['watermel', 'pineappl', 'cantalop']; 
       expect(scrabble.highestScoreFrom(cats)).toEqual('pineappl');
@@ -48,5 +47,26 @@ var Scrabble = require("../scrabble.js");
       var jazz = ['jazzy', 'jazzbo']; 
       expect(scrabble.highestScoreFrom(jazz)).toEqual('jazzy');
     });
+
+    it('ignores the shortest word in favor of the shortest high scoring word', function() {
+      var jazz = ['jazzy', 'jazzbo', 'jazz']; 
+      expect(scrabble.highestScoreFrom(jazz)).toNotEqual('jazz');
+    });
+    it('does not score garbage input', function() {
+      var garbage = ['@#$%', '~123$%', '#!{-+']; 
+      expect(function(){scrabble.highestScoreFrom(garbage);}).toThrow(new Error('this is not valid input!'));
+    });
+
+    it('does not score partially garbage input', function() {
+      var partialGarbage = ['!garbage', 'm0r3g@rb@g3', 'less!garbage~']; 
+      expect(function(){scrabble.highestScoreFrom(partialGarbage);}).toThrow(new Error('this is not valid input!'));
+    }); 
   }); 
 });
+
+
+
+
+
+
+
