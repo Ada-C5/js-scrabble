@@ -17,7 +17,12 @@ var TileBag = function() {
 
 TileBag.prototype = {
   drawTiles: function(num) {
+    var taken = [];
+    for (var i = 0; i < num; i++) {
+      taken.push(this.tile_bag.pop());
+    }
 
+    return taken;
   },
   shuffle: function(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
