@@ -68,7 +68,7 @@ describe('Player', function() {
     it('returns the highest score from the words played', function() {
       player.play('dog');
       player.play('jack');
-      expect(player.highestScoringWord()).toEqual(17);
+      expect(player.highestWordScore()).toEqual(17);
     });
   });
 });
