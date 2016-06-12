@@ -31,8 +31,11 @@ Player.prototype.total_score = function() {
 }
 
 Player.prototype.hasWon = function() {
-  // Function with logic to determine if the player has over 100 points,
-  // returns `true`, otherwise returns 'false'
+  if (this.total_score() > 100) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 Player.prototype.highestScoringWord = function() {
