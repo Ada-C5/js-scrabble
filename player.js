@@ -10,7 +10,7 @@ function Player(name) {
 Player.prototype = {
   // adds the input word to the player's array
   play: function(word) {
-    if (this.hasWon === true) {
+    if (this.hasWon() === true) {
       return false;
     } else {
       this.plays.push(word);
@@ -32,7 +32,7 @@ Player.prototype = {
   },
   hasWon: function() {
     // if total_score over 100, return true, otherwise return false
-    if (this.total_score > 100) {
+    if (this.total_score() > 100) {
       return true;
     } else {
       return false;
@@ -58,6 +58,8 @@ var player_tom = new Player(name);
 player_tom.play("monkey");
 player_tom.play("dog");
 player_tom.play("cat");
+player_tom.play("aaaaaaf");
+player_tom.play("aaaaaaf");
 player_tom.play("aaaaaaf");
 player_tom.play("aaaaaaf");
 player_tom.play("aaaaaaf");
