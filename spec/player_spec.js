@@ -4,6 +4,14 @@ var Player = require("../player.js");
 describe('Scrabble Player', function() {
   var jade = new Player('Jade');
 
+  it('Scrabble exists and is accessible', function() {
+    expect(Scrabble).toNotEqual(null);
+  });
+
+  it('Player exists and is accessible', function() {
+    expect(Player).toNotEqual(null);
+  });
+
   it('Knows the name of the player', function() {
     expect(jade.name).toEqual('Jade');
   });
@@ -41,9 +49,15 @@ describe('Scrabble Player', function() {
     expect(kari.highestScoringWord(playSomeWords)).toEqual('puppy');
   });
 
-  it('Returns the highest scoring word score', function() {
+  it('Returns the highest scoring word score from an array of words', function() {
     var charles = new Player('Charles'); 
     var playSomeWords = ['pretty', 'awesome', 'instructor']; 
     expect(charles.highestWordScore(playSomeWords)).toEqual(62);
-  });  
+  });
+
+  it('Returns the highest score from a single word played', function() {
+    var george = new Player('George'); 
+    var playAWord = ['mushroom']; 
+    expect(george.highestWordScore(playAWord)).toEqual(65);
+  });    
 }); 
