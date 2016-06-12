@@ -1,10 +1,34 @@
-/*
-  The convention with Node projects is to use `index.js` as the jumping-off
-  point for the application. If we were building a larger, more integrated
-  Scrabble application, we would bring the various modules/objects we made into
-  this file and kick off whatever functions were necessary to run the app.
+var Scrabble = require('./scrabble.js');
+var scrabble = new Scrabble;
+var Player = require('./player.js');
+var player = new Player("Bob");
 
-  We're focusing on learning the module pattern and unit testing right now, so
-  we won't be bringing anything into this file. Next project, we'll make good
-  use of this file.
-*/
+var prompt = require('prompt');
+
+function get_word() {
+	prompt.get(['word'], function(error, word) {
+		var score = play_word(word);
+		console.log(score);
+
+		further_options();
+	});
+}
+
+function further_options() {
+	prompt.get(['again?'], function(error, result) {
+		var answer = result['again?'];
+		if (answer === 'yes') {
+			get_word();
+		} else {
+			console.log('bye!');
+			process.exit;
+		}
+	})
+}
+
+function play_word(word) {
+	return player.play(word);
+}
+
+prompt.start();
+get_word();
