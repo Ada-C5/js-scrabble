@@ -1,9 +1,8 @@
 var Scrabble = function() {};
 
-// YOUR CODE HERE
-Scrabble.prototype.helloWorld = function() {
-  return 'hello world!';
-};
+// Scrabble.prototype.helloWorld = function() {
+//   return 'hello world!';
+// };
 
 Scrabble.prototype.score = function(word) {
 
@@ -49,7 +48,8 @@ Scrabble.prototype.score = function(word) {
     };
 
     //checks to see if any bonus points are applicable
-    this.bonusPoints(word);
+    bonus = this.bonusPoints(word);
+    total_score += bonus;
 
     return total_score;
   };
@@ -71,16 +71,16 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
   // put all the word scores into a new array together
   all_scores = [];
   for (var word of arrayOfWords) {
-    all_scores.push(word.score);
-  };
 
+    all_scores.push(this.score(word));
+  }
   // I still don't quite understand 'apply', but apparently I can't use max on an array without it
   highest_score = Math.max.apply(null, all_scores);
 
   //for the words in arrayOfWords that have that score, push those into a new array of words to work with
   words_with_highest_score = [];
   for (var word of arrayOfWords) {
-    if (word.score === highest_score) {
+    if (this.score(word) === highest_score) {
       words_with_highest_score.push(word);
     }
   }
@@ -90,13 +90,18 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
     highest_scoring_word = words_with_highest_score[0];
   // but if there are multiple words with that same score
   } else {
+    // a really long word that will be overwrote by a word with less tiles no matter what
+    var highest_scoring_word = "supercalifragilisticexpialidocious";
     for (var word of words_with_highest_score) {
-      //the word with a length of 7 wins
-      if (word.length === 7) {
+      // the word with a length of 7 wins
+      if (word.length >= 7) {
         highest_scoring_word = word;
+        break;
       } else {
         // otherwise the word with the least tiles wins
-        highest_scoring_word = ____;
+        if (word.length < highest_scoring_word.length) {
+          highest_scoring_word = word;
+        }
       }
     }
   }
@@ -108,13 +113,10 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
 
 //testing stuff out
 s = new Scrabble();
-var word = "dog";
-
-console.log(s.score(word));
 
 
-var arrayOfWords = ["dog", "cat", "monkey"]
-
+var arrayOfWords = ["aaaaaaa", "zzzzzz", "dog", "cat", "monkey", "zzzzzx", "aaaaaae"]
+console.log(s.highestScoreFrom(arrayOfWords));
 
 
 module.exports = Scrabble;
