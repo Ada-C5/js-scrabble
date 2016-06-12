@@ -1,11 +1,10 @@
 var Scrabble = require("./scrabble.js");
+var Scrabble = new Scrabble;
 
 var Player = function(name) {
   this.name = name;
   this.plays = [];
 };
-
-var Scrabble = new Scrabble;
 
 Player.prototype.test = function(word) {
   this._word = word;
