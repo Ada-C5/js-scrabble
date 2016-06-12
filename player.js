@@ -1,4 +1,4 @@
-// require_relative '/scoring'
+// require_relative '/scrabble'
 
 var Player = function(name) {
   this.name = name;
@@ -33,9 +33,11 @@ var Player = function(name) {
 //
 };
 
-Player.prototype.name = function() {
-  return this.name;
-}
+
+Player.prototype.player_name = function() {
+  var self = this;
+  return self.name;
+};
 
 
 
@@ -71,5 +73,6 @@ Player.prototype.name = function() {
 module.exports = Player;
 //
 var player = new Player("Alysia");
-console.log(player.name);
+// console.log(player["name"]);
+console.log(player.player_name());
 // console.log(scrabble.highestScoreFrom(["me", "you", "hello", "hellothere", "hi"]))
