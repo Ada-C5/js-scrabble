@@ -3,6 +3,11 @@ var Player = require("../player.js");
 describe('Player', function() {
   var player = new Player('Lisa');
 
+  afterEach(function() {
+    player.plays = [];
+    player.scores = [];
+  });
+
   it('sets up an instance of a player with a given name', function() {
     expect(player.name).toEqual('Lisa');
   });
@@ -42,12 +47,12 @@ describe('Player', function() {
   describe('hasWon()', function() {
     it('returns true if a player has scored over 100 points', function() {
       player.play('zzzzzzzzzzz');
-      expect(player.has_won()).toEqual(true);
+      expect(player.hasWon()).toEqual(true);
     });
 
     it('returns false if a player has not scored over 100 points', function() {
       player.play('dog');
-      expect(player.has_won()).toEqual(false);
+      expect(player.hasWon()).toEqual(false);
     });
   });
 
