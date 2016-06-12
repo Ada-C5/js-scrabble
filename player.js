@@ -16,6 +16,7 @@ Player.prototype = {
 
     this.plays.push(word);
     this.scores.push(scrabble.score(word));
+    console.log(this.scores);
   },
   total_score: function() {
     var sum = this.scores.reduce(
@@ -33,10 +34,20 @@ Player.prototype = {
     return has_won;
   },
   highestScoringWord: function() {
+    var max = 0;
+    var index = "No words have been played";
+    for (var i = 0; i < this.scores.length; i++) {
+      if (this.scores[i] > max) {
+        max = this.scores[i];
+        index = i;
+      }
+    }
 
+    return this.plays[index];
   },
   highestWordScore: function() {
-
+    var max = Math.max(...this.scores);
+    return max;
   }
 }
 
