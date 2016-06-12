@@ -57,6 +57,9 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
     if (this.score(word) > highestScore) {
       highestScoringWord = word;
       highestScore = this.score(word);
+    } else if (this.score(word) == highestScore && word.length < highestScoringWord) {
+      highestScoringWord = word;
+      highestScore = this.score(word);
     }
   }
 
