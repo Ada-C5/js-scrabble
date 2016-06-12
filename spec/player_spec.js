@@ -21,7 +21,7 @@ describe('Player', function() {
 
 describe('play function takes a word and stores it in array plays', function() {
     // setup - new game of Scrabble
-  var player = new Player("Bingley");
+  var player = new Player();
 
   it("is present", function() {
     expect(player.play !== undefined).toEqual(true);

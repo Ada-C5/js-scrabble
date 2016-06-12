@@ -1,4 +1,5 @@
-var Scrabble = require ('./scrabble.js');
+var Scrabble = require('./scrabble.js');
+var scrabble = new Scrabble();
 // creating an instance starting at 0
 
 
@@ -37,16 +38,11 @@ Player.prototype.hasWon = function() {
 };
 
 Player.prototype.highestScoringWord = function() {
-  var Scrabble = require('./scrabble.js');
-  var scrabble = new Scrabble();
   return scrabble.highestScoreFrom(this.plays);
 };
 
 Player.prototype.highestWordScore = function() {
-  var Scrabble = require('./scrabble.js');
-  var scrabble = new Scrabble();
-
-  return scrabble.wordScore(this.highestScoringWord);
+  return scrabble.wordScore(this.highestScoringWord(this.plays));
 };
 
 

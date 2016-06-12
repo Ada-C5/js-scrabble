@@ -9,7 +9,6 @@
   use of this file.
 */
 var Scrabble = require ('./scrabble.js');
-// creating an instance starting at 0
 var scrabble = new Scrabble();
 
 var Player = require('./player.js');
