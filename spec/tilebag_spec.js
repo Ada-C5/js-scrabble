@@ -23,10 +23,9 @@ describe("tilebag object", function() {
     expect(tilebag.drawTiles(2).length).toNotEqual(5);
   });
 
-  it("subtracts quantity of tiles once letters are drawn", function() {
+  it("subtracts quantity of tiles once tiles are drawn", function() {
     tilebag.drawTiles(4);
     // also drew 5 tiles total in above tests; total of 9 tiles should be subtracted
     expect(tilebag.tilesRemaining()).toEqual(89);
   });
-
 });

@@ -14,7 +14,7 @@ Player.prototype = {
     } else {
       wordScore = scrabble.score(word);
       this.plays.push(word);
-      return word + ": " + wordScore;
+      return word.toUpperCase() + ": " + wordScore;
     };
   },
 

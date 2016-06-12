@@ -3,35 +3,43 @@ var Scrabble = require("../scrabble.js");
 describe("scrabble scoring", function() {
   var scrabble = new Scrabble();
 
-  it("has scoring attribute that is defined", function() {
+  it("has a scoring attribute that is defined", function() {
     expect(scrabble.scoring).toBeDefined();
   });
 
-  it("returns integer of 50 for bonus", function() {
+  it("returns an integer of 50 for bonus", function() {
     expect(scrabble.bonus).toEqual(50);
   });
 
-  it("returns correct score", function() {
+  it("returns a correct score", function() {
     expect(scrabble.score("cat")).toEqual(5);
   });
 
-  it("returns won't return incorrect score", function() {
+  it("won't return an incorrect score", function() {
     expect(scrabble.score("compute")).toNotEqual(15);
   });
 
-  it("returns score with bonus for 7 letter word", function() {
+  it("returns a score with a 50 point bonus for 7-letter word", function() {
     expect(scrabble.score("queenie")).toEqual(66);
   });
 
-  it("is case insensitive", function() {
+  it("is case insensitive for capitalized entries", function() {
     expect(scrabble.score("HELLO")).toEqual(8);
   });
 
-  it("throws and error for word > 7 letters", function() {
+  it("is case insensitive for lowercase entries", function() {
+    expect(scrabble.score("hello")).toEqual(8);
+  });
+
+  it("is case insensitive for mixed case entries", function() {
+    expect(scrabble.score("heLLo")).toEqual(8);
+  });
+
+  it("throws an error for a word > 7 letters long", function() {
     expect(function(){ scrabble.score("developer"); }).toThrow(new Error("You can only enter a word up to seven letters long."));
   });
 
-  it("throws and error for entries not containing letters", function() {
+  it("throws an error for entries not containing letters", function() {
     expect(function(){ scrabble.score("%$#@!"); }).toThrow(new Error("That is not valid input!"));
   });
 });
@@ -43,7 +51,7 @@ describe("determining scrabble winners", function() {
     expect(scrabble.highestScoreFrom(["cat", "mouse", "kitten"])).toEqual({ word: "KITTEN", score: 10 });
   });
 
-  it("returns highest scored word as winner", function() {
+  it("returns highest scored word as the winner", function() {
     expect(scrabble.highestScoreFrom(["cat", "mouse", "queenie"])).toEqual({ word: "QUEENIE", score: 66 });
   });
 
