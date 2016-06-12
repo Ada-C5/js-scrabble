@@ -14,6 +14,8 @@ describe('Player', function() {
     expect(player.plays()).not.toBeUndefined();
     expect(player.plays()).not.toBeNull();
     expect(Array.isArray(player.plays())).toEqual(true);
+    expect(typeof player.plays()).toEqual("object");
+
   });
 
   it("Player#play(word) Function which will adds the input word to the plays Array", function() {
@@ -54,6 +56,7 @@ describe('Player', function() {
   it("Player#highestWordScore(): Function which returns the highestWordScore score.", function() {
     expect(player.highestWordScore()).not.toBeUndefined();
     expect(player.highestWordScore()).not.toBeNull();
+    expect(player.highestWordScore()).toEqual(59);
     expect(player.highestWordScore()).toEqual(jasmine.any(Number));
   });
 

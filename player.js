@@ -1,4 +1,3 @@
-
 var Scrabble = require('./scrabble'),
     game = new Scrabble(),
     wordsPlayed = new Array(),
@@ -6,6 +5,7 @@ var Scrabble = require('./scrabble'),
 
 var Player = function(name) {
   this._name = name;
+  // this._wordsplayed = wordsPlayed
 };
 
 Player.prototype.name = function() {
@@ -18,7 +18,7 @@ Player.prototype.plays = function() {
 };
 
 Player.prototype.play = function(word) {
-  // play(word): Function which will adds the input word to the plays Array
+  // play(word): will adds the input word to the plays Array
   // Returns false if player has already won
  if (this.hasWon() === false ){
    wordsPlayed.push(word);
@@ -30,7 +30,7 @@ Player.prototype.play = function(word) {
 };
 
 Player.prototype.total_score = function() {
-  // total_score(): Function which sums up and returns the score of the players words
+  // total_score(): sums up and returns the score of the players words
   var scores = wordsPlayed.map(function(word) {
    return game.score(word);
   })
@@ -40,7 +40,7 @@ Player.prototype.total_score = function() {
 };
 
 Player.prototype.hasWon = function() {
-  // hasWon(): Function with logic to determine if the player has over 100 points, returns true, otherwise returns 'false'
+  // hasWon(): logic to determine if the player has over 100 points, returns true, otherwise returns 'false'
   if (this.total_score() > 100) {
     //empty the wordsPlayed???
     return true
@@ -50,14 +50,13 @@ Player.prototype.hasWon = function() {
 };
 
 Player.prototype.highestScoringWord = function() {
-  // highestScoringWord(): Function which returns the highest scoring word the user has played.
-  var highestWord = game.highestScoreFrom(wordsPlayed)
-  return highestWord
+  // highestScoringWord(): returns the highest scoring word the user has played.
+  return game.highestScoreFrom(wordsPlayed)
 };
 
 Player.prototype.highestWordScore = function() {
-  // highestWordScore(): Function which returns the highestScoringWord score.
-  var highestWord = this.highestScoringWord
+  // highestWordScore(): returns the highestScoringWord score.
+  var highestWord = this.highestScoringWord()
    score = game.score(highestWord)
    return score
 };
