@@ -17,6 +17,11 @@ var TileBag = function() {
 
 TileBag.prototype = {
   drawTiles: function(num) {
+    var length = this.tile_bag.length;
+    if (num > length) {
+      return "There are only " + length + " tiles remaining."
+    }
+
     var taken = [];
     for (var i = 0; i < num; i++) {
       taken.push(this.tile_bag.pop());
