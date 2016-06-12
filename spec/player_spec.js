@@ -31,12 +31,13 @@
 var Player = require("../player.js");
 
 var player = new Player("Sandy");
+player.plays = ["cat", "lemon", "pickle", "aaaaaaaaacc"];
 var word = "cat";
 var array = ["cat", "lemon", "pickle", "aaaaaaaaacc"];
 
 describe('Player', function() {
   it('can create a new player instance', function() {
-    expect(Player.new("Sandy")).toEqual(player);
+    expect(player).toBeDefined;
   });
 
   it('has properties name, plays', function() {
