@@ -30,11 +30,6 @@ var Scrabble = function() {
 
 };
 
-// YOUR CODE HERE
-Scrabble.prototype.helloWorld = function() {
-  return this.message;
-};
-
 Scrabble.prototype.score = function(word) {
   var word_array = word.toUpperCase().split("")
   score_value = 0
@@ -66,5 +61,4 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
 module.exports = Scrabble;
 
 var scrabble = new Scrabble();
-// console.log(scrabble.score("hellothere"))
 console.log(scrabble.highestScoreFrom(["me", "you", "hello", "hellothere", "hi"]))
