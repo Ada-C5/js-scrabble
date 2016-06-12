@@ -10,7 +10,7 @@ var Player = function(name) {
 Player.prototype = {
   play: function(word) {
 
-    if (this.hasWon() === true) {
+    if (this.hasWon()) {
       return false;
     } 
 
