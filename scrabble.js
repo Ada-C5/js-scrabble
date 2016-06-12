@@ -1,4 +1,8 @@
-var lookupPoints = {
+
+
+var Scrabble = function() {};
+
+  var lookupPoints = {
                       'a': 1,
                       'e': 1,
                       'i': 1,
@@ -25,9 +29,7 @@ var lookupPoints = {
                       'x': 8,
                       'q': 10,
                       'z': 10
-}
-
-var Scrabble = function() {};
+  }
 
 // YOUR CODE HERE
 Scrabble.prototype.helloWorld = function() {
@@ -47,8 +49,8 @@ Scrabble.prototype.score = function(word) {
 
 Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
   var highestScoringWord = '',
-      highestScore = 0
-  for (var word in arrayOfWords) {
+      highestScore = 0;
+  for (var word of arrayOfWords) {
     if (this.score(word) > highestScore) {
       highestScoringWord = word;
       highestScore = this.score(word);
