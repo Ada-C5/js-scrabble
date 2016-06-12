@@ -66,9 +66,5 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
  return highestScoringWord;
 }
 
-
-
 module.exports = Scrabble;
-
-//  + this.score(word.substring(1, (word.length - 1)))
 
