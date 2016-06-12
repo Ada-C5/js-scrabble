@@ -27,13 +27,16 @@ Player.prototype.totalScore = function(arrayOfWords) {
 
 Player.prototype.hasWon = function(arrayOfWords) {
   if (this.totalScore(arrayOfWords) >= 100) {
-    console.log('YOU WIN');
     return true; 
   } else {
-    console.log('You have not won yet.');
     return false; 
   }
 };
+
+Player.prototype.highestScoringWord = function(playedWords) {
+  var highestScoringWord = scrabble.highestScoreFrom(playedWords); 
+  return highestScoringWord; 
+}; 
 
 
 
@@ -42,6 +45,4 @@ module.exports = Player;
 
 // To do 
 
-// hasWon(): Function with logic to determine if the player has over 100 points, returns true, otherwise returns 'false'
-// highestScoringWord(): Function which returns the highest scoring word the user has played.
 // highestWordScore(): Function which returns the highestScoringWord score.

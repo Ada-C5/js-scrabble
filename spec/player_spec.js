@@ -34,5 +34,10 @@ describe('Scrabble Player', function() {
     var andy = new Player('Andy'); 
     var playSomeWords = ['kittens', 'puppies', 'ducklings']; 
     expect(andy.totalScore(playSomeWords)).toEqual(191);
-  }); 
+  });
+  it('Returns the highest scoring word', function() {
+    var andy = new Player('Andy'); 
+    var playSomeWords = ['kittens', 'puppies', 'ducklings']; 
+    expect(andy.highestScoringWord(playSomeWords)).toEqual('ducklings');
+  });  
 }); 
