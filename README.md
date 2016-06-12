@@ -27,7 +27,7 @@ The baseline repository contains an empty node project which contains the starte
 
 ### Primary Requirements
 Create the following functions within the `Scrabble` module. You should create at least 8 tests that test this new code.
-- `score(word)`: returns the total score value for the given word. The word is input as a string (case insensitive). The chart below shows the point value for a given letter.
+- `score(word)`: returns the total score value for the given word. The word is input as a string (case insensitive). The chart above shows the point value for a given letter.
 - `highestScoreFrom(arrayOfWords)`: returns **the word in the array with the highest score**.
     - Note that it’s better to use fewer tiles, so if the top score is tied between multiple words, pick the one with the fewest letters.
     - Note that there is a bonus (50 points) for using all seven letters. If the top score is tied between multiple words and one used all seven letters, choose the one with seven letters over the one with fewer tiles.
