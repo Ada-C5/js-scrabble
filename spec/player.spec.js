@@ -1,12 +1,11 @@
 var Player = require("../player.js");
 
 describe('Player', function() {
-  var player = new Player('Lisa');
+  var player;
 
-  afterEach(function() {
-    player.plays = [];
-    player.scores = [];
-  });
+  beforeEach(function() {
+    player = new Player("Lisa");
+  })
 
   it('sets up an instance of a player with a given name', function() {
     expect(player.name).toEqual('Lisa');
@@ -17,20 +16,20 @@ describe('Player', function() {
   });
 
   it('starts with an empty array for the play property', function() {
-    var player2 = new Player('two');
-    expect(player2.plays).toEqual([]);
+    var player = new Player('two');
+    expect(player.plays).toEqual([]);
   });
 
   it('starts with an empty array for the scores property', function() {
-    var player3 = new Player('three');
-    expect(player3.scores).toEqual([]);
-  })
+    var player = new Player('three');
+    expect(player.scores).toEqual([]);
+  });
 
   it('adds an element to both the plays and the scores properties when a word is played', function() {
     player.play('dog');
     expect(player.plays.length).toEqual(1);
     expect(player.scores.length).toEqual(1);
-  })
+  });
 
   describe('play(word)', function() {
     it('returns false if a player has already won', function() {
@@ -76,7 +75,7 @@ describe('Player', function() {
     it('returns true if the player has exactly 100 points', function() {
       player.play('zzzzzzzzzz');
       expect(player.hasWon()).toEqual(true);
-    })
+    });
   });
 
   describe('highestScoringWord()', function() {
@@ -90,7 +89,7 @@ describe('Player', function() {
       player.play('dog');
       player.play('cat');
       expect(player.highestScoringWord()).toEqual('dog');
-    })
+    });
   });
 
   describe('highestWordScore()', function() {
