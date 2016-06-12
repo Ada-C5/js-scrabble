@@ -63,17 +63,4 @@ Player.prototype.highestWordScore = function () {
   return high_score
 }
 
-var adriana = new Player("Adriana");
-console.log(adriana.play("warrior"));
-console.log(adriana.play("cats"));
-console.log(adriana.play("are"));
-console.log(adriana.play("awesome"));
-// console.log(adriana.plays())
-
-console.log(adriana.highestWordScore());
-
-// console.log(adriana.plays());
-// console.log(adriana.total_score());
-// console.log(adriana.hasWon());
-
 module.exports = Player;

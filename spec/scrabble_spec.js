@@ -63,18 +63,3 @@ describe ('highestScoreFrom(arrayOfWords)', function() {
     expect(scrabble.highestScoreFrom(["bee", "", "bat"])).toEqual("BEE");
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//

@@ -40,23 +40,4 @@ Scrabble.prototype.highestScoreFrom = function (arrayOfWords) {
   return high_word
 }
 
-
 module.exports = Scrabble;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//

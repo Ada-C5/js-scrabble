@@ -102,15 +102,3 @@ describe ('highestWordScore() and highestScoringWord()', function() {
     expect(chris.highestWordScore()).toEqual(5)
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-//
