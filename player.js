@@ -1,9 +1,9 @@
 var Scrabble = require("./scrabble.js");
-var scrabble = new Scrabble();
 
 var Player = function(name) {
   this.name = name;
   this.played_words = [];
+  this.score = 0
 };
 
 Player.prototype.plays = function () {
@@ -21,8 +21,17 @@ Player.prototype.play = function (word) {
   return this.plays();
 }
 
+Player.prototype.total_score = function () {
+  var scrabble = new Scrabble();
+  var sum = 0
+  for (i = 0; i < this.played_words.length; i++) {
+    sum += scrabble.score(this.played_words[i]);
+  }
+  this.score = sum;
+  return this.score;
+}
+
 var adriana = new Player("Adriana");
-console.log(adriana.play("cat"));
-console.log(adriana.play(["hat", "bat", "hello", "world"]));
+console.log();
 
 module.exports = Player;
