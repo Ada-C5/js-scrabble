@@ -1,9 +1,5 @@
 var Scrabble = function() {};
 
-// Scrabble.prototype.helloWorld = function() {
-//   return 'hello world!';
-// };
-
 Scrabble.prototype.score = function(word) {
 
   var scoring_chart = {
@@ -110,15 +106,5 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
 
   return highest_scoring_word;
 };
-
-
-
-//testing stuff out
-s = new Scrabble();
-
-
-var arrayOfWords = ["zzzzzz", "aaaaaaa", "dog", "cat", "monkey", "zzzzzx", "aaaaaae"]
-console.log(s.highestScoreFrom(arrayOfWords));
-
 
 module.exports = Scrabble;
