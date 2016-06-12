@@ -2,9 +2,9 @@ var Scrabble = require("../scrabble.js");
 var scrabble = new Scrabble();
 
 describe("score", function() {
-  // it("returns a number", function() {
-  //   expect(scrabble.score("DOG")).//to return something of type number
-  // });
+  it("returns a number", function() {
+    expect(scrabble.score("DOG")).toEqual(jasmine.any(Number)); //to return something of type number
+  });
 
   it("returns the correct score for a word", function() {
     expect(scrabble.score("DOG")).toEqual(5);
@@ -17,19 +17,10 @@ describe("score", function() {
   it("will include a 50-point bonus for words of 7 letters or more", function() {
     expect(scrabble.score("aaaaaaa")).toEqual(57);
   });
-
-  // it("throws an error when given anything other than an English alphabet letter", function () {
-  //   expect(scrabble.score("").//to be of type error, or whatever
-  //   expect(scrabble.score(" ").//to be of type error, or whatever
-  //   expect(scrabble.score(2).//to be of type error, or whatever
-  //   expect(scrabble.score("2").//to be of type error, or whatever
-  //   expect(scrabble.score("~").//to be of type error, or whatever
-  //   expect(scrabble.score("愛").//to be of type error, or whatever
-  //   expect(scrabble.score(" w o w すごい 99").//to be of type error, or whatever
-  // });
 });
 
 describe("highestScoreFrom", function() {
+
   it("will return the word with the highest score", function() {
     expect(scrabble.highestScoreFrom(["dog", "zoo"])).toEqual("zoo");
   });
@@ -42,18 +33,15 @@ describe("highestScoreFrom", function() {
     expect(scrabble.highestScoreFrom(["aaaaaaf", "zzzzzz"])).toEqual("aaaaaaf");
   });
 
-  it("will return ", function() {
-
+  it("will return the first supplied word if multiple words with same length and score", function() {
+    expect(scrabble.highestScoreFrom(["zzzzzz", "zzzzzq"])).toEqual("zzzzzz");
+    expect(scrabble.highestScoreFrom(["zzzzzq", "zzzzzz"])).toEqual("zzzzzq");
   });
-  //
-  // it("", function() {
-  //
-  // });
-  //
-  // it("will never return supercalifragilisticexpialidocious", function() {
-  //   //refute that result will equal supercalifragilisticexpialidocious
-  // });
 
-
+  it("will return the word with fewer tiles if same score but not comparing with 7-letter word", function() {
+    // both are 5 points
+    expect(scrabble.highestScoreFrom(["dog", "he"])).toEqual("he");
+    expect(scrabble.highestScoreFrom(["he", "dog"])).toEqual("he");
+  });
 
 });
