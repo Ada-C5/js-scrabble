@@ -1,5 +1,3 @@
-var prompt = require('prompt');
-
 var Scrabble = function() {};
 
 Scrabble.prototype.score = function(word) {
