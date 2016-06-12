@@ -64,8 +64,22 @@ function Player(name) {
   };
 
   this.hasWon = function () {
-    
+    if (this.total_score() >=  100){
+      return true;
+    } else {
+      return false;
+    }
   };
+
+  this.highestScoringWord = function() {
+    //Function which returns the highest scoring word the user has played.
+    return Scrabble.highestScoreFrom(this.plays);
+  };
+
+  this.highestWordScore = function() {
+    word = Scrabble.highestScoreFrom(this.plays)
+    return Scrabble.score(word);
+  }
 }
 
 // DEBUG:
@@ -81,7 +95,13 @@ console.log(Scrabble.score("lemon"));
 
 console.log(myplayer.plays);
 console.log(myplayer.total_score());
-
+console.log(myplayer.hasWon());
+myplayer.play("QQQQQQ");
+myplayer.play("QQAA");
+console.log(myplayer.total_score());
+console.log(myplayer.hasWon());
+console.log(myplayer.highestScoringWord());
+console.log(myplayer.highestWordScore());
 
 //
 // console.log(Scrabble.score("AAAAAAF"));
