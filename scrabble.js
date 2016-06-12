@@ -13,6 +13,7 @@ Scrabble.prototype = {
     "q": 10, "z": 10
   },
 
+  // Left helloworld code and test in for reference purposes. This is intentional.
   helloWorld: function() {
     return 'hello world!';
   },
@@ -22,6 +23,9 @@ Scrabble.prototype = {
         _x = _x.toLowerCase()
 
       for (var letter of _x) {
+        if (!letter.match(/[a-z]/i)) {
+          throw "Invalid character."
+        };
       score_tally += Scrabble.prototype.chart[letter]
       };
 
@@ -33,10 +37,10 @@ Scrabble.prototype = {
 
   shortest: function(current_loop_word, highest_loop_word) {
     if (current_loop_word.length > highest_loop_word.length) {
-      return current_loop_word;
+      return highest_loop_word;
     }
     else if (current_loop_word.length < highest_loop_word.length) {
-      return highest_loop_word;
+      return current_loop_word;
     }
     else {
       return highest_loop_word;
@@ -54,9 +58,12 @@ Scrabble.prototype = {
         highest_score = word_score
         highest_word = word
       }
-      else if ((word_score === highest_score) && (word.length )) {
+      else if ((word_score === highest_score) && (word.length !== 7) && (highest_word.length !== 7)) {
         var highest_word = Scrabble.prototype.shortest(word, highest_word)
-      };
+      }
+      else if ((word_score === highest_score) && (word.length === 7)) {
+        var highest_word = word
+      }
     };
     return highest_word;
   }
