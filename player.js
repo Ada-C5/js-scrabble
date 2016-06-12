@@ -5,8 +5,13 @@ var Player = function(name) {
   this.plays = [];
 };
 
+var Scrabble = new Scrabble;
+//  s = new Scrabble
+//  s.score("word")
+
 Player.prototype.test = function(word) {
-  return Scrabble.score(word)
+  this._word = word
+  return Scrabble.score(this._word)
 }
 
 Player.prototype.play = function(word) {
