@@ -89,20 +89,40 @@ describe('hasWon()', function() {
 
 });
 
-// describe('highestScoringWord()', function() {
-//   var player = new Player("Anna");
-//
-//   it('instantiates with the given name', function() {
-//     expect(player.name).toEqual("Anna");
-//   });
-//
-// });
+describe('highestScoringWord()', function() {
+  var player = new Player("Anna");
+  player.play("a")
+  player.play("cupcake")
+  player.play("anna")
 
-// describe('highestWordScore()', function() {
-//   var player = new Player("Anna");
-//
-//   it('instantiates with the given name', function() {
-//     expect(player.name).toEqual("Anna");
-//   });
-//
-// });
+  it('will pick the highest scoring word from multiple words', function() {
+    expect(player.highestScoringWord()).toEqual("cupcake");
+  });
+
+  var player2 = new Player("Anna");
+  player2.play("cat")
+
+  it('will pick the highest scoring word from one word', function() {
+    expect(player2.highestScoringWord()).toEqual("cat");
+  });
+});
+
+describe('highestWordScore()', function() {
+  var player = new Player("Anna");
+  player.play("cupcake")
+  player.play("hello")
+  player.play("ok")
+
+  it('returns score of highest word from multiple words', function() {
+    expect(player.highestWordScore()).toEqual(67);
+  });
+
+  var player2 = new Player("Fred");
+  player2.play("ok")
+
+  it('returns score of highest word from one word', function() {
+    expect(player2.highestWordScore()).toEqual(6);
+  });
+
+
+});
