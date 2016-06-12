@@ -16,7 +16,6 @@ Player.prototype = {
 
     this.plays.push(word);
     this.scores.push(scrabble.score(word));
-    console.log(this.scores);
   },
   total_score: function() {
     var sum = this.scores.reduce(
