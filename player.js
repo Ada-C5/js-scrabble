@@ -8,17 +8,23 @@ function Player(name) {
 }
 
 Player.prototype = {
+  // adds the input word to the player's array
   play: function(word) {
     this.plays.push(word);
+  },
+  total_score: function() {
+    //sums up and returns the score of the player's words
+  },
+  hasWon: function() {
+    // if total_score over 100, return true, otherwise return false
+  },
+  highestScoringWord: function() {
+    // returns the highest scoring word the user has played
+  },
+  highestWordScore: function() {
+    //returns the highestScoringWord's score
   }
 }
-
-
-// Player.prototype.play = function(word) {
-//   console.log(this.plays);
-//   // adds the input word to the player's array
-//   // this.plays.push(word);
-// };
 
 
 
