@@ -82,8 +82,26 @@ describe ('hasWon()', function() {
   });
 });
 
+describe ('highestWordScore() and highestScoringWord()', function() {
+  var adriana = new Player("Adriana");
+  var chris = new Player("Chris");
 
+  it ("returns the highgest scoring word", function () {
+    adriana.play("warrior");
+    adriana.play("cats");
+    adriana.play("are");
+    adriana.play("awesome");
+    expect(adriana.highestScoringWord()).toEqual("AWESOME");
+    expect(adriana.highestWordScore()).toEqual(62)
+  });
 
+  it ("returns the first word that is the highest when they are equal", function () {
+    chris.play("cat");
+    chris.play("bat");
+    expect(chris.highestScoringWord()).toEqual("CAT");
+    expect(chris.highestWordScore()).toEqual(5)
+  });
+});
 
 
 

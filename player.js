@@ -48,19 +48,29 @@ Player.prototype.hasWon = function () {
 Player.prototype.highestScoringWord = function () {
   var scrabble = new Scrabble();
   var high_word = "";
-  
+
   high_word = scrabble.highestScoreFrom(this.played_words);
   return high_word;
 }
 
+Player.prototype.highestWordScore = function () {
+  var scrabble = new Scrabble();
+  var high_score = 0;
+  var high_word = "";
+
+  high_word = scrabble.highestScoreFrom(this.played_words);
+  high_score = scrabble.score(high_word);
+  return high_score
+}
+
 var adriana = new Player("Adriana");
 console.log(adriana.play("warrior"));
-// console.log(adriana.play("cats"));
-// console.log(adriana.play("are"));
-// console.log(adriana.play("awesome"));
+console.log(adriana.play("cats"));
+console.log(adriana.play("are"));
+console.log(adriana.play("awesome"));
 // console.log(adriana.plays())
 
-console.log(adriana.highestScoringWord());
+console.log(adriana.highestWordScore());
 
 // console.log(adriana.plays());
 // console.log(adriana.total_score());
