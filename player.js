@@ -45,7 +45,7 @@ var adriana = new Player("Adriana");
 adriana.play("cacique");
 adriana.play("mezquit");
 adriana.play("hat");
-// console.log(adriana.plays());
+console.log(adriana.plays());
 
 console.log(adriana.total_score());
 console.log(adriana.hasWon());

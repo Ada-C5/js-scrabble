@@ -61,6 +61,21 @@ describe ('total_score()', function() {
   });
 });
 
+describe ('hasWon()', function() {
+  var adriana = new Player("Adriana");
+
+  it ("returns true if player score >= 100", function () {
+    adriana.play("cacique");
+    adriana.play("mezquit");
+    expect(adriana.hasWon()).toEqual(true);
+  });
+
+  it ("returns false if player score < 100", function () {
+    adriana.play("cacique");
+    adriana.play("hat");
+    expect(adriana.hasWon()).toEqual(false);
+  });
+});
 
 
 
