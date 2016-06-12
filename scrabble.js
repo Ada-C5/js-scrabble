@@ -32,7 +32,7 @@ var Scrabble = function() {
 // YOUR CODE HERE
 
 Scrabble.prototype.score = function(word) {
-  var wordy = word.toUpperCase;
+  var wordy = word.toUpperCase();
   var score = 0;
 
   for (var index in wordy) {
