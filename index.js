@@ -48,6 +48,6 @@ function ask_again(againCallback) {
  })
 }
 
-// prompt.start();
+prompt.start();
 
 getWords();
