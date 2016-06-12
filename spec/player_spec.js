@@ -63,6 +63,7 @@ describe ('total_score()', function() {
 
 describe ('hasWon()', function() {
   var adriana = new Player("Adriana");
+  var chris = new Player("Chris");
 
   it ("returns true if player score >= 100", function () {
     adriana.play("cacique");
@@ -71,9 +72,13 @@ describe ('hasWon()', function() {
   });
 
   it ("returns false if player score < 100", function () {
-    adriana.play("cacique");
-    adriana.play("hat");
-    expect(adriana.hasWon()).toEqual(false);
+    chris.play("cacique");
+    chris.play("hat");
+    expect(chris.hasWon()).toEqual(false);
+  });
+
+  it ("cannont play more words if hasWon is true", function () {
+    expect(adriana.play("cat")).toEqual(false);
   });
 });
 

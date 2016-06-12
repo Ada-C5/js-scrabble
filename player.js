@@ -11,6 +11,9 @@ Player.prototype.plays = function () {
 }
 
 Player.prototype.play = function (word) {
+  if (this.hasWon() === true) {
+    return false
+  }
   if (typeof word === "object") {
     for (var i = 0; i < word.length; i++) {
       this.played_words.push(word[i]);
@@ -19,6 +22,7 @@ Player.prototype.play = function (word) {
   else {
     this.played_words.push(word);
   }
+  this.total_score()
   return this.plays();
 }
 
@@ -41,13 +45,13 @@ Player.prototype.hasWon = function () {
   }
 }
 
-var adriana = new Player("Adriana");
-adriana.play("cacique");
-adriana.play("mezquit");
-adriana.play("hat");
-console.log(adriana.plays());
-
-console.log(adriana.total_score());
-console.log(adriana.hasWon());
+// var adriana = new Player("Adriana");
+// adriana.play("cacique");
+// adriana.play("mezquit");
+// adriana.play("hat");
+// console.log(adriana.plays());
+//
+// console.log(adriana.total_score());
+// console.log(adriana.hasWon());
 
 module.exports = Player;
