@@ -30,7 +30,7 @@ var Scrabble = {
     highestLength = 10000000000;
     for (var word in scoredWords) {
       score = scoredWords[word]
-      if (score === highestScore && word.length < highestLength) {
+      if (score === highestScore && word.length < highestLength && highestLength != 7) {
         highestScore = score;
         highestWord = word;
         highestLength = word.length;
@@ -44,8 +44,49 @@ var Scrabble = {
   }
 };
 
-console.log(Scrabble.score("ania"));
-console.log(Scrabble.highestScoreFrom(["an", "pterodactilo", "ani", "ania", "QQ", "kkkk", "aaaaaaa"]));
+function Player(name) {
+  this.name = name;
+  this.plays = [];
+
+  this.play = function(word) {
+    // Function which will adds the input word to the plays Array
+    // Returns false if player has already won
+    this.plays.push(word);
+  };
+
+  this.total_score = function() {
+    total = 0
+    words = this.plays
+    for (var word of words) {
+      total = total + Scrabble.score(word)
+    };
+    return total
+  };
+
+  this.hasWon = function () {
+    
+  };
+}
+
+// DEBUG:
+
+var myplayer = new Player("Eagle");
+
+console.log(myplayer.name);
+
+myplayer.play("kiwi");
+console.log(Scrabble.score("kiwi"));
+myplayer.play("lemon");
+console.log(Scrabble.score("lemon"));
+
+console.log(myplayer.plays);
+console.log(myplayer.total_score());
+
+
+//
+// console.log(Scrabble.score("AAAAAAF"));
+// console.log(Scrabble.score("QQQQQQ"));
+// console.log(Scrabble.highestScoreFrom(["EEEEEEF", "AAAAAAF", "QQQQQQ"]));
 
 
 module.exports = Scrabble;
