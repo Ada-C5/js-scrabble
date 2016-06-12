@@ -71,10 +71,11 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
   // put all the word scores into a new array together
   all_scores = [];
   for (var word of arrayOfWords) {
-
     all_scores.push(this.score(word));
   }
-  // I still don't quite understand 'apply', but apparently I can't use max on an array without it
+
+  // find max score
+  // I still don't quite understand 'apply', but apparently I can't use Math.max on an array without it
   highest_score = Math.max.apply(null, all_scores);
 
   //for the words in arrayOfWords that have that score, push those into a new array of words to work with
@@ -90,12 +91,13 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
     highest_scoring_word = words_with_highest_score[0];
   // but if there are multiple words with that same score
   } else {
-    // a really long word that will be overwrote by a word with less tiles no matter what
-    var highest_scoring_word = "supercalifragilisticexpialidocious";
+    // (just to start the length comparison somewhere, here's a really long word that will always be overwritten by a word with less tiles)
+    var highest_scoring_word = "pneumoultramicroscopicsilicovolcanoconiosisyaaaaaaaay";
     for (var word of words_with_highest_score) {
       // the word with a length of 7 wins
       if (word.length >= 7) {
         highest_scoring_word = word;
+        // stop looping so that it's the first one supplied that wins
         break;
       } else {
         // otherwise the word with the least tiles wins
@@ -115,7 +117,7 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
 s = new Scrabble();
 
 
-var arrayOfWords = ["aaaaaaa", "zzzzzz", "dog", "cat", "monkey", "zzzzzx", "aaaaaae"]
+var arrayOfWords = ["zzzzzz", "aaaaaaa", "dog", "cat", "monkey", "zzzzzx", "aaaaaae"]
 console.log(s.highestScoreFrom(arrayOfWords));
 
 
