@@ -1,3 +1,5 @@
+var Scrabble() = require("./scrabble.js");
+
 // Constructor: Called when you use new Player(name), sets up an instance with the 
 //instance variable name assigned
 
@@ -8,10 +10,30 @@ function Player(name) {
 }
 
 Player.prototype.play = function (word) {
-  this.plays[this.numberOfPlays] = word;
+  this.plays[this.numberOfPlays] = word; 
   this.numberOfPlays++;
 }
 
+Player.prototype.total_score = function(arrayOfWords) {
+  var score = 0;
+  var scrabble = new Scrabble();
+  for (var word of arrayOfWords) {
+    score = score + scrabble.score(word);
+  }
+
+  return score
+}
+
+// Player.prototype.total_score = function(arrayOfWords) {
+//   // var scrabble = new Scrabble();
+//   var score = 0;
+//   function (arrayOfWords) {
+//     for (var word of arrayOfWords) {
+//       score = score + scrabble.score(word);
+//     }
+//   }
+//   return score;
+// }
 
 
 
