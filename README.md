@@ -1,5 +1,5 @@
 # Scrabble with JavaScript!
-We are going to rebuild our Scrabble project using our knew knowledge of JavaScript.
+We are going to rebuild our Scrabble project using our new knowledge of JavaScript.
 
 ## Project Expectations
 
