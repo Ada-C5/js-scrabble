@@ -59,62 +59,41 @@ Scrabble.prototype.score = function(word) {
   return score
 };
 
-// this._arrayofwords = ["anna","bryan","paddy"];
-// s.highscore(["anna","bryan","paddy"])
-// make a hash of these words and scores instead?
-// arrayofscores = [4,10,6]
 
 Scrabble.prototype.highscore = function(arrayOfWords) {
   this._arrayofwords = arrayOfWords;
 
-  wordsandscores = {};
+  var wordsandscores = {};
 
   for (var word of this._arrayofwords) {
     wordsandscores[word] = this.score(word);
   }
 
-/// TEST OUT HASH MAPPING
-// var hashPetName = {
-//     dog: "Rex",
-//     cat: "Mistigri"
-//   }
-///
+  var highest_score = 0
+  for (var key in wordsandscores){
+    if (highest_score < wordsandscores[key]) {
+      highest_score = wordsandscores[key];
+    }
+  }
 
+  var winning_array = [];
+  for (var key in wordsandscores){
+    if (wordsandscores[key] === highest_score) {
+    winning_array.push(key);
+  }};
+
+  var winner = "12345678"
+  for (var word of winning_array){
+    if (word.length < winner.length){
+      winner = word;
+    }
+    else if (word.length === 7){
+      winner = word;
+      break;
+    }
+  }
+
+  return winner
 };
-
-
-///
-
-/// HOW TO GET INDEX OF ARRAY OF SCORES
-      // var arrayofscores = [10,6,3,2]
-      // for (var score of arrayofscores) {
-      //   console.log(arrayofscores.indexOf(score));
-      // }
-///
-
-// var highestscorewords = [];
-// var highestscore = 0;
-// for (var score of arrayofscores) {
-//   if (score > highestscore) {
-//     highestscore = score;
-//   } else if (score === highestscore) {
-//     //if score is 7 letters,
-//   }
-// };
-
-  //iterate through array, save highest score as var
-
-
-// `highestScoreFrom(arrayOfWords)`:
-// returns **the word in the array with the highest score**.
-//
-// 1. Note that it’s better to use fewer tiles,
-// so if the top score is tied between multiple words, pick the one with the fewest letters.
-//
-// 3. If the top score is tied between multiple words and one used all seven letters,
-// choose the one with seven letters over the one with fewer tiles.
-//
-// 4. If the there are multiple words that are the same score and same length,
-// pick the first one in supplied list.
 
 module.exports = Scrabble;
