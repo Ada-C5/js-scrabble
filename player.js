@@ -14,6 +14,16 @@ Player.prototype = {
   },
   total_score: function() {
     //sums up and returns the score of the player's words
+    all_scores = [];
+    for (var word of this.plays) {
+      all_scores.push(scrabble.score(word));
+    }
+    // add them up
+    total_score = 0;
+    for (var score of all_scores) {
+      total_score += score;
+    }
+    return total_score;
   },
   hasWon: function() {
     // if total_score over 100, return true, otherwise return false
