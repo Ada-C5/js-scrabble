@@ -1,4 +1,3 @@
-
 var Scrabble = function() {};
 
 Scrabble.prototype = {
@@ -28,6 +27,7 @@ Scrabble.prototype = {
       };
 
       return points; 
+
     } else {
       throw "That is not valid input!"
     };
