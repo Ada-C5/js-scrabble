@@ -30,15 +30,12 @@ Scrabble.prototype.score = function(word) {
 };
 
 Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
-  // arrayOfWords = "david jimison"
-  var words_array = arrayOfWords.split(' ');
-  // ["david", "jimison"]
-  var scores_array = words_array.map(function(word) {
+  var scores_array = arrayOfWords.map(function(word) {
    return that.score(word);
  });
   var max = Math.max(...scores_array);
   var index_max = scores_array.indexOf(max)
-  return words_array[index_max].toLowerCase()
+  return arrayOfWords[index_max].toLowerCase()
 };
 
 

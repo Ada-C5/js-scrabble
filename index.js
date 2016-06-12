@@ -17,13 +17,14 @@ function collect () {
   // collect some data thte user
   prompt.get(['word'], function(error, result) {
     if(/\s/.test(result.word)){
-       var value = multiple(result)
+      arrayWords = result.word.split(" ");
+       var value = multiple(arrayWords);
        console.log(value);
     } else {
       var value = final(result);
       console.log(value);
     };
-    ask_again()
+    ask_again();
   });
 }
 function ask_again() {
