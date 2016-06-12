@@ -1,38 +1,46 @@
-// Create a new Player object with a minimum of 11 test. The object should have the following functions:
+var Scrabble = require("../scrabble.js");
+var game = new Scrabble();
 
-// Constructor: Called when you use new Player(name), sets up an instance with the instance variable name assigned
+var Player = function(name, plays) {
+  this.name = name;
+  this.plays = [plays];
+};
 
-var Player = {
-
-  // name: property which returns the value of the player's name
-  name: "",
-
-  // plays: property which returns an Array of the words played by the player
-  plays: [],
-
-  // play(word): Function which will adds the input word to the plays Array
-  // Returns false if player has already won
+Player.prototype = {
   play: function(word) {
-
+    if (this.hasWon() === true) {
+      return false;
+    };
+    else {
+      this.plays.push(word);
+    };
   },
 
-  // total_score(): Function which sums up and returns the score of the players words
   total_score: function() {
-
+    var total = 0
+    for (var word of this.plays) {
+      total += game.score(word);
+    }
+    return total;
   },
 
-  // hasWon(): Function with logic to determine if the player has over 100 points, returns true, otherwise returns 'false'
   hasWon: function() {
-
+    if (this.total_score() > 100) {
+      return true;
+    }
+    else {
+      return false;
+    };
   },
 
   // highestScoringWord(): Function which returns the highest scoring word the user has played.
   highestScoringWord: function() {
-
+    return game.highestScoringWordFromArray(this.plays);
   },
 
-  // highestWordScore(): Function which returns the highestScoringWord score.
   highestWordScore: function() {
-
+    return game.highestWordScoreFromArray(this.plays);    
   };
 };
+
+module.exports = Player;

@@ -47,7 +47,7 @@ Scrabble.prototype = {
     };
   },
 
-  highestScoreFrom: function(_x) {
+  highestScoringWordFromArray: function(_x) {
     var word_score = 0,
         highest_score = 0,
         highest_word = ""
@@ -66,6 +66,27 @@ Scrabble.prototype = {
       }
     };
     return highest_word;
+  },
+
+  highestWordScoreFromArray: function(_x) {
+    var word_score = 0,
+        highest_score = 0,
+        highest_word = ""
+
+    for (var word of _x) {
+      var word_score = Scrabble.prototype.score(word)
+      if (word_score > highest_score) {
+        highest_score = word_score
+        highest_word = word
+      }
+      else if ((word_score === highest_score) && (word.length !== 7) && (highest_word.length !== 7) || ((word.length === 7) && (word.length === 7))) {
+        var highest_word = Scrabble.prototype.shortest(word, highest_word)
+      }
+      else if ((word_score === highest_score) && (word.length === 7)) {
+        var highest_word = word
+      }
+    };
+    return highest_score;
   }
 };
 
@@ -73,7 +94,7 @@ Scrabble.prototype = {
 var rando_array = ["word", "poop", "water", "exit", "qqqqqqq", "zzzzzzz"]
 var player = new Scrabble
 console.log(player.score("word"))
-console.log(player.highestScoreFrom(rando_array))
+console.log(player.highestScoringWordFromArray(rando_array))
 
 
 module.exports = Scrabble;

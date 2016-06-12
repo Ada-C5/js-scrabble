@@ -60,40 +60,40 @@ describe('shortest', function() {
   });
 });
 
-describe('highestScoreFrom', function() {
+describe('highestScoringWordFromArray', function() {
   var scrabble = new Scrabble();
   var an_array = ["word", "poop", "water", "exit"]
 
   it('returns the highest scoring word', function() {
-    expect(scrabble.highestScoreFrom(an_array)).toEqual('exit');
+    expect(scrabble.highestScoringWordFromArray(an_array)).toEqual('exit');
   });
 });
 
-describe('highestScoreFrom', function() {
+describe('highestScoringWordFromArray', function() {
   var scrabble = new Scrabble();
   var an_array = ["word", "poop"]
 
   it('if words are the same score, it returns the first one given', function() {
-    expect(scrabble.highestScoreFrom(an_array)).toEqual('word');
+    expect(scrabble.highestScoringWordFromArray(an_array)).toEqual('word');
   });
 });
 
-describe('highestScoreFrom', function() {
+describe('highestScoringWordFromArray', function() {
   var scrabble = new Scrabble();
   var an_array = ["word", "hop"]
 
   it('if words are the same score, it returns the shortest one given', function() {
-    expect(scrabble.highestScoreFrom(an_array)).toEqual('hop');
+    expect(scrabble.highestScoringWordFromArray(an_array)).toEqual('hop');
   });
 });
 
-describe('highestScoreFrom', function() {
+describe('highestScoringWordFromArray', function() {
   var scrabble = new Scrabble();
 
   // The edgiest of edge cases, IMHO. But "aaaaaaf" is a seven letter word that when scored should equal 60, and "qqqqqq" is a six letter word that should also equal 60.
   var an_array = ["aaaaaaf", "qqqqqq"]
 
   it('if words are the same score, and one used all seven letters, it returns the one with seven letters rather than the one with fewer', function() {
-    expect(scrabble.highestScoreFrom(an_array)).toEqual('aaaaaaf');
+    expect(scrabble.highestScoringWordFromArray(an_array)).toEqual('aaaaaaf');
   });
 });
