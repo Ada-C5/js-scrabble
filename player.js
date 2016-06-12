@@ -38,11 +38,10 @@ Player.prototype.highestScoringWord = function(playedWords) {
   return highestScoringWord; 
 }; 
 
-
+Player.prototype.highestWordScore = function(playedWords) {
+  var highestScoringWord = scrabble.highestScoreFrom(playedWords); 
+  var score = scrabble.score(highestScoringWord); 
+  return score; 
+}; 
 
 module.exports = Player;
-
-
-// To do 
-
-// highestWordScore(): Function which returns the highestScoringWord score.

@@ -31,13 +31,19 @@ describe('Scrabble Player', function() {
   }); 
 
   it('Correctly scores player total score', function() {
-    var andy = new Player('Andy'); 
-    var playSomeWords = ['kittens', 'puppies', 'ducklings']; 
-    expect(andy.totalScore(playSomeWords)).toEqual(191);
+    var jeremy = new Player('Jeremy'); 
+    var playSomeWords = ['elixir', 'rails', 'javascript']; 
+    expect(jeremy.totalScore(playSomeWords)).toEqual(92);
   });
   it('Returns the highest scoring word', function() {
-    var andy = new Player('Andy'); 
-    var playSomeWords = ['kittens', 'puppies', 'ducklings']; 
-    expect(andy.highestScoringWord(playSomeWords)).toEqual('ducklings');
+    var kari = new Player('Kari'); 
+    var playSomeWords = ['kylo', 'cutest', 'puppy']; 
+    expect(kari.highestScoringWord(playSomeWords)).toEqual('puppy');
+  });
+
+  it('Returns the highest scoring word score', function() {
+    var charles = new Player('Charles'); 
+    var playSomeWords = ['pretty', 'awesome', 'instructor']; 
+    expect(charles.highestWordScore(playSomeWords)).toEqual(62);
   });  
 }); 
