@@ -1,5 +1,5 @@
 var Scrabble = function() {
-  this.tile_score = { 
+  this.tileScore = { 
     'A' : 1, 
     'B' : 3, 
     'C' : 3,
@@ -39,7 +39,6 @@ Scrabble.prototype.score = function(word) {
   var wordCheck = word.match(/(\W)*/g); 
   
   // check input for garbage
-  // I'm worried about asynchronous insanity 
   if (wordCheck[0].length !== 0) {
     throw('this is not valid input!');  
   }
@@ -51,10 +50,10 @@ Scrabble.prototype.score = function(word) {
 
   // score with a loop
   for (var i = 0; i < word.length; ++i) {
-    score += this.tile_score[word.charAt(i)];
+    score += this.tileScore[word.charAt(i)];
   }
   return score; 
-}
+}; 
 
 
 Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
@@ -67,7 +66,7 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
   }
 
   //get the max score 
-  var getMaxScore = Math.max.apply(null,Object.keys(wordAndScores).map(function(x){ return wordAndScores[x] }));
+  var getMaxScore = Math.max.apply(null, Object.keys(wordAndScores).map(function(x){ return wordAndScores[x] }));
   for (var word in wordAndScores){
     if (wordAndScores[word] === getMaxScore){
       winningWords.push(word);
@@ -82,7 +81,8 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
       checkWordLength[word] = word.length;
     }
 
-    var getMinLength = Math.min.apply(null,Object.keys(checkWordLength).map(function(x){ return checkWordLength[x] }));
+    //find min length of winning ties 
+    var getMinLength = Math.min.apply(null, Object.keys(checkWordLength).map(function(x){ return checkWordLength[x] }));
 
     for (var word in checkWordLength) {
       if (checkWordLength[word] === getMinLength) {
@@ -90,7 +90,7 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
       }
     }
   }
-}
+}; 
 
 
 module.exports = Scrabble;
