@@ -3,19 +3,23 @@ var Scrabble = require("./scrabble.js");
 var Player = function(name) {
   this.name = name;
   this.plays = [];
+  this.totalscore = 0;
 };
 
 var Scrabble = new Scrabble;
-//  s = new Scrabble
-//  s.score("word")
+//  Scrabble.score("word")
 
 Player.prototype.test = function(word) {
-  this._word = word
-  return Scrabble.score(this._word)
+  this._word = word;
+  return Scrabble.score(this._word);
 }
 
 Player.prototype.play = function(word) {
-  this.plays.push(word);
+  if (this.totalscore > 100) {
+    return false;
+  } else {
+    this.plays.push(word);
+  }
   //returns false if player has already won
 }
 
