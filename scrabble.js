@@ -58,7 +58,7 @@ Scrabble.prototype = {
         highest_score = word_score
         highest_word = word
       }
-      else if ((word_score === highest_score) && (word.length !== 7) && (highest_word.length !== 7)) {
+      else if ((word_score === highest_score) && (word.length !== 7) && (highest_word.length !== 7) || ((word.length === 7) && (word.length === 7))) {
         var highest_word = Scrabble.prototype.shortest(word, highest_word)
       }
       else if ((word_score === highest_score) && (word.length === 7)) {
