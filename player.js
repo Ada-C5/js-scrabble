@@ -12,13 +12,14 @@ Player.prototype = {
   play: function(word) {
     this.plays.push(word);
   },
+  //sums up and returns the score of the player's words
   total_score: function() {
-    //sums up and returns the score of the player's words
+    // makes an array of the scores for each word the player has played
     all_scores = [];
     for (var word of this.plays) {
       all_scores.push(scrabble.score(word));
     }
-    // add them up
+    // adds them up
     total_score = 0;
     for (var score of all_scores) {
       total_score += score;
@@ -27,12 +28,19 @@ Player.prototype = {
   },
   hasWon: function() {
     // if total_score over 100, return true, otherwise return false
+    if (this.total_score > 100) {
+      return true;
+    } else {
+      return false;
+    }
   },
   highestScoringWord: function() {
     // returns the highest scoring word the user has played
+    scrabble.highestScoreFrom(this.plays);
   },
   highestWordScore: function() {
-    //returns the highestScoringWord's score
+    // returns the highestScoringWord's score
+
   }
 }
 
