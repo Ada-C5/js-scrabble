@@ -63,8 +63,17 @@ describe('highestScoreFrom', function() {
 
   it('it chooses the word with the highest score', function() {
     expect(scrabble.highestScoreFrom(test_words1)).toEqual("affined");
+  });
+
+  it('it chooses the tied word with lowest length', function() {
     expect(scrabble.highestScoreFrom(test_words2)).toEqual("jeez");
+  });
+
+  it('it chooses the 7 letter word first', function() {
     expect(scrabble.highestScoreFrom(test_words3)).toEqual("bcmpbcg");
+  });
+
+  it('it chooses the 7 letter word in a tie', function() {
     expect(scrabble.highestScoreFrom(test_words5)).toEqual("qqqqqq");
   });
 
