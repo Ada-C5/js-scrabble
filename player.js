@@ -10,7 +10,11 @@ function Player(name) {
 Player.prototype = {
   // adds the input word to the player's array
   play: function(word) {
-    this.plays.push(word);
+    if (this.hasWon === true) {
+      return false;
+    } else {
+      this.plays.push(word);
+    }
   },
   //sums up and returns the score of the player's words
   total_score: function() {
@@ -36,11 +40,11 @@ Player.prototype = {
   },
   highestScoringWord: function() {
     // returns the highest scoring word the user has played
-    scrabble.highestScoreFrom(this.plays);
+    return scrabble.highestScoreFrom(this.plays);
   },
   highestWordScore: function() {
     // returns the highestScoringWord's score
-
+    return scrabble.score(this.highestScoringWord());
   }
 }
 
@@ -51,3 +55,12 @@ Player.prototype = {
 var name = "Tom";
 // var plays = [];
 var player_tom = new Player(name);
+player_tom.play("monkey");
+player_tom.play("dog");
+player_tom.play("cat");
+player_tom.play("aaaaaaf");
+player_tom.play("aaaaaaf");
+player_tom.play("aaaaaaf");
+player_tom.play("aaaaaaf");
+player_tom.play("aaaaaaf");
+player_tom.play("aaaaaaf");
