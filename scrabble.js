@@ -13,7 +13,7 @@ Scrabble.prototype = {
 
   score: function(word) {
     if (word.length > 7) {
-        throw "You can only enter a word up to seven letters long."
+      throw "You can only enter a word up to seven letters long."
     };
 
     if (word.match(/^[A-z]+$/)) {
@@ -21,7 +21,7 @@ Scrabble.prototype = {
       var points = 0;
       if (word.length === 7) {
         points += Scrabble.prototype.bonus;
-       }; 
+      }; 
 
       for (var letter of word) {
         points += Scrabble.prototype.scoring[letter];
@@ -37,17 +37,17 @@ Scrabble.prototype = {
     var winner = "none";
     for (var word of arrayOfWords) {
       var word = word.toUpperCase()
-      if (winner === "none") {
+      // add an initial winning word 
+      // if current word score > current winning word's score, add it
+      if (winner === "none" || Scrabble.prototype.score(word) > winner.score) {
         winner = {
           "word": word, 
           "score": Scrabble.prototype.score(word)
         };
-      } else if (Scrabble.prototype.score(word) > winner.score) {
-        winner = "none";
-        winner = {
-          "word": word, 
-          "score": Scrabble.prototype.score(word)
-        };
+        // if there is a tie, preference given to:
+        // shorter word
+        // unless word length is 7, then that word wins
+        // if words are same length, the first in the list wins
       } else if (Scrabble.prototype.score(word) === winner.score) {
         if (winner.word.length > word.length) {
           winner = "none";
@@ -56,11 +56,9 @@ Scrabble.prototype = {
             "score": Scrabble.prototype.score(word)
           }; 
         } else if (winner.word.length === word.length || winner.word.length < word.length) {
-          break;
-        } else {
           winner = {
-          "word": word, 
-          "score": Scrabble.prototype.score(word)
+            "word": winner.word,
+            "score": winner.score
           };
         };
       };
