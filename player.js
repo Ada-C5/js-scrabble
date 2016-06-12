@@ -7,11 +7,17 @@ function Player(name) {
     this.name = name;
     this.plays = [];
     this.numberOfPlays = 0;
+    this.won = false;
 }
 
 Player.prototype.play = function (word) {
-  this.plays[this.numberOfPlays] = word; 
-  this.numberOfPlays++;
+  if (this.total_score(this.plays) < 100 ) {
+    this.plays[this.numberOfPlays] = word; 
+    this.numberOfPlays++;
+    return word;
+  } else {
+    return false;
+  }
 }
 
 Player.prototype.total_score = function(arrayOfWords) {
@@ -21,19 +27,17 @@ Player.prototype.total_score = function(arrayOfWords) {
     score = score + scrabble.score(word);
   }
 
-  return score
+  return score;
 }
 
-// Player.prototype.total_score = function(arrayOfWords) {
-//   // var scrabble = new Scrabble();
-//   var score = 0;
-//   function (arrayOfWords) {
-//     for (var word of arrayOfWords) {
-//       score = score + scrabble.score(word);
-//     }
-//   }
-//   return score;
-// }
+Player.prototype.hasWon = function () {
+  if (this.total_score(this.plays) === 100 || this.total_score(this.plays) > 100) {
+    this.won = true;
+    return true;
+  } else {
+    return false;
+  }
+}
 
 
 
