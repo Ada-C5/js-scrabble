@@ -39,7 +39,7 @@ describe('play function takes a word and stores it in array plays', function() {
 describe('returns the total score for the player', function() {
   var player = new Player();
 
-  it("is present", function() {
+  it("Player#total_score function is present", function() {
     expect(player.total_score !== undefined).toEqual(true);
   });
 
@@ -51,23 +51,40 @@ describe('returns the total score for the player', function() {
     expect(player.total_score(player.play("hotdog"))).toEqual(11);
     expect(player.total_score(player.play("chips"))).toEqual(23);
   });
-});
 
-describe('indicates whether player has won', function() {
-  var player = new Player("");
-
-  it("is present", function() {
+  it("Player#hasWon function is present", function() {
     expect(player.hasWon !== undefined).toEqual(true);
   });
 
-  it('returns false if a player has no words played', function() {
+  it('Player#hasWon returns false if a player has no words played', function() {
     expect(player.hasWon(player.total_score)).toEqual(false);
   });
 
-  it('returns true if a player has won', function() {
+  it('Player#hasWon returns correct datatype', function() {
     expect(typeof player.hasWon()).toEqual('boolean');
   });
 
+  it("Player#highestScoringWord function is present", function() {
+    expect(player.highestScoringWord !== undefined).toEqual(true);
+  });
 
+  it('Player#highestScoringWord returns correct datatype', function() {
+    expect(player.highestScoringWord()).toEqual(jasmine.any(String));
+  });
 
+  it('Player#highestScoringWord returns the highest scoring word', function() {
+    expect(player.highestScoringWord()).toEqual("chips");
+  });
+
+  it("Player#highestWordScore function is present", function() {
+    expect(player.highestWordScore !== undefined).toEqual(true);
+  });
+
+  it('Player#highestWordScore returns correct datatype', function() {
+    expect(player.highestWordScore()).toEqual(jasmine.any(Number));
+  });
+
+  it('Player#highestWordScore returns the score for the highest scoring word', function() {
+    expect(player.highestWordScore()).toEqual(12);
+  });
 });
