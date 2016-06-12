@@ -109,12 +109,5 @@ Scrabble.prototype.highestScoreFrom = function(array_of_words) {
 };
 
 var scrabble = new Scrabble();
-var array = ["cat", "lemon", "pickle", "aaaaaaaaacc", "eeeeeeex"];
-scrabble.highestScoreFrom(array);
-
-
-for (var each of array) {
-  console.log(each.score);
-};
 
 module.exports = Scrabble;
