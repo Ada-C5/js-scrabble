@@ -34,9 +34,14 @@ var Scrabble = require("../scrabble.js");
   describe('Score an Array of Words', function() {
     var scrabble = new Scrabble();
 
-    it('scores many words', function() {
+    it('scores a word from an array', function() {
       var test = ['apple']; 
-      expect(scrabble.highestScoreFrom(test)).toEqual([9]);
+      expect(scrabble.highestScoreFrom(test)).toEqual('apple');
+    });
+
+    it('scores many words in an array', function() {
+      var cats = ['watermel', 'pineappl', 'cantalop']; 
+      expect(scrabble.highestScoreFrom(cats)).toEqual('pineappl');
     });
   });
 });
