@@ -1,8 +1,6 @@
 var prompt = require('prompt');
 
 var Scrabble = function() {};
-// s = new Scrabble
-// s.helloWorld()
 
 Scrabble.prototype.helloWorld = function() {
   console.log('hello world!');
@@ -55,11 +53,33 @@ Scrabble.prototype.score = function(word) {
   var score = num_array.reduce(function(a, b) { return a + b; }, 0);
 
   if (num_array.length == 7) {
-    score += 50
+    score += 50;
   }
 
   console.log(score);
+};
 
+// var this._arrayofwords = ["anna","bryan","paddy"];
+
+Scrabble.prototype.highscore = function(arrayOfWords) {
+  this._arrayofwords = arrayOfWords;
+  var arrayofscores = [];
+
+  for (var word of this._arrayofwords) {
+    score = this.score(word);
+    arrayofscores.push(score);
+  }
+
+  for (var score of arrayofscores) {
+    console.log(score);
+  }
+
+  // this.score(word);
+
+  //take array of words ["a", "b", "c"]
+  //run the score method on each word
+  //new array of scores [1,3,2]
+  //run logic methods on array of words if scores are the same...
 };
 
 // `highestScoreFrom(arrayOfWords)`:
@@ -67,8 +87,6 @@ Scrabble.prototype.score = function(word) {
 //
 // 1. Note that it’s better to use fewer tiles,
 // so if the top score is tied between multiple words, pick the one with the fewest letters.
-//
-// 2. Note that there is a bonus (50 points) for using all seven letters.
 //
 // 3. If the top score is tied between multiple words and one used all seven letters,
 // choose the one with seven letters over the one with fewer tiles.
