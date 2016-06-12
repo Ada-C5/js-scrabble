@@ -56,31 +56,54 @@ Scrabble.prototype.score = function(word) {
     score += 50;
   }
 
-  console.log(score);
+  return score
 };
 
-// var this._arrayofwords = ["anna","bryan","paddy"];
+// this._arrayofwords = ["anna","bryan","paddy"];
+// s.highscore(["anna","bryan","paddy"])
+// make a hash of these words and scores instead?
+// arrayofscores = [4,10,6]
 
 Scrabble.prototype.highscore = function(arrayOfWords) {
   this._arrayofwords = arrayOfWords;
-  var arrayofscores = [];
+
+  wordsandscores = {};
 
   for (var word of this._arrayofwords) {
-    score = this.score(word);
-    arrayofscores.push(score);
+    wordsandscores[word] = this.score(word);
   }
 
-  for (var score of arrayofscores) {
-    console.log(score);
-  }
+/// TEST OUT HASH MAPPING
+// var hashPetName = {
+//     dog: "Rex",
+//     cat: "Mistigri"
+//   }
+///
 
-  // this.score(word);
-
-  //take array of words ["a", "b", "c"]
-  //run the score method on each word
-  //new array of scores [1,3,2]
-  //run logic methods on array of words if scores are the same...
 };
+
+
+///
+
+/// HOW TO GET INDEX OF ARRAY OF SCORES
+      // var arrayofscores = [10,6,3,2]
+      // for (var score of arrayofscores) {
+      //   console.log(arrayofscores.indexOf(score));
+      // }
+///
+
+// var highestscorewords = [];
+// var highestscore = 0;
+// for (var score of arrayofscores) {
+//   if (score > highestscore) {
+//     highestscore = score;
+//   } else if (score === highestscore) {
+//     //if score is 7 letters,
+//   }
+// };
+
+  //iterate through array, save highest score as var
+
 
 // `highestScoreFrom(arrayOfWords)`:
 // returns **the word in the array with the highest score**.
