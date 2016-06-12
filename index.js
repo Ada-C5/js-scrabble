@@ -1,4 +1,8 @@
-var Scrabble = require('./scrabble.js');
+//bring in the scrabble game
+var Scrabble = require('./scrabble.js'),
+  // this initializing
+game = new Scrabble();
+var prompt = require('word');
 
 
 
