@@ -13,7 +13,7 @@ const LETTERS = {
 Scrabble.prototype.score = function (word) {
   var chars     = word.toUpperCase().split(''),
       sum       = 0;
-  for (i = 0; i < chars.length; i++) {
+  for (var i = 0; i < chars.length; i++) {
     sum += LETTERS[chars[i]];
   }
   if (word.length === 7) {

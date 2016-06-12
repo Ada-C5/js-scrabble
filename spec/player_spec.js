@@ -1,7 +1,7 @@
 var Player = require("../player.js");
 
 describe ('A new player instantiated', function() {
-  var adriana = new Player("Adriana")
+  var adriana = new Player("Adriana");
 
   it ("Knows the name of the player", function() {
     expect(adriana.name).toEqual("Adriana");
@@ -14,7 +14,7 @@ describe ('A new player instantiated', function() {
 
 
 describe ('plays() and play(word)', function() {
-  var adriana = new Player("Adriana")
+  var adriana = new Player("Adriana");
 
   it ("returns the played_words", function() {
     expect(adriana.plays()).toEqual([]);
@@ -41,6 +41,25 @@ describe ('plays() and play(word)', function() {
   });
 });
 
+describe ('total_score()', function() {
+  var adriana = new Player("Adriana");
+  adriana.play("cat");
+  adriana.play("bat");
+  adriana.play("hat");
+
+  it ("Sums up all the played words", function () {
+    expect(adriana.total_score()).toEqual(16);
+  });
+
+  it ("Sums up all the played words again without adding more to it", function () {
+    expect(adriana.total_score()).toEqual(16);
+  });
+
+  it ("Sums up all the played words and replaces when a word is added", function () {
+    adriana.play("rat");
+    expect(adriana.total_score()).toEqual(19);
+  });
+});
 
 
 
@@ -55,4 +74,5 @@ describe ('plays() and play(word)', function() {
 
 
 
-// 
+
+//

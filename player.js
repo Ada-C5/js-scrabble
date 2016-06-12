@@ -12,7 +12,7 @@ Player.prototype.plays = function () {
 
 Player.prototype.play = function (word) {
   if (typeof word === "object") {
-    for (i = 0; i < word.length; i++) {
+    for (var i = 0; i < word.length; i++) {
       this.played_words.push(word[i]);
     }
   } else {
@@ -24,14 +24,20 @@ Player.prototype.play = function (word) {
 Player.prototype.total_score = function () {
   var scrabble = new Scrabble();
   var sum = 0
-  for (i = 0; i < this.played_words.length; i++) {
+  for (var i = 0; i < this.played_words.length; i++) {
     sum += scrabble.score(this.played_words[i]);
+    console.log(this.played_words[i]);
   }
   this.score = sum;
   return this.score;
 }
 
-var adriana = new Player("Adriana");
-console.log();
+// var adriana = new Player("Adriana");
+// adriana.play("cat");
+// adriana.play("bat");
+// adriana.play("hat");
+// // console.log(adriana.plays());
+//
+// console.log(adriana.total_score());
 
 module.exports = Player;
