@@ -16,15 +16,13 @@ Player.prototype.play = function (word) {
       this.played_words.push(word[i]);
     }
   } else {
-    console.log(typeof word);
     this.played_words.push(word);
   }
+  return this.plays();
 }
 
-// var adriana = new Player("Adriana");
-// console.log(adriana.name === "Adriana");
-// console.log(adriana.name);
-// console.log(adriana.plays("cat"));
-// console.log(adriana.plays(["hat", "bat", "hello", "world"]));
+var adriana = new Player("Adriana");
+console.log(adriana.play("cat"));
+console.log(adriana.play(["hat", "bat", "hello", "world"]));
 
 module.exports = Player;

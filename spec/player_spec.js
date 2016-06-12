@@ -13,19 +13,19 @@ describe ('A new player instantiated', function() {
 });
 
 
-describe ('plays()', function() {
+describe ('plays() and play(word)', function() {
   var adriana = new Player("Adriana")
 
-  it ("Adds a single word to the played_words array", function() {
-    expect(adriana.plays("hello")).toEqual(["hello"]);
+  it ("returns the played_words", function() {
+    expect(adriana.plays()).toEqual([]);
   });
-});
-
-describe ('plays(word)', function() {
-  var adriana = new Player("Adriana")
 
   it ("Adds a single word to the played_words array", function() {
     expect(adriana.play("hello")).toEqual(["hello"]);
+  });
+
+  it ("returns the played_words", function() {
+    expect(adriana.plays()).toEqual(["hello"]);
   });
 
   it ("Adds new word to the end of the array", function() {
@@ -35,4 +35,24 @@ describe ('plays(word)', function() {
   it ("Adds an array of words to the end of the array", function() {
     expect(adriana.play(["killing", "this", "testing"])).toEqual(["hello", "im", "killing", "this", "testing"]);
   });
+
+  it ("returns the played_words", function() {
+    expect(adriana.plays()).toEqual(["hello", "im", "killing", "this", "testing"]);
+  });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 
