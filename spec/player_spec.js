@@ -26,8 +26,8 @@ describe('Player', function() {
 
   it("Player#play(word) Function which will adds the input word to the plays Array", function() {
     expect(player.play("melissa")).not.toBeUndefined();
-    expect(player.play("david")).not.toBeNull();
-    expect(player.play("amalia")).toEqual(true);
+    expect(player.play("home")).not.toBeNull();
+    expect(player.play("company")).toEqual(true);
     expect(typeof player.play("lunes")).toEqual("boolean");
   });
 
@@ -41,7 +41,7 @@ describe('Player', function() {
   it("Player#total_score(): Function which sums up and returns the score of the players words", function() {
     expect(player.total_score()).not.toBeUndefined();
     expect(player.total_score()).not.toBeNull();
-    expect(player.total_score()).toEqual(82);
+    expect(player.total_score()).toEqual(75);
     expect(player.total_score()).toEqual(jasmine.any(Number));
   });
 
@@ -55,14 +55,14 @@ describe('Player', function() {
   it("Player#highestScoringWord(): Function which returns the highest scoring word the user has played.", function() {
     expect(player.highestScoringWord()).not.toBeUndefined();
     expect(player.highestScoringWord()).not.toBeNull();
-    expect(player.highestScoringWord()).toEqual("melissa");
+    expect(player.highestScoringWord()).toEqual("company");
     expect(player.highestScoringWord()).toEqual(jasmine.any(String));
   });
 
   it("Player#highestWordScore(): Function which returns the highestWordScore score.", function() {
     expect(player.highestWordScore()).not.toBeUndefined();
     expect(player.highestWordScore()).not.toBeNull();
-    expect(player.highestWordScore()).toEqual(59);
+    expect(player.highestWordScore()).toEqual(66);
     expect(player.highestWordScore()).toEqual(jasmine.any(Number));
   });
 

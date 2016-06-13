@@ -24,12 +24,11 @@ Player.prototype.plays = function() {
 Player.prototype.play = function(word) {
   // play(word): will adds the input word to the plays Array
   // Returns false if player has already won
- if (this.hasWon() === false && dictionary.valid(word)){
+ if (this.hasWon() === false && dictionary.valid(word)) {
    tilebag.drawtiles(word);
    wordsPlayed.push(word);
    return true
- } else if (this.hasWon() === true) {
-   wordsPlayed.push(word);
+ } else if (this.hasWon() || dictionary.valid(word) === false) {
    return false
   };
 };
