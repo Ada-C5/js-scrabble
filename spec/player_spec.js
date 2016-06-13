@@ -6,7 +6,6 @@ describe('Player', function(){
 
   winner.play("jacuzzi");
   winner.play("develop");
-  console.log(winner._plays);
 
   it("is present", function(){
     expect(winner !== undefined).toEqual(true);
@@ -23,7 +22,10 @@ describe('Player', function(){
   });
 
   // test total_score function
-
+  it("returns total score of player", function(){
+    expect(winner.total_score()).toEqual(147);
+    expect(loser.total_score()).toEqual(0);
+  });
 
 
   // test haswon function
@@ -36,7 +38,14 @@ describe('Player', function(){
   });
 
   // test highestscoringword function
+  it("returns highest scoring word of player", function(){
+    expect(winner.highestScoringWord()).toEqual("jacuzzi");
+    expect(loser.highestScoringWord()).toEqual(null);
+  });
 
   // test highestwordscore function
-
+  it("returns highest scoring word of player", function(){
+    expect(winner.highestWordScore()).toEqual(84);
+    // expect(loser.highestWordScore()).toThrowError(TypeError);
+  });
 });
