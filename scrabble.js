@@ -1,6 +1,6 @@
-var Scrabble = {
+function Scrabble() {
 
-  score: function(word) {
+  this.score = function(word) {
     var hash = { "A": 1, "E": 1, "I": 1, "O": 1, "U": 1, "L": 1, "N": 1, "R": 1, "S": 1, "T": 1,
                  "D": 2, "G": 2,
                  "B": 3, "C": 3, "M": 3, "P": 3,
@@ -10,16 +10,21 @@ var Scrabble = {
                  "Q": 10, "Z": 10
                };
     var total = 0;
-    for (var letter of word.toUpperCase()) {
-      total += hash[letter];
+    if (typeof word === "string"){
+      for (var letter of word.toUpperCase()) {
+        total += hash[letter];
+      }
+      if (word.length === 7) {
+        total += 50;
+      }
+      return total
+    } else {
+      throw "not a string";
     }
-    if (word.length === 7) {
-      total += 50;
-    }
-    return total
+
   },
 
-  highestScoreFrom: function(arrayOfWords) {
+  this.highestScoreFrom = function(arrayOfWords) {
     var scoredWords = {}
     for (var word of arrayOfWords) {
       total = this.score(word)
@@ -83,26 +88,26 @@ function Player(name) {
 }
 
 // DEBUG:
-
-var myplayer = new Player("Eagle");
-
-console.log(myplayer.name);
-
-myplayer.play("kiwi");
-console.log(Scrabble.score("kiwi"));
-myplayer.play("lemon");
-console.log(Scrabble.score("lemon"));
-
-console.log(myplayer.plays);
-console.log(myplayer.total_score());
-console.log(myplayer.hasWon());
-myplayer.play("QQQQQQ");
-myplayer.play("QQAA");
-console.log(myplayer.total_score());
-console.log(myplayer.hasWon());
-console.log(myplayer.highestScoringWord());
-console.log(myplayer.highestWordScore());
-
+// var mygame = new Scrabble();
+// var myplayer = new Player("Eagle");
+//
+// console.log(myplayer.name);
+//
+// myplayer.play(2);
+// console.log(mygame.score(2));
+// myplayer.play("lemon");
+// console.log(Scrabble.score("lemon"));
+//
+// console.log(myplayer.plays);
+// console.log(myplayer.total_score());
+// console.log(myplayer.hasWon());
+// myplayer.play("QQQQQQ");
+// myplayer.play("QQAA");
+// console.log(myplayer.total_score());
+// console.log(myplayer.hasWon());
+// console.log(myplayer.highestScoringWord());
+// console.log(myplayer.highestWordScore());
+//
 //
 // console.log(Scrabble.score("AAAAAAF"));
 // console.log(Scrabble.score("QQQQQQ"));
