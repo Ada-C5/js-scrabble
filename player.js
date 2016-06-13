@@ -11,6 +11,7 @@ Player.prototype.play = function(word){
     return false;
   } else {
     this._plays.push(word);
+    return this._plays;
   };
 };
 
