@@ -27,7 +27,7 @@ describe('Scrabble', function() {
     expect(scrabble.highestScoreFrom(["ATONE", "PEE", "HI"])).toEqual('HI');
   };
 
-  it("when multiple words that are equal in value, return the word with the length 7 tiles"), function() {
+  it("when multiple words that are equal in value, return the first word with the length 7 tiles"), function() {
     expect(scrabble.highestScoreFrom(["ZZZZZZ", "AEIOUTF", "AEIOUTH"])).toEqual("AEIOUTF");
   };
 

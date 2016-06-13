@@ -30,8 +30,8 @@ var letter_scores = {
 }
 
 Scrabble.prototype.score = function(word) {
-  upword = word.toUpperCase();
-  score = 0;
+  var upword = word.toUpperCase();
+  var score = 0;
   for (var letter of upword) {
     score += letter_scores[letter];
   }
@@ -41,23 +41,28 @@ Scrabble.prototype.score = function(word) {
   return score;
 };
 
-
 Scrabble.prototype.highestScoreFrom = function(arrayOfWords){
-  highest_score = this.score(arrayOfWords[0]);
-  winning_word = arrayOfWords[0];
+  var highest_score = this.score(arrayOfWords[0]);
+  var winning_word = arrayOfWords[0];
+
   for (var word of arrayOfWords){
-    score = this.score(word);
-    if ((score > highest_score) || (score = highest_score && word.length === 7) ){
+    var score = this.score(word);
+    if ( score > highest_score ){
       highest_score = score;
       winning_word = word;
     }
-    else if (score === highest_score && winning_word.length > word.length){
+    else if (score === highest_score && (winning_word.length > word.length && winning_word.length != 7)){
+      highest_score = score;
+      winning_word = word;
+    }
+    else if (score === highest_score && winning_word.length != 7 && word.length === 7) {
       highest_score = score;
       winning_word = word;
     }
   }
   return winning_word;
 
-}
+};
+//(score === highest_score && word.length === 7)
 
 module.exports = Scrabble;
