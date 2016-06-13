@@ -3,7 +3,14 @@ var Scrabble = require("../scrabble.js");
 describe('Scrabble', function() {
   var scrabble = new Scrabble();
 
-  it('#scores should not be an Object with 26 letters as keys', function() {
+  it('bonus should be equal to 50', function() {
+    expect(scrabble.bonus).not.toBeUndefined();
+    expect(scrabble.bonus).not.toBeNull();
+    expect(scrabble.bonus).toEqual(jasmine.any(Number));
+    expect(scrabble.bonus).toEqual(50);
+  });
+
+  it('scores should be an Object with 26 letters as keys', function() {
     expect(scrabble.scores).not.toBeUndefined();
     expect(scrabble.scores).not.toBeNull();
     expect(scrabble.scores).toEqual(jasmine.any(Object));
