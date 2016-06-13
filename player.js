@@ -1,3 +1,6 @@
+var Scrabble = require("./scrabble.js");
+var scrabble = new Scrabble();
+
 var PlayerPrototype = {
   name: null,
   plays: []
@@ -10,11 +13,22 @@ Player.prototype = PlayerPrototype;
 
 
 Player.prototype.play = function(word) {
-  this.plays.push('word')
+  this.plays.push(word)
 }
 
 Player.prototype.totalScore = function() {
+  console.log("plays: ", this.plays);
+  var scores = [];
+  for (word of this.plays) {
+    scores.push(scrabble.score(word));
+  }
+  console.log("scores: ", scores);
 
+  function sumTotal(previousValue, currentValue, currentIndex, array) {
+    return previousValue + currentValue;
+  }
+  console.log(scores.reduce(sumTotal));
+  return scores.reduce(sumTotal);
 }
 
 Player.prototype.hasWon = function() {
