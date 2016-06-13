@@ -126,7 +126,7 @@
 
 
   TileBag = function(){
-    this._default_tiles = [["A", 1], ["A", 1], ["A", 1], ["A", 1], ["A", 1], ["A", 1], ["A", 1], ["A", 1], ["A", 1],
+    this._defaultTiles = [["A", 1], ["A", 1], ["A", 1], ["A", 1], ["A", 1], ["A", 1], ["A", 1], ["A", 1], ["A", 1],
                   ["B", 1], ["B", 1],
                   ["C", 1], ["C", 1],
                   ["D", 1], ["D", 1], ["D", 1], ["D", 1],
@@ -154,5 +154,25 @@
                   ["Y", 1], ["Y", 1],
                   ["Z", 1]];
   };
-  
+
+  TileBag.prototype.drawTiles = function(num){
+    arrayOfSelectedTiles = [];
+
+    for(i=0; i<num; i++){
+      var maxNumber = this._defualtTiles.length;
+      var selectedTileIndex = Math.floor((Math.random() * maxNumber));
+
+      // add the selected tile into array
+      arrayOfSelectedTiles.push(this._defaultTiles[selectedTileIndex]);
+
+      // delete selected tile from defaultTiles array
+      this._defaultTiles.splice[selectedTileIndex];
+    }
+    return arrayOfSelectedTiles;
+  }
+
+  TileBag.prototype.tilesRemaining = function(){
+    this._defaultTiles.length;
+  };
+
 module.exports = Scrabble;
