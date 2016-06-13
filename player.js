@@ -44,7 +44,7 @@ Player.prototype.highestScoringWord = function(){
 Player.prototype.highestWordScore = function(){
   var scrabble = new Scrabble;
 
-  return scrabble.score(this.highestScoringWord);
+  return scrabble.score(this.highestScoringWord());
 };
 
 module.exports = Player;
