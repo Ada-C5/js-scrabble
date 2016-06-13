@@ -33,6 +33,10 @@ describe('Player JS file', function() {
     expect(player.total_score(['Z', 'ZZ', 'ZZZ', 'ZZZZ', 'AAAAA'])).toEqual(105);
   });
 
+  it('knows if player hasnt won', function() {
+    expect(player.hasWon()).toEqual(false);
+  });
+
   it('knows if player has won', function() {
     player.play('ZZZZZZZ');
     player.play('ZZZZZZZ');
@@ -45,10 +49,11 @@ describe('Player JS file', function() {
   });
 
   it('can find highest scoring word', function() {
-    expect(player.highestScoringWord(player.plays)).toEqual('ZZZZZZZ');
+    expect(player.highestScoringWord()).toEqual('ZZZZZZZ');
   });
 
-
-
+  it('can find highest scoring word SCORE', function() {
+    expect(player.highestWordScore()).toEqual(120);
+  });
 
 });

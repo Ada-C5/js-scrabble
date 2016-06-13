@@ -36,13 +36,13 @@ Player.prototype.hasWon = function() {
   };
 };
 
-Player.prototype.highestScoringWord = function(arrayOfWords) {
-  return scrabble.highestScoreFrom(arrayOfWords);
+Player.prototype.highestScoringWord = function() {
+  return scrabble.highestScoreFrom(this.plays);
 };
 
-// Player.prototype.highestWordScore = function() {
-//
-// };
+Player.prototype.highestWordScore = function() {
+  return scrabble.score(this.highestScoringWord());
+};
 
 Player.prototype.helloWorld = function() {
   return 'hello world!';
