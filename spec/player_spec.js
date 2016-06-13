@@ -1,3 +1,5 @@
+// Minimum of 11 tests
+
 var Player = require("../player.js");
 
 describe('Player name', function() {
