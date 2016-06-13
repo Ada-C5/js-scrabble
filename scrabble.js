@@ -50,7 +50,6 @@ Scrabble.prototype = {
         // if words are same length, the first in the list wins
       } else if (this.score(word) === winner.score) {
         if (winner.word.length > word.length) {
-          winner = "none";
           winner = {
             "word": word, 
             "score": this.score(word)
