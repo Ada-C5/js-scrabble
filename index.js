@@ -8,3 +8,16 @@
   we won't be bringing anything into this file. Next project, we'll make good
   use of this file.
 */
+var prompt = require('prompt');
+var Scrabble = require("./scrabble.js");
+
+function input() {
+  prompt.get(['word'], function (error, result) {
+    var word = result['word'];
+    var scrabble = new Scrabble();
+    console.log(scrabble.highestScoreFrom(word));
+  });
+};
+
+prompt.start();
+input();
