@@ -57,6 +57,7 @@ Player.prototype.play = function(word) {
     if (word_array.length >= 7) {
       score_value += 50;
     }
+    // Really wanted to DRY up my code by using the scrabble.js file instead of repeating the scoring process inside of Player but could not figure out how to resolve issues related to JS file loading order-_-
     word_array.forEach(function(letter) {
       score_value += self.score_hash[letter];
     });
@@ -76,11 +77,21 @@ Player.prototype.hasWon = function() {
     return true;
   } else {
     return false;
-  }
+  };
 };
 
 
 // highestScoringWord(): Function which returns the highest scoring word the user has played.
+Player.prototype.highestScoringWord = function() {
+  var score_hash = {}
+  var self = this
+  self.plays_array.forEach(function(word) {
+    score_hash[word] = self.play(word);
+  });
+  // return score_hash;
+
+  return (Object.keys(score_hash).reduce(function(a, b){ return score_hash[a] > score_hash[b] ? a : b}) + " is your highest scoring word!");
+};
 
 
 // highestWordScore(): Function which returns the highestScoringWord score.
@@ -92,4 +103,3 @@ module.exports = Player;
 
 // Current Test:
 var player = new Player("Alysia");
-console.log(player.play("hello"))
