@@ -47,5 +47,19 @@ describe('totalScore', function() {
   it('returns the correct total score', function() {
     expect(iroh.totalScore()).toEqual(73);
   });
+});
+
+describe('hasWon', function() {
+  var zuko = new Player("Prince Zuko")
+
+  it('returns false if score is < 100', function() {
+    zuko.play("kittens");
+    expect(zuko.hasWon()).toEqual(false);
+  });
+
+  it('returns true if score is >= 100', function() {
+    zuko.play("puppies");
+    expect(zuko.hasWon()).toEqual(true);
+  });
 
 });

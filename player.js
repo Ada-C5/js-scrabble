@@ -10,25 +10,30 @@ Player.prototype.play = function(word) {
   this.plays.push(word);
 }
 
-Player.prototype.totalScore = function() {
-  // console.log("plays: ", this.plays);
-  if (this.plays.length <= 0) {
-    return 0;
-  }
+Player.prototype.wordScores = function() {
   var scores = [];
   for (word of this.plays) {
     scores.push(scrabble.score(word));
   }
-  // console.log("scores: ", scores);
+  return scores;
+}
+
+Player.prototype.totalScore = function() {
+  if (this.plays.length <= 0) {
+    return 0;
+  }
+
+  var current_scores = this.wordScores();
 
   function sumTotal(previousValue, currentValue, currentIndex, array) {
     return previousValue + currentValue;
   }
-  return scores.reduce(sumTotal);
+  return current_scores.reduce(sumTotal);
 }
 
 Player.prototype.hasWon = function() {
-
+  var won = this.totalScore() >= 100 ? true : false;
+  return won;
 }
 
 Player.prototype.highestScoringWord = function() {
