@@ -18,11 +18,11 @@ Scrabble.prototype.getKey = function(value) {
       return Number(key);
     }
   }
+
   return null;
 }
 
 // actually do stuff now
-
 Scrabble.prototype.score = function(word) {
   var running_score = 0
   if (word.length >= 7) {
@@ -31,6 +31,7 @@ Scrabble.prototype.score = function(word) {
   for (var letter of word) {
     running_score += this.getKey(letter);
   }
+  
   return running_score;
 }
 
@@ -56,7 +57,7 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
     }
     var sortedScores = scores.slice(0).sort(compareNumbers);
 
-    // ties?
+    // any ties?
     var max = sortedScores[sortedScores.length - 1];
     var number_of_ties = numberOfTies(sortedScores, max);
 
@@ -70,7 +71,6 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
         ties.push(scores[i]);
       }
     }
-    // console.log("number of ties " + ties.length, ties);
     return ties.length;
   }
 
@@ -83,13 +83,11 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
       }
       currentIndex = scores.indexOf(val);
     }
-    // console.log("tied " + tiedWordsIndices);
 
     var tiedWords = [];
     for (index of tiedWordsIndices) {
       tiedWords.push(arrayOfWords[index]);
     }
-    // console.log("tied words " + tiedWords)
     // best word to choose is 7 letters long or smallest length
     var bestWord = tiedWords[0];
     for (var word of tiedWords) {
@@ -105,9 +103,5 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
 
   return findMax();
 }
-
-// var scrabble = new Scrabble();
-//
-// scrabble.score("coffee")
 
 module.exports = Scrabble;

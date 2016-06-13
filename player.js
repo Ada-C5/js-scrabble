@@ -18,6 +18,7 @@ Player.prototype.wordScores = function() {
   for (word of this.plays) {
     scores.push(scrabble.score(word));
   }
+
   return scores;
 }
 
@@ -31,11 +32,13 @@ Player.prototype.totalScore = function() {
   function sumTotal(previousValue, currentValue, currentIndex, array) {
     return previousValue + currentValue;
   }
+
   return current_scores.reduce(sumTotal);
 }
 
 Player.prototype.hasWon = function() {
   var won = this.totalScore() > 100 ? true : false;
+
   return won;
 }
 
@@ -43,6 +46,7 @@ Player.prototype.indexOfHighest = function() {
   var current_scores = this.wordScores();
   var max = Math.max.apply(null, current_scores);
   var maxIndex = current_scores.indexOf(max);
+
   return maxIndex;
 }
 
@@ -52,6 +56,7 @@ Player.prototype.highestScoringWord = function() {
 
 Player.prototype.highestWordScore = function() {
   var scores = this.wordScores();
+
   return scores[this.indexOfHighest()];
 }
 

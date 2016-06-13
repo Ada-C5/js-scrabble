@@ -6,15 +6,13 @@ var seven_letter_word = "affined"
 var test_words1 = ["aerugo", "aether", "afeard", "affair", "affect", "affined", "affirm", "afflux", "afford", "affray"]
 var test_words2 = ["cat", "jeez", "foot", "furzy", "see"]
 var test_words3 = ["cat", "jeez", "foot", "furzy", "see", "bcmpbcg"]
-var test_words4 = ["bcmpbcg", "bcmpbcd", "ccmpbcd", "cccpbcd"]
-var test_words5 = ["qqqqqq", "bgeeeee", "cat"]
+var test_words4 = ["qqqqqq", "bgeeeee", "cat"]
 
 describe('score_key', function() {
   var scrabble = new Scrabble();
 
   it('returns a number score', function() {
     var letter1 = "A";
-    // console.log(scrabble.getKey(letter1))
 
     expect(scrabble.getKey(letter1)).toEqual(jasmine.any(Number));
   });
@@ -54,8 +52,6 @@ describe('score', function() {
   it('gives a bonus 50pts for 7 letter words', function() {
     expect(scrabble.score(seven_letter_word)).toEqual(64);
   });
-
-
 });
 
 describe('highestScoreFrom', function() {
@@ -74,7 +70,6 @@ describe('highestScoreFrom', function() {
   });
 
   it('it chooses the 7 letter word in a tie', function() {
-    expect(scrabble.highestScoreFrom(test_words5)).toEqual("qqqqqq");
+    expect(scrabble.highestScoreFrom(test_words4)).toEqual("qqqqqq");
   });
-
 });

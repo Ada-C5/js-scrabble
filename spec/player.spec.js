@@ -1,6 +1,5 @@
 var Player = require("../player.js");
 
-
 describe('Player', function() {
   var azula = new Player("Princess Azula");
 
