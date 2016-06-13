@@ -32,23 +32,27 @@ var Scrabble = function() {
 
 Scrabble.prototype.score = function(word){
   // The word is input as a string (case insensitive).
-  var word_array = word.toUpperCase().split(""),
-      word_score = 0;
+  if (word === undefined){
+    throw new TypeError("No word was provided");
+  } else {
+    var word_array = word.toUpperCase().split(""),
+        word_score = 0;
 
-  if(word.length <= 7){
-    for(var letter of word_array){
-      word_score += this._score[letter];
-    }
+    if(word.length <= 7){
+      for(var letter of word_array){
+        word_score += this._score[letter];
+      }
 
-  // seven letter word gets 50point bonus
-    if(word.length == 7){
-      word_score += 50;
-    } else {
-      word_score;
-    }
+    // seven letter word gets 50point bonus
+      if(word.length == 7){
+        word_score += 50;
+      } else {
+        word_score;
+      }
+    };
+    // returns the total score value for the given word.
+    return word_score;
   };
-  // returns the total score value for the given word.
-  return word_score;
 }
 
 
