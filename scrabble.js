@@ -35,11 +35,8 @@ Scrabble.prototype.score = function(word) {
 }
 
 Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
-  // var word_scores = [];
-  // for (word of arrayOfWords) {
-  //   word_scores.push(this.score(word));
-  // }
   var thisScrabble = this;
+
   function assignScores() {
     thisScrabble.wordsAndScores = {};
     for (var word of arrayOfWords) {
@@ -49,11 +46,9 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
 
   function findMax() {
     assignScores();
-    // console.log(thisScrabble.assignScores)
+
     var scores = [];
     for (var prop in thisScrabble.wordsAndScores) {
-      // if (wordsAndScores[prop] >= max)
-      // console.log(prop)
       scores.push(thisScrabble.wordsAndScores[prop]);
     }
     function compareNumbers(a,b) {
@@ -104,32 +99,15 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
         bestWord = word;
       }
     }
+
     return bestWord;
   }
 
   return findMax();
-  // var max_index = arrayOfWords.indexOf(max); // this could return the index of the wrong tied word
-  // you can start searching through and array at a specified index withindexOf
-  // we should find the first instance, then keep look thru starting at the index after the first find, instead of having to change the value of the first one for it to ignored or w/e
-  // return arrayOfWords[max_index]; // this could easily return the wrong tied word
 }
 
 // var scrabble = new Scrabble();
 //
 // scrabble.score("coffee")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = Scrabble;
