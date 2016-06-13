@@ -1,6 +1,6 @@
 var Scrabble = require("../scrabble.js");
 
-describe('Hello World', function() {
+describe('errthang in scrabble.js', function() {
   var scrabble = new Scrabble();
 
   it('says hello world', function() {
