@@ -8,8 +8,15 @@ var Player = function(name) {
 
 Player.prototype.play = function(word) {
   // add word to array of played words
-  // return word
-  (this.hasWon())? false : (scrabble.score(word) !== 'Unacceptable word!!')? this.plays.push(word) : scrabble.score(word);
+  // return this.hasWon()
+  if (this.hasWon()) {
+    return false;
+  } else if (scrabble.score(word) !== 'Unacceptable word!!') {
+    this.plays.push(word);
+  } else {
+    scrabble.score(word);
+  }
+
   return scrabble.score(word);
 };
 
@@ -29,10 +36,10 @@ Player.prototype.hasWon = function() {
   };
 };
 
-// Player.prototype.highestScoringWord = function() {
-//
-// };
-//
+Player.prototype.highestScoringWord = function(arrayOfWords) {
+  return scrabble.highestScoreFrom(arrayOfWords);
+};
+
 // Player.prototype.highestWordScore = function() {
 //
 // };

@@ -40,5 +40,15 @@ describe('Player JS file', function() {
     expect(player.hasWon()).toEqual(true);
   });
 
+  it('returns false if player has won and tries to play a word', function() {
+    expect(player.play('Meow')).toEqual(false);
+  });
+
+  it('can find highest scoring word', function() {
+    expect(player.highestScoringWord(player.plays)).toEqual('ZZZZZZZ');
+  });
+
+
+
 
 });
