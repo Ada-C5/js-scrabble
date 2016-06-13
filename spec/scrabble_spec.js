@@ -178,12 +178,11 @@ describe ("Scrabble::Player#highestScoringWord", function(){
     expect(april.highestScoringWord()).toEqual("frog");
   });
 
-  it("should return 'aaaaaad' for array_of_words = ['nose', 'aaaaaad', 'eeeeeed', 'frog', 'rrrrrrr', 'qqqqqj']", function(){
+  it("should return 'aaaaaad' for arrayOfWords = ['nose', 'aaaaaad', 'eeeeeed', 'frog', 'rrrrrrr', 'qqqqqj']", function(){
     var fox = new Player("Fox");
     var arrayOfWords = ["nose", "aaaaaad", "eeeeeed", "frog", "rrrrrrr", "qqqqqj"];
     // create an each method that will play the words in the array one by one
     for(wordPlayed of arrayOfWords){
-      console.log("wordPlayed:", wordPlayed)
       fox.play(wordPlayed);
     };
 
@@ -192,55 +191,57 @@ describe ("Scrabble::Player#highestScoringWord", function(){
 
 
 });
-//
-// describe "Scrabble::Player#highest_word_score" do
-//   jody = Scrabble::Player.new(name: "Jody")
-//
-//   # it should return the highest scoring played WORD
-//   it %!should return "8" for the words played "frog" and "nose"! do
-//     jody.play("frog")
-//     jody.play("nose")
-//     jody.highest_word_score.must_equal 8
-//   end
-//
-//   it %!should return '58' for array_of_words = ["nose", "aaaaaad", "eeeeeed", "frog", "rrrrrrr", "qqqqqj"]! do
-//     fox = Scrabble::Player.new(name: "Fox")
-//     array_of_words = ["nose", "aaaaaad", "eeeeeed", "frog", "rrrrrrr", "qqqqqj"]
-//     # create an each method that will play the words in the array one by one
-//     array_of_words.each do |word_played|
-//       fox.play(word_played)
-//     end
-//
-//     fox.highest_word_score.must_equal 58
-//   end
-//
-// end
-//
-// describe "Scrabble::Player#won?" do
-//
-//   it %!should return 'true' for array_of_words = ["nose", "aaaaaad", "eeeeeed", "frog", "rrrrrrr", "qqqqqj"]! do
-//     fox = Scrabble::Player.new(name: "Fox")
-//     array_of_words = ["nose", "aaaaaad", "eeeeeed", "frog", "rrrrrrr", "qqqqqj"]
-//     # create an each method that will play the words in the array one by one
-//     array_of_words.each do |word_played|
-//       fox.play(word_played)
-//     end
-//
-//     fox.won?.must_equal true
-//   end
-//
-//   it %!should return "false" for the words played "frog" and "nose"! do
-//     jody = Scrabble::Player.new(name: "Jody")
-//     jody.play("frog")
-//     jody.play("nose")
-//     jody.won?.must_equal false
-//   end
-// end
-//
-// describe "Scrabble::Player#tiles" do
-//   bill = Scrabble::Player.new(name: "Bill")
-//   # should return a collection of letters that the player can play (max 7) -- that's their own personal little tray of letters
-//   it "should return 7 letters" do
-//     bill.tiles.length.must_equal 7
-//   end
-// end
+
+describe ("Scrabble::Player#highest_word_score", function(){
+  var jody = new Player("Jody");
+
+  // # it should return the highest scoring played WORD
+  it ("should return '8' for the words played 'frog' and 'nose' ", function(){
+    jody.play("frog");
+    jody.play("nose");
+    expect(jody.highestScore()).toEqual(8);
+  });
+
+  it ("should return '58' for array_of_words = ['nose', 'aaaaaad', 'eeeeeed', 'frog', 'rrrrrrr', 'qqqqqj'] ", function(){
+    var fox = new Player ("Fox")
+    arrayOfWords = ["nose", "aaaaaad", "eeeeeed", "frog", "rrrrrrr", "qqqqqj"]
+    // # create an each method that will play the words in the array one by one
+    for(wordPlayed of arrayOfWords){
+      fox.play(wordPlayed);
+    };
+
+  expect(fox.highestScore()).toEqual(58);
+  });
+
+});
+
+
+
+describe ("Scrabble::Player#won", function(){
+
+  it ("should return 'true' for array_of_words = ['nose', 'aaaaaad', 'eeeeeed', 'frog', 'rrrrrrr', 'qqqqqj']" , function(){
+    var fox = new Player("Fox");
+    var arrayOfWords = ["nose", "aaaaaad", "eeeeeed", "frog", "rrrrrrr", "qqqqqj"];
+    // create an each method that will play the words in the array one by one
+    for(word of arrayOfWords){
+      fox.play(word);
+    };
+
+    expect(fox.hasWon()).toEqual(true);
+  });
+
+  it ("should return 'false' for the words played 'frog' and 'nose'" , function(){
+    var jody = new Player("Jody");
+    jody.play("frog");
+    jody.play("nose");
+    expect(jody.hasWon()).toEqual(false);
+  });
+});
+
+describe ("Scrabble::Player#tiles", function(){
+  var bill = new Player("Bill");
+  // should return a collection of letters that the player can play (max 7) -- that's their own personal little tray of letters
+  it ("should return 7 letters", function(){
+    expect(bill.tiles.length).toEqual(7);
+  });
+});
