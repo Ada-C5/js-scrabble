@@ -1,8 +1,9 @@
 var Player = require("../player.js");
 
-var azula = new Player("Azula");
 
 describe('Player', function() {
+  var azula = new Player("Azula");
+
   it('has a name', function() {
     expect(azula.name).toEqual(jasmine.any(String));
   });
@@ -17,18 +18,29 @@ describe('Player', function() {
 });
 
 describe('play(word)', function() {
+  var katara = new Player("Katara")
+  katara.play("kittens");
+
   it('adds a word to plays property', function() {
-    azula.play("kittens");
-    expect(azula.plays.length).toEqual(1);
+    expect(katara.plays.length).toEqual(1);
+  });
+
+  it('adds the correct word to plays property', function(){
+    expect(katara.plays[0]).toEqual("kittens");
   });
 });
 
 describe('totalScore', function() {
+  var iroh = new Player("Uncle Iroh");
+  iroh.play('kitten');
+  iroh.play('puppies');
 
   it('returns a number', function() {
-    azula.play('kittens')
-    azula.play('puppies')
-    expect(azula.totalScore()).toEqual(jasmine.any(Number));
+    expect(iroh.totalScore()).toEqual(jasmine.any(Number));
+  });
+
+  it('returns the correct total score', function() {
+    expect(iroh.totalScore()).toEqual(73);
   });
 
 });
