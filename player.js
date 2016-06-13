@@ -4,7 +4,7 @@ var Player = function(name) {
   this.name = name;
   this.played_words = [];
   this.score = 0
-};
+}
 
 Player.prototype.plays = function () {
   return this.played_words;
