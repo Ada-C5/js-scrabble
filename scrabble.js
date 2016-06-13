@@ -30,10 +30,10 @@ var letter_scores = {
 }
 
 Scrabble.prototype.score = function(word) {
-  upword = word.toUpperCase()
-  score = 0
+  upword = word.toUpperCase();
+  score = 0;
   for (var letter of upword) {
-    score += letter_scores[letter]
+    score += letter_scores[letter];
   }
   if (word.length === 7) {
     score += 50;
@@ -42,6 +42,9 @@ Scrabble.prototype.score = function(word) {
 };
 
 Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
+  //clean this up into another version below, make variables for best word and highest score and do logic on the way
+  //to replace them if current best word is no longer the best
+  //this method is gross, it makes me feel icky all over
   var words_with_scores = {};
   var winning_words = []
   for (var word of arrayOfWords) {
@@ -69,20 +72,10 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
   };
 };
 
+// Scrabble.prototype.highestScoreFrom = function(arrayOfWords){
+//   highest_score = 0;
+//   winning_word = arrayOfWords[0];
+//
+// }
 
 module.exports = Scrabble;
-
-
-
-// var maxKey = _.max(Object.keys(obj), function (o) { return obj[o]; });
-
-
-
-
-// highestScoreFrom(arrayOfWords): returns the word in the array with the highest score.
-//     Note that it’s better to use fewer tiles, so if the top score is tied between multiple words,
-//       pick the one with the fewest letters.
-//     Note that there is a bonus (50 points) for using all seven letters.
-//       If the top score is tied between multiple words and one used all seven letters,
-//       choose the one with seven letters over the one with fewer tiles.
-//       If the there are multiple words that are the same score and same length, pick the first one in supplied list.

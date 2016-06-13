@@ -1,30 +1,26 @@
-
 var Player = function(name) {
   this.name = name;
-  this.played_words = []
+  this.plays = []
 };
 
 Player.prototype.play = function(word) {
   if (this.hasWon() === true) {
     return false;
   } else {
-    this.played_words.push(word);
-    return this.played_words
+    this.plays.push(word);
+    return this.plays
   }
 };
-
-
 
 Player.prototype.total_score = function() {
   total_score = 0;
   var Scrabble = require("./scrabble.js");
   var scrabble = new Scrabble();
-  for (var word of this.played_words) {
+  for (var word of this.plays) {
     total_score += scrabble.score(word);
   };
   return total_score;
 };
-
 
 Player.prototype.hasWon = function() {
   if (this.total_score >=100) {
@@ -37,7 +33,7 @@ Player.prototype.hasWon = function() {
 Player.prototype.highestScoringWord = function() {
   var Scrabble = require("./scrabble.js");
   var scrabble = new Scrabble();
-  return scrabble.highestScoreFrom(this.played_words)
+  return scrabble.highestScoreFrom(this.plays)
 }
 
 Player.prototype.highestWordScore = function() {
