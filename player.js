@@ -48,21 +48,4 @@ Player.prototype = {
   }
 }
 
-
-
-
-// temporarily this, if I have time I will use prompt.get for this
-var name = "Tom";
-// var plays = [];
-var player_tom = new Player(name);
-player_tom.play("monkey");
-player_tom.play("dog");
-player_tom.play("cat");
-player_tom.play("aaaaaaf");
-player_tom.play("aaaaaaf");
-player_tom.play("aaaaaaf");
-player_tom.play("aaaaaaf");
-player_tom.play("aaaaaaf");
-player_tom.play("aaaaaaf");
-player_tom.play("aaaaaaf");
-player_tom.play("aaaaaaf");
+module.exports = Player;
