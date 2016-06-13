@@ -4,6 +4,13 @@ describe('Player', function() {
   var player = new Player("melissa");
   var player2 = new Player("david");
 
+  it("Startinf points should be 0", function() {
+    expect(player.player_points).not.toBeUndefined();
+    expect(player.player_points).not.toBeNull();
+    expect(typeof player.player_points).toEqual("number");
+    expect(player.player_points).toEqual(0);
+  });
+
   it("#player's name should not be undefined or null", function() {
     expect(player.name()).not.toBeUndefined();
     expect(player.name()).not.toBeNull();
@@ -15,7 +22,6 @@ describe('Player', function() {
     expect(player.plays()).not.toBeNull();
     expect(Array.isArray(player.plays())).toEqual(true);
     expect(typeof player.plays()).toEqual("object");
-
   });
 
   it("Player#play(word) Function which will adds the input word to the plays Array", function() {
