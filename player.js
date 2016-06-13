@@ -1,16 +1,16 @@
 var Scrabble = require('./scrabble'),
     game = new Scrabble(),
-    wordsPlayed = new Array(),
-    player_points = null;
+    wordsPlayed = new Array();
 
 var Player = function(name) {
   this._name = name;
-  // this._wordsplayed = wordsPlayed
 };
 
 Player.prototype.name = function() {
   return this._name;
 };
+
+Player.prototype.player_points = 0;
 
 Player.prototype.plays = function() {
   // plays: property which returns an Array of the words played by the player
@@ -33,10 +33,10 @@ Player.prototype.total_score = function() {
   // total_score(): sums up and returns the score of the players words
   var scores = wordsPlayed.map(function(word) {
    return game.score(word);
-  })
+  });
   //Using fancy arrow functions introduced in ES6:
-  var player_points = scores.reduce((a, b) => a + b, 0);
-  return player_points
+  this.player_points = scores.reduce((a, b) => a + b, 0);
+  return this.player_points
 };
 
 Player.prototype.hasWon = function() {
