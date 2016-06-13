@@ -61,5 +61,39 @@ describe('hasWon', function() {
     zuko.play("puppies");
     expect(zuko.hasWon()).toEqual(true);
   });
+});
 
+describe('highestScoringWord', function() {
+  var aang = new Player("Avatar Aang");
+  aang.play("dragon") // 8
+  aang.play("tea") // 3
+  aang.play("fire") // 7
+
+  it('returns a string', function() {
+    expect(aang.highestScoringWord()).toEqual(jasmine.any(String));
+  });
+
+  it('returns a the highest scoring word', function() {
+    expect(aang.highestScoringWord()).toEqual("dragon");
+  });
+});
+
+describe('highestWordScore', function() {
+  var appa = new Player("Appa the Flying Bison");
+  appa.play("dragon") // 8
+  appa.play("tea") // 3
+  appa.play("fire") // 7
+
+  it('returns a number', function() {
+    expect(appa.highestWordScore()).toEqual(jasmine.any(Number));
+  });
+
+  it('returns a the highest score', function() {
+    expect(appa.highestWordScore()).toEqual(8);
+  });
+
+  it('returns a the highest score when it is not the first item in plays array', function() {
+    appa.play("dragons")
+    expect(appa.highestWordScore()).toEqual(59);
+  });
 });

@@ -36,12 +36,20 @@ Player.prototype.hasWon = function() {
   return won;
 }
 
-Player.prototype.highestScoringWord = function() {
+Player.prototype.indexOfHighest = function() {
+  var current_scores = this.wordScores();
+  var max = Math.max.apply(null, current_scores);
+  var maxIndex = current_scores.indexOf(max);
+  return maxIndex;
+}
 
+Player.prototype.highestScoringWord = function() {
+  return this.plays[this.indexOfHighest()];
 }
 
 Player.prototype.highestWordScore = function() {
-
+  var scores = this.wordScores();
+  return scores[this.indexOfHighest()];
 }
 
 module.exports = Player;
