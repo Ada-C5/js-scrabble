@@ -159,7 +159,7 @@
     arrayOfSelectedTiles = [];
 
     for(i=0; i<num; i++){
-      var maxNumber = this._defualtTiles.length;
+      var maxNumber = this._defaultTiles.length;
       var selectedTileIndex = Math.floor((Math.random() * maxNumber));
 
       // add the selected tile into array

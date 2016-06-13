@@ -238,10 +238,10 @@ describe ("Scrabble::Player#won", function(){
   });
 });
 
-describe ("Scrabble::Player#tiles", function(){
-  var bill = new Player("Bill");
+describe ("Scrabble::Player#drawTiles", function(){
+  var bill = new TileBag();
   // should return a collection of letters that the player can play (max 7) -- that's their own personal little tray of letters
   it ("should return 7 letters", function(){
-    expect(bill.tiles.length).toEqual(7);
+    expect(bill.drawTiles(7).length).toEqual(7);
   });
 });
