@@ -92,13 +92,13 @@
     this.totalScore = 0;
     this._tiles = [];
     this._maxTiles = 7;
+    this._scrabble = new Scrabble();
   };
 
 
 
   Player.prototype.play = function(word){
-    var scrabble = new Scrabble();
-    var score = scrabble.score(word);
+    var score = this._scrabble.score(word);
 
     this.plays.push(word);
     this.totalScore += score;
@@ -106,8 +106,31 @@
     return this.hasWon() === true ? false : score;
   };
 
-  Player.prototype.hasWon = function (){
+  Player.prototype.hasWon = function(){
     return this.totalScore >= 100 ? true : false;
   };
+
+  Player.prototype.highestScore = function(){
+    return this.maxByScore()["score"];
+  };
+
+  Player.prototype.highestScoringWord = function(){
+    return this.maxByScore()["word"];
+  };
+
+
+  Player.prototype.maxByScore = function(){
+    var initialWord = this.plays[0];
+    var maxHash = {word: initialWord, score: this._scrabble.score(initialWord)};
+
+    for(var word of this.plays){
+      var currentScore = this._scrabble.score(word);
+      if(currentScore > maxHash["score"]){
+        maxHash = {word: word, score: currentScore};
+      };
+    };
+    return maxHash;
+  };
+
 
 module.exports = Scrabble;
