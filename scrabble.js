@@ -31,6 +31,8 @@ var Scrabble = function() {
 
 // YOUR CODE HERE
 
+// finds the total score for a word
+//  ** no checks for edge/faulty cases **
 Scrabble.prototype.score = function(word) {
   var wordy = word.toUpperCase();
   var score = 0;
@@ -38,11 +40,44 @@ Scrabble.prototype.score = function(word) {
   for (var index in wordy) {
     score += this._tilepoints[wordy[index]];
   };
+
+  (wordy.length === 7)? score+= 50: ""
   return score;
 };
 
 Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
-  return 'hello world!';
+  var points = 0;
+  var arrayOfPoints = [];
+  var objectOfWordAndPoints = {};
+
+  // for each word store the points in an array
+  // and store the points: [word, tie] in an object
+  for (var word of arrayOfWords) {
+    points = this.score(word);
+    arrayOfPoints.push(points);
+    // if keys exists, add to array, else make an array.
+    objectOfWordAndPoints[points]? objectOfWordAndPoints[points].push(word) : objectOfWordAndPoints[points] = [word]; //
+  };
+
+  //  find the max points
+  var max = Math.max.apply(Math, arrayOfPoints);
+
+  // deal with a tie
+  if (objectOfWordAndPoints[max].length > 1) {
+    var shortestword = 0;
+    var tiearray = objectOfWordAndPoints[max];
+
+    for (var i = 0; i >= tiearray.length; i++) {
+      if (tiearray[i].length < tiearray[i+1].length) {
+        shortestword = i;
+      } else {
+        shortestword = i+1;
+      }
+      // word.length
+    }
+    return objectOfWordAndPoints[max][shortestword];
+  }
+  return objectOfWordAndPoints[max][0];
 };
 
 Scrabble.prototype.helloWorld = function() {
