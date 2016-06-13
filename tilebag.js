@@ -8,3 +8,7 @@ var TileBag = function (){
     V: 2, W: 2, X: 1, Y: 2, Z: 1
   }
 }
+
+TileBag.prototype.remainingTiles = function () {
+  
+}
