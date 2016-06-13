@@ -19,7 +19,7 @@ Scrabble.prototype.getKey = function(value) {
     }
   }
   return null;
-};
+}
 
 // actually do stuff now
 
