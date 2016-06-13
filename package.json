@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "clear; jasmine-node --verbose spec/"
+    "test": "clear; jasmine-node spec/"
   },
   "author": "",
   "license": "ISC",
