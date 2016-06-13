@@ -1,7 +1,12 @@
-var Player = function(name) {
-  name: name,
+var PlayerPrototype = {
+  name: null,
   plays: []
+}
+
+var Player = function(name) {
+  this.name =  name;
 };
+Player.prototype = PlayerPrototype;
 
 
 Player.prototype.play = function(word) {
