@@ -1,4 +1,6 @@
 var Scrabble = require('./scrabble');
+var scorer = new Scrabble();
+// Try refactoring using line 2!
 
 var Player = function(name) {
   this.name = name;
