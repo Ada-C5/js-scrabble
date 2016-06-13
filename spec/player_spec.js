@@ -14,4 +14,9 @@ describe('Player name', function() {
   it('tracks if player has won', function() {
     expect(player.hasWon()).toEqual(false);
   });
+
+  it('scores a word', function() {
+    expect(player.play("hello")).toEqual(8);
+  });
+
 });
