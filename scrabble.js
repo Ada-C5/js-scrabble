@@ -42,19 +42,41 @@ Scrabble.prototype.score = function(word) {
 
 };
 
-Scrabble.prototype.highest_score_from(array) {
 
+// If the top score is tied between multiple words and one used all seven letters, choose the one with seven letters over the one with fewer tiles.
+//If the there are multiple words that are the same score and same length, pick the first one in supplied list.
+
+
+Scrabble.prototype.highestScoreFrom(array) {
+
+// need score of single word, the word array, and the highest scoring word:
+  var highest_scoring_word = ' '
   var word_score = 0
   var highest_score = 0,
-  highest_scoring_word = " "
 
+//each loop:
   for (var word of array) {
-    var word_score = Scrabble.prototype.score(word)
+    //do the word score function:
+    var word_score = Scrabble.prototype.score( word )
     if (word_score > highest_score) {
       highest_score = word_score
       highest_scoring_word = word
-    };
-    return highest_scoring_word;
+    }
+    else if ((word_score === highest_score) {
+    var highest_word = Scrabble.prototype.shortest( highest_scoring_word, word )
+    return new_winner; //im getting confused here...
+  };
+};
+
+Scrabble.prototype.shortestWord(highest_scoring_word, word) {
+
+  if (highest_scoring_word.length > word.length) {
+    var new_winner = highest_scoring_word
+    return new_winner;
+  }
+  else {
+    var new_winner = word
+    return new_winner;
   };
 };
 
