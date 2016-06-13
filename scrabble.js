@@ -1,5 +1,6 @@
 
   var prompt = require('prompt');
+  var request = require('request');
 
 // SCRABBLE
   Scrabble = function() {
@@ -175,4 +176,29 @@
     this._defaultTiles.length;
   };
 
+  Dictionary = function(){
+
+  }
+
+  Dictionary.prototyp.valid = function (word){
+    //Load the request module
+   var request = require('request');
+   var urlPath = ("http://api.wordnik.com:80/v4/" + word + ".json/walk/definitions?limit=1&includeRelated=false&useCanonical=false&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5");
+   var result = request({
+       url: urlPath, //URL to hit
+       qs: {from: 'blog example', time: +new Date()}, //Query string data
+       method: 'GET', //Specify the method
+       headers: { //We can define headers too
+           'Content-Type': 'application/json',
+           'Custom-Header': 'charset=utf-8'
+       }
+   }, function(error, response, body){
+       if(error) {
+           return error;
+       } else {
+           return [response.statusCode, body];
+       }
+   });
+
+  }
 module.exports = Scrabble;

@@ -245,3 +245,9 @@ describe ("Scrabble::Player#drawTiles", function(){
     expect(bill.drawTiles(7).length).toEqual(7);
   });
 });
+
+request('http://api.wordnik.com:80/v4/wordsradfdf.json/stop/definitions?limit=200&includeRelated=true&useCanonical=false&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5', function (error, response, body) {
+if (!error && response.statusCode == 200) {
+ return body; // Show the HTML for the Modulus homepage.
+ }
+ });
