@@ -6,24 +6,24 @@ var Player = function(name) {
   this.plays = [];
 };
 
-
 Player.prototype.play = function(word) {
   this.plays.push(word);
 }
 
 Player.prototype.totalScore = function() {
-  console.log("plays: ", this.plays);
+  // console.log("plays: ", this.plays);
+  if (this.plays.length <= 0) {
+    return 0;
+  }
   var scores = [];
   for (word of this.plays) {
     scores.push(scrabble.score(word));
   }
-  console.log("scores: ", scores);
+  // console.log("scores: ", scores);
 
   function sumTotal(previousValue, currentValue, currentIndex, array) {
     return previousValue + currentValue;
   }
-  console.log(scores.reduce(sumTotal));
-  console.log(Player.prototype);
   return scores.reduce(sumTotal);
 }
 
