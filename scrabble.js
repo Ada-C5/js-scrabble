@@ -41,41 +41,23 @@ Scrabble.prototype.score = function(word) {
   return score;
 };
 
-Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
-  //clean this up into another version below, make variables for best word and highest score and do logic on the way
-  //to replace them if current best word is no longer the best
-  //this method is gross, it makes me feel icky all over
-  var words_with_scores = {};
-  var winning_words = []
-  for (var word of arrayOfWords) {
-    words_with_scores[word] = this.score(word);
-  }
-  var max = Math.max.apply(null,Object.keys(words_with_scores).map(function(x){ return words_with_scores[x] }));
-  for (var word in words_with_scores){
-    if (words_with_scores[word] === max){
-      winning_words.push(word);
-    }
-  }
-  if (winning_words.length === 1){
-    return winning_words[0];
-  } else {
-    words_with_lengths = {};
-    for (var word of winning_words){
-      words_with_lengths[word] = word.length;
-    }
-    var min = Math.min.apply(null,Object.keys(words_with_scores).map(function(x){ return words_with_scores[x] }));
-    for (var word in words_with_lengths){
-      if (words_with_lenghts[word] === min){
-        return word;
-      }
-    }
-  };
-};
 
-// Scrabble.prototype.highestScoreFrom = function(arrayOfWords){
-//   highest_score = 0;
-//   winning_word = arrayOfWords[0];
-//
-// }
+Scrabble.prototype.highestScoreFrom = function(arrayOfWords){
+  highest_score = this.score(arrayOfWords[0]);
+  winning_word = arrayOfWords[0];
+  for (var word of arrayOfWords){
+    score = this.score(word);
+    if ((score > highest_score) || (score = highest_score && word.length === 7) ){
+      highest_score = score;
+      winning_word = word;
+    }
+    else if (score === highest_score && winning_word.length > word.length){
+      highest_score = score;
+      winning_word = word;
+    }
+  }
+  return winning_word;
+
+}
 
 module.exports = Scrabble;
