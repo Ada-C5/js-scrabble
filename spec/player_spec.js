@@ -27,7 +27,6 @@ describe('Player', function(){
     expect(loser.total_score()).toEqual(0);
   });
 
-
   // test haswon function
   it("returns true if player won", function(){
     expect(winner.hasWon()).toEqual(true);
@@ -47,5 +46,11 @@ describe('Player', function(){
   it("returns highest scoring word of player", function(){
     expect(winner.highestWordScore()).toEqual(84);
     // expect(loser.highestWordScore()).toThrowError(TypeError);
+  });
+
+  // test play function
+  it("allows players to play words", function(){
+    expect(winner.play("what")).toEqual(false);
+    expect(loser.play("word")).toEqual(["word"]);
   });
 });
