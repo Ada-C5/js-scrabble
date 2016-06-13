@@ -93,9 +93,15 @@ Player.prototype.highestScoringWord = function() {
   return (Object.keys(score_hash).reduce(function(a, b){ return score_hash[a] > score_hash[b] ? a : b}) + " is your highest scoring word!");
 };
 
+Player.prototype.highestWordScore = function() {
+  var score_hash = {}
+  var self = this
+  self.plays_array.forEach(function(word) {
+    score_hash[word] = self.play(word);
+  });
 
-// highestWordScore(): Function which returns the highestScoringWord score.
-
+  return (score_hash[Object.keys(score_hash).reduce(function(a, b){ return score_hash[a] > score_hash[b] ? a : b})] + " is your highest word score!");
+};
 
 
 

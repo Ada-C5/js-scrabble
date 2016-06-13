@@ -23,4 +23,8 @@ describe('Player name', function() {
     expect(player.highestScoringWord()).toEqual("hello is your highest scoring word!");
   });
 
+  it('returns a players highest word score', function() {
+    expect(player.highestWordScore()).toEqual("8 is your highest word score!");
+  });
+
 });

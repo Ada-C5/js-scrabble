@@ -52,7 +52,7 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
     score_hash
   });
 
-  return (Object.keys(score_hash).reduce(function(a, b){ return score_hash[a] > score_hash[b] ? a : b}) + " is worth " + score_hash[Object.keys(score_hash).reduce(function(a, b){ return score_hash[a] > score_hash[b] ? a : b})] + " points so it wins!");
+  return (Object.keys(score_hash).reduce(function(a, b){ return score_hash[a] > score_hash[b] ? a : b}) + " is worth " + score_hash[Object.keys(score_hash).reduce(function(a, b){ return score_hash[a] > score_hash[b] ? a : b})] + " points so it is your highest scoring word!");
 };
 
 module.exports = Scrabble;
