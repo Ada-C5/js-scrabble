@@ -81,15 +81,12 @@ Player.prototype.hasWon = function() {
 };
 
 
-// highestScoringWord(): Function which returns the highest scoring word the user has played.
 Player.prototype.highestScoringWord = function() {
   var score_hash = {}
   var self = this
   self.plays_array.forEach(function(word) {
     score_hash[word] = self.play(word);
   });
-  // return score_hash;
-
   return (Object.keys(score_hash).reduce(function(a, b){ return score_hash[a] > score_hash[b] ? a : b}) + " is your highest scoring word!");
 };
 
@@ -99,13 +96,9 @@ Player.prototype.highestWordScore = function() {
   self.plays_array.forEach(function(word) {
     score_hash[word] = self.play(word);
   });
-
   return (score_hash[Object.keys(score_hash).reduce(function(a, b){ return score_hash[a] > score_hash[b] ? a : b})] + " is your highest word score!");
 };
 
 
 
 module.exports = Player;
-
-// Current Test:
-var player = new Player("Alysia");
