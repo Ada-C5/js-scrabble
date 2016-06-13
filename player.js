@@ -44,28 +44,3 @@ function Player(name) {
 }
 
 module.exports = Player;
-
-
-// DEBUG:
-// var mygame = new Scrabble();
-
-// //
-// // myplayer.play(2);
-// // console.log(mygame.score(2));
-// myplayer.play("lemon");
-// console.log(Scrabble.score("lemon"));
-// //
-// console.log(myplayer.plays);
-// console.log(myplayer.total_score());
-// console.log(myplayer.hasWon());
-// myplayer.play("QQQQQQ");
-// myplayer.play("QQAA");
-// console.log(myplayer.total_score());
-// console.log(myplayer.hasWon());
-// console.log(myplayer.highestScoringWord());
-// console.log(myplayer.highestWordScore());
-//
-//
-// console.log(Scrabble.score("AAAAAAF"));
-// console.log(Scrabble.score("QQQQQQ"));
-// console.log(Scrabble.highestScoreFrom(["EEEEEEF", "AAAAAAF", "QQQQQQ"]));
