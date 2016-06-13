@@ -57,12 +57,12 @@ describe('totalScore', function() {
 describe('hasWon', function() {
   var zuko = new Player("Prince Zuko")
 
-  it('returns false if score is < 100', function() {
+  it('returns false if score is <= 100', function() {
     zuko.play("kittens");
     expect(zuko.hasWon()).toEqual(false);
   });
 
-  it('returns true if score is >= 100', function() {
+  it('returns true if score is > 100', function() {
     zuko.play("puppies");
     expect(zuko.hasWon()).toEqual(true);
   });

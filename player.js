@@ -35,7 +35,7 @@ Player.prototype.totalScore = function() {
 }
 
 Player.prototype.hasWon = function() {
-  var won = this.totalScore() >= 100 ? true : false;
+  var won = this.totalScore() > 100 ? true : false;
   return won;
 }
 
