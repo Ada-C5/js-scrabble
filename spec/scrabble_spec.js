@@ -153,44 +153,44 @@ describe ("Scrabble::Player#play(word)", function (){
     expect(mary.play("cat")).toEqual(false)
   });
 });
-//
-// describe "Scrabble::Player#total_score" do
-//   jane = Scrabble::Player.new(name: "Jane")
-//   it %!should return '243' for array_of_words = ["nose", "aaaaaad", "eeeeeed", "frog", "rrrrrrr", "qqqqqj"]! do
-//     array_of_words = ["nose", "aaaaaad", "eeeeeed", "frog", "rrrrrrr", "qqqqqj"]
-//
-//     # create an each method that will play the words in the array one by one
-//     array_of_words.each do |word_played|
-//       jane.play(word_played)
-//     end
-//
-//     jane.total_score.must_equal 243
-//   end
-// end
-//
-// describe "Scrabble::Player#highest_scoring_word" do
-//   april = Scrabble::Player.new(name: "April")
-//
-//   # it should return the highest scoring played WORD
-//   it %!should return "frog" for the words played "frog" and "nose"! do
-//     april.play("frog")
-//     april.play("nose")
-//     april.highest_scoring_word.must_equal "frog"
-//   end
-//
-//   it %!should return 'aaaaaad' for array_of_words = ["nose", "aaaaaad", "eeeeeed", "frog", "rrrrrrr", "qqqqqj"]! do
-//     fox = Scrabble::Player.new(name: "Fox")
-//     array_of_words = ["nose", "aaaaaad", "eeeeeed", "frog", "rrrrrrr", "qqqqqj"]
-//     # create an each method that will play the words in the array one by one
-//     array_of_words.each do |word_played|
-//       fox.play(word_played)
-//     end
-//
-//     fox.highest_scoring_word.must_equal "aaaaaad"
-//   end
-//
-//
-// end
+
+describe( "Scrabble::Player#total_score", function (){
+  var jane = new Player("Jane");
+  it ("should return '243' for array_of_words = ['nose', 'aaaaaad', 'eeeeeed', 'frog', 'rrrrrrr', 'qqqqqj']", function (){
+    var arrayOfWords = ["nose", "aaaaaad", "eeeeeed", "frog", "rrrrrrr", "qqqqqj"];
+
+    // create an each method that will play the words in the array one by one
+    for(var wordPlayed of arrayOfWords){
+      jane.play(wordPlayed);
+    };
+
+    expect(jane.totalScore).toEqual(243);
+  });
+});
+
+describe ("Scrabble::Player#highestScoringWord", function(){
+  var april = new Player("April")
+
+  // it should return the highest scoring played WORD
+  it ("should return 'frog' for the words played 'frog' and 'nose'", function(){
+    april.play("frog");
+    april.play("nose");
+    expect(april.highestScoringWord()).toEqual("frog");
+  });
+
+  it("should return 'aaaaaad' for array_of_words = ['nose', 'aaaaaad', 'eeeeeed', 'frog', 'rrrrrrr', 'qqqqqj']", function(){
+    var fox = new Scrabble("Fox");
+    var arrayOfWords = ["nose", "aaaaaad", "eeeeeed", "frog", "rrrrrrr", "qqqqqj"];
+    // create an each method that will play the words in the array one by one
+    for(wordPlayed of arrayOfWords){
+      fox.play(wordPlayed)
+    };
+
+    expect(fox.highestScoringWord()).toEqual("aaaaaad");
+  });
+
+
+});
 //
 // describe "Scrabble::Player#highest_word_score" do
 //   jody = Scrabble::Player.new(name: "Jody")
