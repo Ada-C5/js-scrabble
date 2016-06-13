@@ -1,5 +1,7 @@
 var Scrabble = require('./scrabble'),
     game = new Scrabble(),
+    TileBag = require('./tilebag'),
+    tilebag = new TileBag(),
     wordsPlayed = new Array();
 
 var Player = function(name) {
@@ -21,6 +23,7 @@ Player.prototype.play = function(word) {
   // play(word): will adds the input word to the plays Array
   // Returns false if player has already won
  if (this.hasWon() === false ){
+   tilebag.drawtiles(word);
    wordsPlayed.push(word);
    return true
  } else if (this.hasWon() === true) {
