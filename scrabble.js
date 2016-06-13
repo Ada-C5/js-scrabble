@@ -16,8 +16,8 @@ Scrabble.prototype.score = function (word) {
     3: ['b', 'c', 'm', 'p'],
     4: ['f', 'h', 'v', 'w', 'y'],
     5: ['k'],
-    8: ['j', 'k'],
-    10:['q', 'z'] };
+    8: ['j'],
+    10:['q', 'z', 'x'] };
 
     var word_score = 0;
     if(word.length === 7){
@@ -47,17 +47,36 @@ var word_hash = {};
 
   }
 
- var highest_word = Object.keys(word_hash).sort(function(a,b){return word_hash[a]-word_hash[b];}).reverse();
+ var highest_word = Object.keys(word_hash).sort(function(a,b){
 
-  //return word_hash;
+   var score = word_hash[a]-word_hash[b];
+   if(score === 0){
+     return b.length - a.length;
+   }else {
+     return score;
+   }
 
-  return highest_word;
+
+   }).reverse();
+
+
+ seven_word = highest_word.find(function(element){return element.length === 7;});
+ if(seven_word === undefined){
+   return highest_word[0];
+        }
+   else{
+     return seven_word;
+   }
 };
+
+
 module.exports = Scrabble;
 
 var score_word = new Scrabble();
-console.log(score_word.score("aaaaaaa"));
-console.log(score_word.highestScoreFrom(['d','aa']));
+console.log(score_word.score("dkfjaef"));
+console.log(score_word.score("cmvsndfs"));
+console.log(score_word.score("xxx"));
+console.log(score_word.highestScoreFrom(['aaaaaaa','bbbbbbb']));
 
 
 // //remember call backs
