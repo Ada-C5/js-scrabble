@@ -65,6 +65,10 @@ describe('Scrabble', function() {
     expect(scrabble.highestScoreFrom(["Melissa", "y", "David"])).toEqual("melissa");
   });
 
+  it("#highestScoreFrom should return the word with less letter 'bad'", function() {
+    expect(scrabble.highestScoreFrom(["large", "bad", "best"])).toEqual("bad");
+  });
+
   it('#highestScoreFrom should return a string ', function() {
     expect(scrabble.highestScoreFrom(["miercol", "andres", "bogota"])).toEqual(jasmine.any(String))
   });

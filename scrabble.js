@@ -33,10 +33,15 @@ Scrabble.prototype.highestScoreFrom = function(arrayOfWords) {
   var scores_array = arrayOfWords.map(function(word) {
    return that.score(word);
  });
-  var max = Math.max(...scores_array);
-  var index_max = scores_array.indexOf(max)
-  return arrayOfWords[index_max].toLowerCase()
+  var max = Math.max(...scores_array)
+  var winners = arrayOfWords.filter(function(word) { return that.score(word) === max });
+  var shortest = winners[0];
+  for (var word of winners) {
+    if (shortest.length > word.length) {
+      shortest = word;
+    }
+  }
+  return shortest.toLowerCase();
 };
-
 
 module.exports = Scrabble;
