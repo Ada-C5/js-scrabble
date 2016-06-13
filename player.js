@@ -10,7 +10,7 @@ Player.prototype = PlayerPrototype;
 
 
 Player.prototype.play = function(word) {
-
+  this.plays.push('word')
 }
 
 Player.prototype.totalScore = function() {
