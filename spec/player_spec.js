@@ -35,4 +35,51 @@ describe('total_score', function() {
   it('returns correct score', function() {
     expect(player.total_score()).toEqual(67);
   });
+
+  it('returns updated score after play is made', function() {
+    player.play('question');
+    expect(player.total_score()).toEqual(134);
+  })
 });
+
+describe('hasWon', function() {
+  var player = new Player('Walt');
+  player.play('question');
+
+  it('returns false if players plays are less than 100pts', function() {
+    expect(player.hasWon()).toEqual(false);
+  });
+
+  it('returns true if players plays are 100 or more', function() {
+    player.play('quizzical');
+    expect(player.hasWon()).toEqual(true);
+  })
+});
+
+describe('highestScoringWord', function() {
+  var player = new Player('Henry');
+  player.plays = ['toast', 'question', 'cat'];
+
+  it('returns the correct word when asked for highest scoring word', function() {
+    expect(player.highestScoringWord()).toEqual('question');
+  })
+
+  it('will return the correct highest word after subsequent plays', function() {
+    player.play('quizzical');
+    expect(player.highestScoringWord()).toEqual('quizzical');
+  })
+});
+
+describe('highestWordScore', function() {
+  var player = new Player('Tom');
+  player.plays = ['cat', 'dog', 'question']
+
+  it('returns the score of the highest scoring word in plays', function() {
+    expect(player.highestWordScore()).toEqual(67);
+  });
+
+  it('will return the correct highest score after a new word is played', function() {
+    player.play('quizzical');
+    expect(player.highestWordScore()).toEqual(88);
+  })
+})
