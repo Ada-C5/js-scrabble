@@ -25,8 +25,13 @@ describe('play(word)', function() {
     expect(toph.plays.length).toEqual(1);
   });
 
-  it('adds the correct word to plays property', function(){
+  it('adds the correct word to plays property', function() {
     expect(toph.plays[0]).toEqual("kittens");
+  });
+
+  it('returns false if player has already won', function() {
+    toph.play("puppies")
+    expect(toph.play("zebra")).toEqual(false);
   });
 });
 
