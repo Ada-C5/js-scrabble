@@ -61,11 +61,12 @@ Player.prototype.play = function(word) {
     word_array.forEach(function(letter) {
       score_value += self.score_hash[letter];
     });
+    self.total_score += score_value;
     return score_value;
   }
 };
 
-Player.prototype.total_score = function() {
+Player.prototype.totalScore = function() {
   var self = this
   return self.total_score;
 };
