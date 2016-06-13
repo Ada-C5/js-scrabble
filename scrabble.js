@@ -37,6 +37,10 @@ Scrabble.prototype.score = function(word) {
   var wordy = word.toUpperCase();
   var score = 0;
 
+  if ((wordy.length > 7) || (wordy.length < 1)) {
+    return 'Unacceptable word!!';
+  };
+
   for (var index in wordy) {
     score += this._tilepoints[wordy[index]];
   };
