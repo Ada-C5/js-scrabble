@@ -19,11 +19,11 @@ Scrabble.prototype = {
       var word = word.toUpperCase();
       var points = 0;
       if (word.length === 7) {
-        points += Scrabble.prototype.bonus;
+        points += this.bonus;
       }; 
 
       for (var letter of word) {
-        points += Scrabble.prototype.scoring[letter];
+        points += this.scoring[letter];
       };
 
       return points; 
@@ -39,21 +39,21 @@ Scrabble.prototype = {
       var word = word.toUpperCase()
       // add an initial winning word 
       // if current word score > current winning word's score, add it
-      if (winner === "none" || Scrabble.prototype.score(word) > winner.score) {
+      if (winner === "none" || this.score(word) > winner.score) {
         winner = {
           "word": word, 
-          "score": Scrabble.prototype.score(word)
+          "score": this.score(word)
         };
         // if there is a tie, preference given to:
         // shorter word
         // unless word length is 7, then that word wins
         // if words are same length, the first in the list wins
-      } else if (Scrabble.prototype.score(word) === winner.score) {
+      } else if (this.score(word) === winner.score) {
         if (winner.word.length > word.length) {
           winner = "none";
           winner = {
             "word": word, 
-            "score": Scrabble.prototype.score(word)
+            "score": this.score(word)
           }; 
         } else if (winner.word.length === word.length || winner.word.length < word.length) {
           winner = {

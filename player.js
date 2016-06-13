@@ -9,12 +9,14 @@ var Player = function(name) {
 Player.prototype = {
 
   play: function(word) {
+    var word = word.toUpperCase()
+
     if (this.hasWon() === true) {
      return false 
     } else {
       wordScore = scrabble.score(word);
       this.plays.push(word);
-      return word.toUpperCase() + ": " + wordScore;
+      return word + ": " + wordScore;
     };
   },
 
