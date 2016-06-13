@@ -6,16 +6,17 @@ var Player = function(name){
 };
 
 Player.prototype.play = function(word){
-  if(this.hasWon){
+
+  if(this.hasWon()){
     return false;
   } else {
-  this._plays.push(word);
+    this._plays.push(word);
   };
 };
 
 Player.prototype.total_score = function(){
   var scrabble = new Scrabble,
-      words_played = this._name,
+      words_played = this._plays,
       total = 0;
 
   for(var word of words_played){
