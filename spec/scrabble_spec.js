@@ -8,7 +8,7 @@ describe('Scrabble', function() {
   });
 
   it('can score a word correctly and is case insensitive', function() {
-    expect(scrabble.score("aDa"));
+    expect(scrabble.score("aDa")).toEqual(4);
   });
 
   it('can return the highest scoring word from array', function() {
